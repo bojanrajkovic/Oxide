@@ -1,0 +1,32 @@
+{
+    "version": "0.1.0",
+    "command": "dotnet",
+    "isShellCommand": true,
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": [
+                "${workspaceRoot}\\src\\Oxide\\Oxide.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "build",
+            "args": [
+                "${workspaceRoot}\\src\\Oxide.Tests\\Oxide.Tests.csproj"
+            ],
+            "isBuildCommand": false,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "test",
+            "args": [
+                "${workspaceRoot}\\src\\Oxide.Tests\\Oxide.Tests.csproj"
+            ],
+            "isTestCommand": true,
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
