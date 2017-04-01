@@ -48,34 +48,49 @@ namespace Oxide
             return false;
         }
 
-        public T Expect(string msg) => IsSome ? value : throw new Exception(msg);
-        public T Unwrap() => IsSome ? value : throw new Exception($"Tried to unwrap a None<{typeof(T)}>!");
-        public T UnwrapOr(T def = default(T)) => IsSome ? value : def;
-        public T UnwrapOr(Func<T> provider) => IsSome ? value : provider();
+        public static bool operator ==(Option<T> left, Option<T> right)
+            => left.Equals(right);
+        public static bool operator !=(Option<T> left, Option<T> right)
+            => !left.Equals(right);
+        public static implicit operator Option<T>(T value)
+            => value == null ? None<T>() : Some(value);
 
-        public Option<U> Map<U>(Func<T, U> converter) => IsSome ? Some(converter(value)) : None<U>();
-        public async Task<Option<U>> Map<U>(Func<T, Task<U>> converter) 
+        public T Expect(string msg)
+            => IsSome ? value : throw new Exception(msg);
+        public T Unwrap()
+            => IsSome ? value : throw new Exception(UnwrapMessage);
+        public T UnwrapOr(T def = default(T))
+            => IsSome ? value : def;
+        public T UnwrapOr(Func<T> provider)
+            => IsSome ? value : provider();
+
+        public Option<U> Map<U>(Func<T, U> converter)
+            => IsSome ? Some(converter(value)) : None<U>();
+        public async Task<Option<U>> Map<U>(Func<T, Task<U>> converter)
             => IsSome ? Some(await converter(value)) : new None<U>();
-        public U MapOr<U>(U def, Func<T, U> converter) => IsSome ? converter(value) : def;
-        public U MapOr<U>(Func<U> provider, Func<T, U> converter) => IsSome ? converter(value) : provider();
+        public U MapOr<U>(U def, Func<T, U> converter)
+            => IsSome ? converter(value) : def;
+        public U MapOr<U>(Func<U> provider, Func<T, U> converter)
+            => IsSome ? converter(value) : provider();
 
-        public Option<U> And<U>(Option<U> option) => IsNone ? Option<U>.None : option;
-        public Option<U> AndThen<U>(Func<T, Option<U>> option) => IsNone ? Option<U>.None : option(value);
-        public Task<Option<U>> AndThen<U>(Func<T, Task<Option<U>>> option) 
-            => IsNone ? Task.FromResult(Option<U>.None) : option(value);
+        public Option<U> And<U>(Option<U> option)
+            => IsNone ? None<U>() : option;
+        public Option<U> AndThen<U>(Func<T, Option<U>> option)
+            => IsNone ? None<U>() : option(value);
+        public Task<Option<U>> AndThen<U>(Func<T, Task<Option<U>>> option)
+            => IsNone ? Task.FromResult(None<U>()) : option(value);
 
-        public Option<T> Or(Option<T> other) => IsSome ? this : other;
-        public Option<T> OrElse(Func<Option<T>> option) => IsSome ? this : option();
-        public Task<Option<T>> OrElse(Func<Task<Option<T>>> option) => IsSome ? Task.FromResult(this) : option();
+        public Option<T> Or(Option<T> other)
+            => IsSome ? this : other;
+        public Option<T> OrElse(Func<Option<T>> option)
+            => IsSome ? this : option();
+        public Task<Option<T>> OrElse(Func<Task<Option<T>>> option)
+            => IsSome ? Task.FromResult(this) : option();
 
         public void Take() { value = default(T); hasValue = false; }
 
-        public override int GetHashCode() 
+        public override int GetHashCode()
             => !hasValue ? 0 : (ReferenceEquals(value, null) ? -1 : value.GetHashCode());
-
-        public static bool operator ==(Option<T> left, Option<T> right) => left.Equals(right);
-        public static bool operator !=(Option<T> left, Option<T> right) => !left.Equals(right);
-        public static implicit operator Option<T>(T value) => value == null ? None<T>() : Some(value);
     }
 
     public class None<T> : Option<T> { }
