@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using static Oxide.Option;
+using static Oxide.Options;
 
 namespace Oxide
 {
-    public static class Option
+    public static class Options
     {
         public static Option<T> None<T>() => new None<T>();
         public static Option<T> Some<T>(T value) => new Some<T>(value);
         public static async Task<T> Unwrap<T>(this Task<Option<T>> self) => (await self).Unwrap();
     }
 
-    public class Option<T> : IEquatable<Option<T>>
+    public class Option
     {
-        public static Option<T> None => None<T>();
         public bool IsNone => !hasValue;
         public bool IsSome => !IsNone;
 
-        bool hasValue;
+        protected bool hasValue;
+    }
+
+    public class Option<T> : Option, IEquatable<Option<T>>
+    {
+        static readonly string UnwrapMessage
+            = $"Tried to unwrap a None<{typeof(T)}>!";
+
         T value;
 
         protected Option() { }
