@@ -12,7 +12,7 @@ namespace Oxide
         public static async Task<T> Unwrap<T>(this Task<Option<T>> self) => (await self).Unwrap();
     }
 
-    public class Option
+    public abstract class Option
     {
         public bool IsNone => !hasValue;
         public bool IsSome => !IsNone;
@@ -20,15 +20,18 @@ namespace Oxide
         protected bool hasValue;
     }
 
-    public class Option<T> : Option, IEquatable<Option<T>>
+    public abstract class Option<T> : Option, IEquatable<Option<T>>
     {
         static readonly string UnwrapMessage
             = $"Tried to unwrap a None<{typeof(T)}>!";
 
         T value;
 
-        protected Option() { }
-        protected Option(T value) { hasValue = true; this.value = value; }
+        // We really want this to be protected _and_ internal, but C# protected internal
+        // means protected _or_ internal, so, just go with this for now. Consider modifying
+        // the IL for real insanity. What would be better is if C# had sealed-if-not-internal.
+        internal Option() { }
+        internal Option(T value) { hasValue = true; this.value = value; }
 
         public bool Equals(Option<T> other)
         {
@@ -93,10 +96,10 @@ namespace Oxide
             => !hasValue ? 0 : (ReferenceEquals(value, null) ? -1 : value.GetHashCode());
     }
 
-    public class None<T> : Option<T> { }
+    sealed class None<T> : Option<T> { }
 
-    public class Some<T> : Option<T>
+    sealed class Some<T> : Option<T>
     {
-        public Some(T value) : base(value) { }
+        internal Some(T value) : base(value) { }
     }
 }
