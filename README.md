@@ -5,6 +5,7 @@ A collection of Rust-like types for .NET.
 ## Implemented Types
 
 * [std::option::Option][rust-option]: [Option.cs][our-option]
+* [std::result::Result][rust-result]: [Result.cs][our-result]
 
 ## Building
 
@@ -18,3 +19,5 @@ A collection of Rust-like types for .NET.
 
 [rust-option]: https://doc.rust-lang.org/std/option/enum.Option.html
 [our-option]: src/Oxide/Option.cs
+[rust-result]: https://doc.rust-lang.org/std/result/enum.Result.html
+[our-result]: src/Oxide/Result.cs
