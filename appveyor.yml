@@ -1,0 +1,74 @@
+os: Visual Studio 2017
+version: "{build}"
+environment:
+  OXIDE_ASSEMBLY_VERSION: 1.0.0
+  OXIDE_VERSION_FILE: Oxide.version
+  COVERALLS_REPO_TOKEN:
+    secure: flcUZelaTjCVzFbppf/ugibJDqSAIZC3m3QhDedWorlQIam0kKqRoM2ilW0tAiCL
+install:
+  - ps: |
+      # Compute version number
+      $pinguVersion = Get-Content $env:OXIDE_VERSION_FILE
+      $lastVersionBump = $(git log -n 1 --format=format:%h $env:OXIDE_VERSION_FILE)
+      $commitsSinceLastVersionBump = $(git rev-list --count $lastVersionBump`.`.HEAD)
+      if ($env:APPVEYOR_REPO_BRANCH -ne "master") { $branch = "-" + $env:APPVEYOR_REPO_BRANCH }
+      $env:OXIDE_VERSION="$pinguVersion.$commitsSinceLastVersionBump"
+      $env:OXIDE_VERSION_AND_BRANCH=$env:OXIDE_VERSION + " - Branch: $branch"
+      Write-Output ("Oxide version: " + $env:OXIDE_VERSION)
+assembly_info:
+  patch: true
+  file: AssemblyInfo.cs
+  assembly_version: $(OXIDE_ASSEMBLY_VERSION)
+  assembly_file_version: $(OXIDE_VERSION)
+  assembly_informational_version: $(OXIDE_VERSION_AND_BRANCH)
+before_build:
+  - ps: |
+      # Restore packages for Oxide
+      Push-Location .\src\Oxide
+      dotnet restore
+      Pop-Location
+  - ps: |
+      # Restore packages for Tests
+      Push-Location .\src\Oxide.Tests
+      dotnet restore
+      Pop-Location
+build_script:
+  - ps: |
+      # Build Oxide
+      Push-Location .\src\Oxide
+      dotnet build -c Release
+      Pop-Location
+before_test:
+  - ps: |
+      # Install OpenCover and ReportGenerator for coverage
+      nuget install -OutputDirectory packages -Version 4.6.519 OpenCover
+      nuget install -OutputDirectory packages -Version 2.5.1 ReportGenerator
+      nuget install -OutputDirectory packages -Version 0.412.0 coveralls.net
+test_script:
+  - ps: |
+      # Run tests & coverage
+      $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
+      .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"$dotnetPath" `
+        -targetargs:"test src\Oxide.Tests\Oxide.Tests.csproj" -output:"coverage.xml" -oldstyle `
+        -filter:+[*]* -threshold:1
+after_test:
+  - ps: |
+      # Generate coverage report
+      .\packages\ReportGenerator.2.5.1\tools\ReportGenerator.exe -reports:coverage.xml -targetdir:coverage
+  - ps: |
+      # Upload to Coveralls
+      .\packages\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i coverage.xml --repoToken $env:COVERALLS_REPO_TOKEN `
+        --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR `
+        --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
+  - ps: |
+      # Build NuGet package
+      if (($env:APPVEYOR_REPO_BRANCH -eq "master") -and ($env:APPVEYOR_PULL_REQUEST_TITLE -eq $null)) {
+        Push-Location .\src\Oxide
+        dotnet pack -c Release /p:Version=$env:OXIDE_VERSION
+      }
+artifacts:
+  - path: 'src\**\*.nupkg'
+  - path: coverage
+    name: Coverage Report
+    type: zip
+
