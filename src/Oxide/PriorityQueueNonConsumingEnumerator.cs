@@ -17,8 +17,6 @@ namespace Oxide
             LinkedList<TItem> currentQueue;
             LinkedListNode<TItem> currentItem;
 
-            Func<KeyValuePair<TPriority, LinkedList<TItem>>, bool> queueFilter;
-
             public PriorityQueueNonConsumingEnumerator(PriorityQueue<TPriority, TItem> queue) {
                 keys = queue.buckets.Keys as IReadOnlyCollection<TPriority>;
                 this.queue = queue;
