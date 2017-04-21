@@ -3,6 +3,7 @@ version: "{build}"
 environment:
   OXIDE_ASSEMBLY_VERSION: 1.0.0
   OXIDE_VERSION_FILE: Oxide.version
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   COVERALLS_REPO_TOKEN:
     secure: flcUZelaTjCVzFbppf/ugibJDqSAIZC3m3QhDedWorlQIam0kKqRoM2ilW0tAiCL
 install:
@@ -50,7 +51,7 @@ test_script:
       $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
       .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"$dotnetPath" `
         -targetargs:"test src\Oxide.Tests\Oxide.Tests.csproj" -output:"coverage.xml" -oldstyle `
-        -filter:+[*]* -threshold:1
+        -filter:+[Oxide]* -threshold:1
 after_test:
   - ps: |
       # Generate coverage report
