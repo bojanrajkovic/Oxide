@@ -99,12 +99,6 @@ namespace Oxide
         public static implicit operator Result<T, E>(E error)
             => Results.Err<T, E>(error);
 
-        public static implicit operator T(Result<T, E> ok)
-            => ok.Unwrap();
-
-        public static implicit operator E(Result<T, E> err)
-            => err.UnwrapError();
-
         public Option<T> Ok() => IsOk ? Some(value) : None<T>();
         public Option<E> Err() => IsOk ? None<E>() : Some(error);
 
