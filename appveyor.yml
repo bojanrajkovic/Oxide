@@ -24,15 +24,8 @@ assembly_info:
   assembly_informational_version: $(OXIDE_VERSION_AND_BRANCH)
 before_build:
   - ps: |
-      # Restore packages for Oxide
-      Push-Location .\src\Oxide
+      # Restore packages for everything
       dotnet restore
-      Pop-Location
-  - ps: |
-      # Restore packages for Tests
-      Push-Location .\src\Oxide.Tests
-      dotnet restore
-      Pop-Location
 build_script:
   - ps: |
       # Build
