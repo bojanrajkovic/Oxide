@@ -42,7 +42,7 @@ test_script:
       $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
       .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"$dotnetPath" `
         -targetargs:"test src\Oxide.Tests\Oxide.Tests.csproj" -output:"coverage.xml" -oldstyle `
-        -filter:+[Oxide]* -threshold:1
+        -filter:+[Oxide]* -filter:+[Oxide.Http]* -threshold:1
 after_test:
   - ps: |
       # Generate coverage report

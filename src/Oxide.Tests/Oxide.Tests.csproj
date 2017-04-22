@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Oxide\Oxide.csproj" />
+    <ProjectReference Include="..\Oxide.Http\Oxide.Http.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,17 +7,9 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}\\src\\Oxide\\Oxide.csproj"
+                "${workspaceRoot}"
             ],
             "isBuildCommand": true,
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "taskName": "build",
-            "args": [
-                "${workspaceRoot}\\src\\Oxide.Tests\\Oxide.Tests.csproj"
-            ],
-            "isBuildCommand": false,
             "problemMatcher": "$msCompile"
         },
         {
