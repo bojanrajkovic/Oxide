@@ -99,6 +99,12 @@ namespace Oxide
         public static implicit operator Result<T, E>(E error)
             => Results.Err<T, E>(error);
 
+        public static implicit operator T(Result<T, E> ok)
+            => ok.Unwrap();
+
+        public static implicit operator E(Result<T, E> err)
+            => err.UnwrapError();
+
         public Option<T> Ok() => IsOk ? Some(value) : None<T>();
         public Option<E> Err() => IsOk ? None<E>() : Some(error);
 
@@ -163,12 +169,12 @@ namespace Oxide
         public T UnwrapOrDefault() => IsOk ? value : default(T);
     }
 
-    sealed class Error<T, E> : Result<T, E>
+    public sealed class Error<T, E> : Result<T, E>
     {
         internal Error(E error) : base(error) {}
     }
 
-    sealed class Ok<T, E> : Result<T, E>
+    public sealed class Ok<T, E> : Result<T, E>
     {
         internal Ok(T value) : base(value) {}
     }
