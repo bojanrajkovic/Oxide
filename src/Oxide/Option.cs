@@ -57,6 +57,8 @@ namespace Oxide
             => !left.Equals(right);
         public static implicit operator Option<T>(T value)
             => value == null ? None<T>() : Some(value);
+        public static implicit operator T(Option<T> value)
+            => value.Unwrap();
 
         public T Expect(string msg)
             => IsSome ? value : throw new Exception(msg);
@@ -96,9 +98,9 @@ namespace Oxide
             => !hasValue ? 0 : (ReferenceEquals(value, null) ? -1 : value.GetHashCode());
     }
 
-    sealed class None<T> : Option<T> { }
+    public sealed class None<T> : Option<T> { }
 
-    sealed class Some<T> : Option<T>
+    public sealed class Some<T> : Option<T>
     {
         internal Some(T value) : base(value) { }
     }
