@@ -19,6 +19,15 @@
             ],
             "isTestCommand": true,
             "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "cover",
+            "command": "powershell",
+            "args": [
+                "${workspaceRoot}\\cover.ps1"
+            ],
+            "isBuildCommand": false,
+            "isShellCommand": true
         }
     ]
 }
