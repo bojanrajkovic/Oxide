@@ -14,6 +14,33 @@ namespace Oxide.Tests
 {
     public class ResultTests
     {
+#region Safe Wrapper
+        [Fact]
+        public void Safe_wrapper_catches_exception_and_converts()
+        {
+            Func<string, int> fn = str => str.Length;
+            var safe = GetSafeInvoker<string, int, NullReferenceException>(fn);
+            var res = safe(null);
+
+            Assert.True(res.IsError);
+
+            var ex = res.UnwrapError();
+            Assert.NotNull(ex);
+        }
+
+        [Fact]
+        public void Safe_wrapper_returns_result_of_original_function()
+        {
+            Func<string, int> fn = str => str.Length;
+            var safe = GetSafeInvoker<string, int, NullReferenceException>(fn);
+            var res = safe("tacocat");
+            var original = fn("tacocat");
+
+            Assert.True(res.IsOk);
+            Assert.Equal(original, res);
+        }
+#endregion
+
 #region Exception Is Captured
         Result<string, Exception> ReadAllText()
         {
