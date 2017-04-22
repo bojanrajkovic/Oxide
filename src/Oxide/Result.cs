@@ -12,6 +12,16 @@ namespace Oxide
             => new Ok<T, E>(value);
         public static Result<T, E> Err<T, E>(E error)
             => new Error<T, E>(error);
+
+        public static Func<TIn, Result<TOut, TException>> GetSafeInvoker<TIn, TOut, TException>(Func<TIn, TOut> fn)
+            where TException : Exception
+            => a => {
+                try {
+                    return fn(a);
+                } catch (TException e) {
+                    return e;
+                }
+            };
     }
 
     public abstract class Result
