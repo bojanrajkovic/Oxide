@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxide", "src\Oxide\Oxide.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oxide.Tests", "src\Oxide.Tests\Oxide.Tests.csproj", "{BF62008B-3BF0-44E9-8439-66D973EA01E2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oxide.Http", "src\Oxide.Http\Oxide.Http.csproj", "{3BE228C8-3592-41CC-AE80-F56E86A4B2A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BF62008B-3BF0-44E9-8439-66D973EA01E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF62008B-3BF0-44E9-8439-66D973EA01E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF62008B-3BF0-44E9-8439-66D973EA01E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE228C8-3592-41CC-AE80-F56E86A4B2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE228C8-3592-41CC-AE80-F56E86A4B2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE228C8-3592-41CC-AE80-F56E86A4B2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE228C8-3592-41CC-AE80-F56E86A4B2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
