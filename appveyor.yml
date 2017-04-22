@@ -35,10 +35,8 @@ before_build:
       Pop-Location
 build_script:
   - ps: |
-      # Build Oxide
-      Push-Location .\src\Oxide
+      # Build
       dotnet build -c Release
-      Pop-Location
 before_test:
   - ps: |
       # Install OpenCover and ReportGenerator for coverage
