@@ -210,7 +210,7 @@ namespace Oxide.Tests
             Task<double> Mapper(long value) => Task.Run(() => Math.Pow(2, value));
             var some = Some(16L);
 
-            var result = some.Map(Mapper);
+            var result = some.MapAsync(Mapper);
 
             var newSome = await result;
             Assert.IsType<Some<double>>(newSome);
@@ -223,7 +223,7 @@ namespace Oxide.Tests
             Task<double> Mapper(long value) => Task.Run(() => Math.Pow(2, value));
             var none = None<long>();
 
-            var result = await none.Map(Mapper);
+            var result = await none.MapAsync(Mapper);
 
             Assert.IsType<None<double>>(result);
             Assert.True(result.IsNone);
@@ -235,7 +235,7 @@ namespace Oxide.Tests
             Task<double> Mapper(long value) => Task.Run(() => Math.Pow(2, value));
             var some = Some(16L);
 
-            var result = await some.Map(Mapper).Unwrap();
+            var result = await some.MapAsync(Mapper).Unwrap();
             Assert.Equal(65536.0, result);
         }
 
@@ -246,7 +246,7 @@ namespace Oxide.Tests
             var none = None<long>();
 
             var ex = await Assert.ThrowsAsync<Exception>(
-                () => none.Map(Mapper).Unwrap()
+                () => none.MapAsync(Mapper).Unwrap()
             );
             Assert.Equal("Tried to unwrap a None<System.Double>!", ex.Message);
         }
@@ -321,7 +321,7 @@ namespace Oxide.Tests
             var timespan = TimeSpan.FromSeconds(1);
             var some = Some(timespan);
 
-            var res = await some.AndThen<double>(async ts => {
+            var res = await some.AndThenAsync<double>(async ts => {
                 await Task.Delay(ts);
                 return ts.TotalDays;
             }).Unwrap();
@@ -333,7 +333,7 @@ namespace Oxide.Tests
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
-            var res = await none.AndThen<double>(async ts => {
+            var res = await none.AndThenAsync<double>(async ts => {
                 await Task.Delay(ts);
                 return ts.TotalDays;
             });
@@ -367,7 +367,7 @@ namespace Oxide.Tests
             var some = Some(timespan);
             var called = false;
 
-            var res = await some.OrElse(async () => {
+            var res = await some.OrElseAsync(async () => {
                 await Task.Delay(timespan);
                 called = true;
                 return TimeSpan.FromSeconds(10);
@@ -384,7 +384,7 @@ namespace Oxide.Tests
             var none = None<TimeSpan>();
             var called = false;
 
-            var res = await none.OrElse(async () => {
+            var res = await none.OrElseAsync(async () => {
                 await Task.Delay(timespan);
                 called = true;
                 return TimeSpan.FromSeconds(10);

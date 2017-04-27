@@ -20,6 +20,7 @@ namespace Oxide
         protected bool hasValue;
     }
 
+    [System.Runtime.CompilerServices.AsyncMethodBuilder(typeof(OptionAsyncMethodBuilder<>))]
     public abstract class Option<T> : Option, IEquatable<Option<T>>
     {
         static readonly string UnwrapMessage
@@ -69,7 +70,7 @@ namespace Oxide
 
         public Option<U> Map<U>(Func<T, U> converter)
             => IsSome ? Some(converter(value)) : None<U>();
-        public async Task<Option<U>> Map<U>(Func<T, Task<U>> converter)
+        public async Task<Option<U>> MapAsync<U>(Func<T, Task<U>> converter)
             => IsSome ? Some(await converter(value)) : new None<U>();
         public U MapOr<U>(U def, Func<T, U> converter)
             => IsSome ? converter(value) : def;
@@ -80,14 +81,14 @@ namespace Oxide
             => IsNone ? None<U>() : option;
         public Option<U> AndThen<U>(Func<T, Option<U>> option)
             => IsNone ? None<U>() : option(value);
-        public Task<Option<U>> AndThen<U>(Func<T, Task<Option<U>>> option)
+        public Task<Option<U>> AndThenAsync<U>(Func<T, Task<Option<U>>> option)
             => IsNone ? Task.FromResult(None<U>()) : option(value);
 
         public Option<T> Or(Option<T> other)
             => IsSome ? this : other;
         public Option<T> OrElse(Func<Option<T>> option)
             => IsSome ? this : option();
-        public Task<Option<T>> OrElse(Func<Task<Option<T>>> option)
+        public Task<Option<T>> OrElseAsync(Func<Task<Option<T>>> option)
             => IsSome ? Task.FromResult(this) : option();
 
         public void Take() { value = default(T); hasValue = false; }
