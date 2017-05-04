@@ -13,7 +13,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bojanrajkovic/Oxide</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.github.com/bojanrajkovic/Oxide/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseUrl>https://raw.github.com/bojanrajkovic/Oxide/master/LICENSE</PackageLicenseUrl>
     <PackageTags>rust functional</PackageTags>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
