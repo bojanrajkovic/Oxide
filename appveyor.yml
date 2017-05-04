@@ -9,11 +9,11 @@ environment:
 install:
   - ps: |
       # Compute version number
-      $pinguVersion = Get-Content $env:OXIDE_VERSION_FILE
+      $oxideVersion = Get-Content $env:OXIDE_VERSION_FILE
       $lastVersionBump = $(git log -n 1 --format=format:%h $env:OXIDE_VERSION_FILE)
       $commitsSinceLastVersionBump = $(git rev-list --count $lastVersionBump`.`.HEAD)
       if ($env:APPVEYOR_REPO_BRANCH -ne "master") { $branch = "-" + $env:APPVEYOR_REPO_BRANCH }
-      $env:OXIDE_VERSION="$pinguVersion.$commitsSinceLastVersionBump"
+      $env:OXIDE_VERSION="$oxideVersion.$commitsSinceLastVersionBump"
       $env:OXIDE_VERSION_AND_BRANCH=$env:OXIDE_VERSION + " - Branch: $branch"
       Write-Output ("Oxide version: " + $env:OXIDE_VERSION)
 assembly_info:
@@ -56,6 +56,9 @@ after_test:
       # Build NuGet package
       if (($env:APPVEYOR_REPO_BRANCH -eq "master") -and ($env:APPVEYOR_PULL_REQUEST_TITLE -eq $null)) {
         Push-Location .\src\Oxide
+        dotnet pack -c Release /p:Version=$env:OXIDE_VERSION
+        Pop-Location
+        Push-Location .\src\Oxide.Http
         dotnet pack -c Release /p:Version=$env:OXIDE_VERSION
       }
 artifacts:
