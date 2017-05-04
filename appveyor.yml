@@ -59,6 +59,8 @@ after_test:
         dotnet pack -c Release /p:Version=$env:OXIDE_VERSION
         Pop-Location
         Push-Location .\src\Oxide.Http
+        # Run a dotnet restore with the right VersionPrefix so that deps are correct.
+        dotnet msbuild /t:Restore /p:VersionPrefix=$env:OXIDE_VERSION /p:Configuration=Release
         dotnet pack -c Release /p:Version=$env:OXIDE_VERSION
       }
 artifacts:
