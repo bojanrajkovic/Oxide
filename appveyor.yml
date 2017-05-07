@@ -35,7 +35,7 @@ before_test:
       # Install OpenCover and ReportGenerator for coverage
       nuget install -OutputDirectory packages -Version 4.6.519 OpenCover
       nuget install -OutputDirectory packages -Version 2.5.1 ReportGenerator
-      nuget install -OutputDirectory packages -Version 0.412.0 coveralls.net
+      nuget install -OutputDirectory packages -Version 0.7.0 coveralls.net
 test_script:
   - ps: |
       # Run tests & coverage
@@ -49,7 +49,7 @@ after_test:
       .\packages\ReportGenerator.2.5.1\tools\ReportGenerator.exe -reports:coverage.xml -targetdir:coverage
   - ps: |
       # Upload to Coveralls
-      .\packages\coveralls.net.0.412\tools\csmacnz.Coveralls.exe --opencover -i coverage.xml --repoToken $env:COVERALLS_REPO_TOKEN `
+      .\packages\coveralls.net.0.7.0\tools\csmacnz.Coveralls.exe --opencover -i coverage.xml --repoToken $env:COVERALLS_REPO_TOKEN `
         --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR `
         --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID
   - ps: |
