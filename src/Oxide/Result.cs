@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 
@@ -26,17 +28,32 @@ namespace Oxide
 
     public abstract class Result
     {
-        public bool IsOk => hasValue && !hasError;
-        public bool IsError => hasError && !hasValue;
+        public virtual bool IsOk => hasValue && !hasError;
+        public virtual bool IsError => hasError && !hasValue;
 
         protected bool hasValue, hasError;
+
+        public static Result<IEnumerable<T>, E> Combine<T, E>(params Result<T, E>[] results)
+            => new CombinedResult<T, E>(results);
+
+        public static Result<IEnumerable<T>, E> Combine<T, E>(IEnumerable<Result<T, E>> results)
+            => new CombinedResult<T, E>(results);
     }
 
     public class Result<T, E> : Result, IEquatable<Result<T, E>>
     {
-        T value;
-        E error;
+        protected T value;
+        protected E error;
         ExceptionDispatchInfo errorDispatchInfo;
+
+        // Only used by CombinedResult for convenience.
+        internal Result()
+        {
+            hasValue = true;
+            value = default(T);
+
+            hasError = false;
+        }
 
         // See comments on Option constructors.
         internal Result(E error)
@@ -98,10 +115,10 @@ namespace Oxide
         }
 
         public static bool operator==(Result<T, E> left, Result<T, E> right)
-            => left.Equals(right);
+            => Equals(left, right);
 
         public static bool operator !=(Result<T, E> left, Result<T, E> right)
-            => !left.Equals(right);
+            => !Equals(left, right);
 
         public static implicit operator Result<T, E>(T value)
             => Results.Ok<T, E>(value);
@@ -171,6 +188,25 @@ namespace Oxide
         }
 
         public T UnwrapOrDefault() => IsOk ? value : default(T);
+    }
+
+    class CombinedResult<T, E> : Result<IEnumerable<T>, E>
+    {
+        public CombinedResult (IEnumerable<Result<T, E>> results) : base()
+        {
+            var badResult = results.FirstOrDefault(r => r.IsError);
+            if (badResult == null) {
+                hasError = false;
+                hasValue = true;
+
+                value = results.Select(r => r.Unwrap()).ToList();
+            } else {
+                hasError = true;
+                hasValue = false;
+
+                error = badResult.UnwrapError();
+            }
+        }
     }
 
     public sealed class Error<T, E> : Result<T, E>

@@ -408,6 +408,41 @@ namespace Oxide.Tests
         [Fact]
         public void Unwrap_or_default_on_err_returns_default_value()
             => Assert.Equal(default(string), Err<string, int>(5).UnwrapOrDefault());
-#endregion
+        #endregion
+
+        #region Combined result tests
+
+        [Fact]
+        public void Multiple_combined_OKs_return_all_values()
+        {
+            var r = new Random();
+            var oks = Enumerable.Range(0, 10).Select(_ => Ok<int, string>(r.Next(1, 1001))).ToArray();
+            var sum = oks.Sum(o => o.Unwrap());
+            var combined = Result.Combine(oks);
+
+            Assert.True(combined.IsOk);
+            Assert.Equal(sum, combined.AndThen<int>(ints => ints.Sum()));
+        }
+
+        [Fact]
+        public void Combining_mix_of_OK_and_Err_returns_first_err()
+        {
+            var r = new Random();
+            var results = Enumerable.Range(0, 10).Select(_ => {
+                var rand = r.Next(0, 11);
+                if (rand > 5)
+                    return Err<int, string>(rand.ToString());
+                return Ok<int, string>(rand);
+            }).ToList();
+            var firstError = results.First(res => res.IsError).UnwrapError();
+
+            var combined = Result.Combine(results);
+
+            Assert.True(combined.IsError);
+            Assert.Equal(firstError, combined.UnwrapError());
+        }
+
+        #endregion
+
     }
 }
