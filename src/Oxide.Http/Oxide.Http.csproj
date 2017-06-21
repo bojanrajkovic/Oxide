@@ -36,9 +36,10 @@
   <Target Name="SetVersion" DependsOnTargets="GitInfo" BeforeTargets="CoreCompile;GetAssemblyVersion;GenerateNuspec;_GenerateRestoreProjectSpec;EnsureWixToolsetInstalled" Condition="$(GitInfoImported) == 'True'">
     <PropertyGroup>
       <VersionPrefix>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</VersionPrefix>
-      <VersionSuffix>$(GitSemVerLabel)</VersionSuffix>
-      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)$(GitSemVerDashLabel)</PackageVersion>
-      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)$(GitSemVerDashLabel)+$(GitBranch)-$(GitCommit)</PackageVersion>
+      <VersionSuffix Condition="'$(GitBranch)' == 'master'">$(GitSemVerDashLabel)</VersionSuffix>
+      <VersionSuffix Condition="'$(GitBranch)' != 'master'">$(GitSemVerDashLabel)-$(GitBranch)-$(GitCommit)</VersionSuffix>
+      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
+      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
     </PropertyGroup>
   </Target>
 </Project>
