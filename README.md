@@ -2,8 +2,7 @@
 
 A collection of Rust-like types for .NET.
 
-Build: [![Build status](https://ci.appveyor.com/api/projects/status/434eaimi9rdft2fn?svg=true)](https://ci.appveyor.com/project/bojanrajkovic/oxide)  
-Coverage: [![Coverage Status](https://coveralls.io/repos/github/bojanrajkovic/Oxide/badge.svg?branch=master)](https://coveralls.io/github/bojanrajkovic/Oxide?branch=master)
+[![Build status](https://teamcity.coderinserepeat.com/app/rest/builds/buildType:(id:Oxide_Build)/statusIcon)](https://teamcity.coderinserepeat.com/viewType.html?buildTypeId=Oxide_Build&guest=1)
 
 ## Implemented Types
 
