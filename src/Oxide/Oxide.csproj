@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <DebugType>full</DebugType>
+    <GitInfoReportImportance>high</GitInfoReportImportance>
+    <GitSkipCache>true</GitSkipCache>
+    <GitVersionFile>Oxide.version</GitVersionFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,10 +31,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitInfo" Version="1.1.63" />
     <PackageReference Include="System.Threading" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
 
+  <Target Name="SetVersion" DependsOnTargets="GitInfo" BeforeTargets="CoreCompile;GetAssemblyVersion;GenerateNuspec;_GenerateRestoreProjectSpec;EnsureWixToolsetInstalled" Condition="'$(GitInfoImported)' == 'True'">
+    <PropertyGroup>
+      <VersionPrefix>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</VersionPrefix>
+      <VersionSuffix Condition="'$(GitBranch)' == 'master'">$(GitSemVerDashLabel)</VersionSuffix>
+      <VersionSuffix Condition="'$(GitBranch)' != 'master'">$(GitSemVerDashLabel)-$(GitBranch)-$(GitCommit)</VersionSuffix>
+      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
+      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
+    </PropertyGroup>
+    <Message Importance="high" Text="##teamcity[buildNumber '$(PackageVersion)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
+    <Message Importance="high" Text="##teamcity[setParameter name='VersionPrefix' value='$(VersionPrefix)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
+    <Message Importance="high" Text="##teamcity[setParameter name='VersionSuffix' value='$([System.String]::Copy('$(VersionSuffix)').TrimStart('-'))']" Condition="'$(TEAMCITY_VERSION)' != ''" />
+  </Target>
 </Project>
