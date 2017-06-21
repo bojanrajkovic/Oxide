@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <DebugType>full</DebugType>
+    <GitInfoReportImportance>high</GitInfoReportImportance>
+    <GitSkipCache>true</GitSkipCache>
+    <GitVersionFile>Oxide.version</GitVersionFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,10 +31,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitInfo" Version="1.1.63" />
     <PackageReference Include="System.Threading" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
 
+  <Target Name="SetVersion" DependsOnTargets="GitInfo" BeforeTargets="CoreCompile;GetAssemblyVersion;GenerateNuspec;_GenerateRestoreProjectSpec;EnsureWixToolsetInstalled" Condition="'$(GitInfoImported)' == 'True'">
+    <Message Importance="high" Text="Running SetVersion..." />
+    <PropertyGroup>
+      <VersionPrefix>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</VersionPrefix>
+      <VersionSuffix>$(GitSemVerLabel)</VersionSuffix>
+      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)$(GitSemVerDashLabel)</PackageVersion>
+      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)$(GitSemVerDashLabel)+$(GitBranch)-$(GitCommit)</PackageVersion>
+    </PropertyGroup>
+  </Target>
 </Project>
