@@ -114,6 +114,12 @@ namespace Oxide
             return ReferenceEquals(error, null) ? -2 : error.GetHashCode();
         }
 
+        public void Deconstruct(out T value, out E error)
+        {
+            value = this.value;
+            error = this.error;
+        }
+
         public static bool operator==(Result<T, E> left, Result<T, E> right)
             => Equals(left, right);
 

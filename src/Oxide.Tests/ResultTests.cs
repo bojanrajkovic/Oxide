@@ -80,6 +80,18 @@ namespace Oxide.Tests
         }
 #endregion
 
+#region Deconstruction
+        [Fact]
+        public void Can_deconstruct_result_into_value_and_error()
+        {
+            var res = Ok<int, Exception>(5);
+            (var number, var exception) = res;
+
+            Assert.Equal(5, number);
+            Assert.Null(exception);
+        }
+#endregion
+
 #region Equality Tests
         [Fact]
         public void Result_equals_null_is_false()
