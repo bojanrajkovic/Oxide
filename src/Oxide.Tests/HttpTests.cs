@@ -72,7 +72,7 @@ namespace Oxide.Tests
         #endregion
 
         #region Success Testing
-        [Fact]
+        [Fact(Skip = "Need to fix data source here.")]
         public async Task Response_message_is_returned_on_success()
         {
             const string goodPath = "api.php?city=02131&f=1";
@@ -85,7 +85,7 @@ namespace Oxide.Tests
             Assert.True(response.IsSuccessStatusCode);
         }
 
-        [Fact]
+        [Fact(Skip = "Need to fix data source here.")]
         public async Task String_data_is_returned_on_success()
         {
             const string goodPath = "api.php?city=02131&f=1";
