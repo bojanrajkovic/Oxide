@@ -8,7 +8,9 @@ install:
     dotnet restore
 build:
   verbosity: minimal
-  publish_nuget: true
-  publish_nuget_symbols: true
+after_build:
+  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
+artifacts:
+  - path: artifacts\**\*.*
 cache:
   - '%USERPROFILE%\.nuget\packages'
