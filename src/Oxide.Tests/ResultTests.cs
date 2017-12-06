@@ -420,6 +420,34 @@ namespace Oxide.Tests
         [Fact]
         public void Unwrap_or_default_on_err_returns_default_value()
             => Assert.Equal(default(string), Err<string, int>(5).UnwrapOrDefault());
+
+        [Fact]
+        public void Can_try_unwrap_for_pattern_matching()
+        {
+            var ok = Ok<int, string>(10);
+            switch (ok) {
+                case var _ when ok.TryUnwrap(out var result):
+                    Assert.Equal(10, result);
+                    break;
+                case var _ when ok.TryUnwrapError(out var error):
+                    Assert.True(false, "Should not be reached.");
+                    break;
+            }
+        }
+
+        [Fact]
+        public void Can_try_unwrap_error_for_pattern_matching()
+        {
+            var ok = Err<int, string>("error");
+            switch (ok) {
+                case var _ when ok.TryUnwrap(out var result):
+                    Assert.True(false, "Should not be reached.");
+                    break;
+                case var _ when ok.TryUnwrapError(out var error):
+                    Assert.Equal("error", error);
+                    break;
+            }
+        }
         #endregion
 
         #region Combined result tests
