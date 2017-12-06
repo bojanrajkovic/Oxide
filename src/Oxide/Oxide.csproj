@@ -6,6 +6,7 @@
     <GitInfoReportImportance>high</GitInfoReportImportance>
     <GitSkipCache>true</GitSkipCache>
     <GitVersionFile>Oxide.version</GitVersionFile>
+    <GitIgnoreTagVersion>true</GitIgnoreTagVersion>
   </PropertyGroup>
 
   <PropertyGroup>
