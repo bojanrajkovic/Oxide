@@ -172,6 +172,11 @@ namespace Oxide
             return default(T);
         }
 
+        public bool TryUnwrap(out T value) {
+            value = this.value;
+            return IsOk;
+        }
+
         public T Expect(string msg) {
             if (IsOk)
                 return value;
@@ -185,6 +190,11 @@ namespace Oxide
             if (IsError)
                 return error;
             throw new Exception(value.ToString());
+        }
+
+        public bool TryUnwrapError(out E error) {
+            error = this.error;
+            return IsError;
         }
 
         public E ExpectError(string msg) {
