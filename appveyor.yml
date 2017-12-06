@@ -3,11 +3,12 @@ configuration:
   - Debug
   - Release
 image: Visual Studio 2017
-publish_nuget: true
 install:
 - cmd: >-
     dotnet restore
 build:
   verbosity: minimal
+  publish_nuget: true
+  publish_nuget_symbols: true
 cache:
   - '%USERPROFILE%\.nuget\packages'
