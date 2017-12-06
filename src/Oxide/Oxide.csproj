@@ -49,5 +49,8 @@
     <Message Importance="high" Text="##teamcity[buildNumber '$(PackageVersion)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
     <Message Importance="high" Text="##teamcity[setParameter name='VersionPrefix' value='$(VersionPrefix)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
     <Message Importance="high" Text="##teamcity[setParameter name='VersionSuffix' value='$([System.String]::Copy('$(VersionSuffix)').TrimStart('-'))']" Condition="'$(TEAMCITY_VERSION)' != ''" />
+    <Exec Command="appveyor SetVariable -Name VersionPrefix -Value &quot;$(VersionPrefix)&quot;"  Condition="'$(APPVEYOR)' == 'True'" />
+    <Exec Command="appveyor SetVariable -Name VersionSuffix -Value &quot;$([System.String]::Copy('$(VersionSuffix)').TrimStart('-'))&quot;"  Condition="'$(APPVEYOR)' == 'True'" />
+    <Exec Command="appveyor UpdateBuild -Version &quot;$(PackageVersion)&quot;" Condition="'$(APPVEYOR)' == 'True'" />
   </Target>
 </Project>

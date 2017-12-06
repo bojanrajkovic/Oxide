@@ -1,0 +1,16 @@
+version: 1.0.{build}
+configuration:
+  - Debug
+  - Release
+image: Visual Studio 2017
+install:
+- cmd: >-
+    dotnet restore
+build:
+  verbosity: minimal
+after_build:
+  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
+artifacts:
+  - path: artifacts\**\*.*
+cache:
+  - '%USERPROFILE%\.nuget\packages'
