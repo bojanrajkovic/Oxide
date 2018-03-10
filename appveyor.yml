@@ -1,6 +1,8 @@
 version: "{build}"
 configuration: Release
 image: Visual Studio 2017
+environment:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 install:
   - ps: choco install gitversion.portable -pre -y -r --no-progress
   # Download .NET Core preview SDK and add to PATH to work around
@@ -16,8 +18,8 @@ install:
 before_build:
   - dotnet restore
   - ps: gitversion /output buildserver
-build:
-  verbosity: minimal
+build_script:
+  - dotnet build
 after_build:
   - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts
 artifacts:
