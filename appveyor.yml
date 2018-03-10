@@ -11,4 +11,4 @@ build:
 after_build:
   - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts
 artifacts:
-  - path: "**\artifacts\**\*.*"
+  - path: "**\\artifacts\\**\\*.*"
