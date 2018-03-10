@@ -2,7 +2,7 @@ version: "{build}"
 configuration: Release
 image: Visual Studio 2017
 install:
-  - ps: choco install gitversion.portable -pre -y -r
+  - ps: choco install gitversion.portable -pre -y -r --no-progress
 before_build:
   - dotnet restore
   - ps: gitversion /l console /output buildserver
