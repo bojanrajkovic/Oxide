@@ -17,7 +17,7 @@ install:
   - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
 before_build:
   - dotnet restore
-  - ps: gitversion /output buildserver
+  - ps: gitversion /output buildserver /updateAssemblyInfo
 build_script:
   - dotnet build
 after_build:
