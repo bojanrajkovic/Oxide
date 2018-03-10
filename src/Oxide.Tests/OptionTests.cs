@@ -126,6 +126,24 @@ namespace Oxide.Tests
             => Assert.Equal(Some(5).Expect("Expected value, got None."), 5);
 
         [Fact]
+        public void Try_unwrap_returns_true_for_some()
+        {
+            int value;
+            Assert.True(Some<int>(int.MaxValue).TryUnwrap(out value));
+            Assert.Equal(int.MaxValue, value);
+        }
+
+        [Fact]
+        public void Try_unwrap_returns_false_for_none()
+        {
+            int value = -1;
+            Assert.False(None<int>().TryUnwrap(out value));
+            // `out` requires us to set a value, and the value for a None<T>
+            // is default(T).
+            Assert.Equal(default(int), value);
+        }
+
+        [Fact]
         public void Expecting_none_throws_exception_matching_string()
         {
             string message = "Expected 5, got None.";
