@@ -1,16 +1,14 @@
-version: 1.0.{build}
+version: "{build}"
 configuration: Release
 image: Visual Studio 2017
 install:
-  - ps: choco install gitversion.portable -pre -y
+  - ps: choco install gitversion.portable -pre -y -r
 before_build:
   - dotnet restore
   - ps: gitversion /l console /output buildserver
 build:
   verbosity: minimal
-#after_build:
-#  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
+after_build:
+  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=.\artifacts
 artifacts:
   - path: artifacts\**\*.*
-cache:
-  - '%USERPROFILE%\.nuget\packages'
