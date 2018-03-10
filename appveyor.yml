@@ -8,8 +8,6 @@ install:
 before_build:
   - dotnet restore
   - ps: gitversion /output buildserver /updateAssemblyInfo
-build_script:
-  - dotnet build
 after_build:
   - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts /p:Version="%GitVersion_NuGetVersion%"
 artifacts:

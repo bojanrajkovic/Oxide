@@ -123,7 +123,25 @@ namespace Oxide.Tests
 #region Expect/Unwrap Tests
         [Fact]
         public void Expecting_some_returns_value()
-            => Assert.Equal(Some(5).Expect("Expected value, got None."), 5);
+            => Assert.Equal(5, Some(5).Expect("Expected value, got None."));
+
+        [Fact]
+        public void Try_unwrap_returns_true_for_some()
+        {
+            int value;
+            Assert.True(Some<int>(int.MaxValue).TryUnwrap(out value));
+            Assert.Equal(int.MaxValue, value);
+        }
+
+        [Fact]
+        public void Try_unwrap_returns_false_for_none()
+        {
+            int value = -1;
+            Assert.False(None<int>().TryUnwrap(out value));
+            // `out` requires us to set a value, and the value for a None<T>
+            // is default(T).
+            Assert.Equal(default(int), value);
+        }
 
         [Fact]
         public void Expecting_none_throws_exception_matching_string()
@@ -135,7 +153,7 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrapping_some_returns_value()
-            => Assert.Equal(Some(5).Unwrap(), 5);
+            => Assert.Equal(5, Some(5).Unwrap());
 
         [Fact]
         public void Unwrapping_none_throws_exception() {
@@ -145,15 +163,15 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrap_or_some_returns_some()
-            => Assert.Equal(Some(5).UnwrapOr(10), 5);
+            => Assert.Equal(5, Some(5).UnwrapOr(10));
 
         [Fact]
         public void Unwrap_or_none_returns_given_value()
-            => Assert.Equal(None<int>().UnwrapOr(10), 10);
+            => Assert.Equal(10, None<int>().UnwrapOr(10));
 
         [Fact]
         public void Unwrap_or_none_with_unspecified_value_returns_default()
-            => Assert.Equal(None<long>().UnwrapOr(), default(long));
+            => Assert.Equal(default(long), None<long>().UnwrapOr());
 
         [Fact]
         public void Unwrap_or_function_does_not_call_function_with_some()
