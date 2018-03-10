@@ -3,10 +3,7 @@
   <PropertyGroup>
     <DebugType>full</DebugType>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <GitInfoReportImportance>high</GitInfoReportImportance>
-    <GitSkipCache>true</GitSkipCache>
-    <GitVersionFile>Oxide.version</GitVersionFile>
-    <GitIgnoreTagVersion>true</GitIgnoreTagVersion>
+    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -26,21 +23,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitInfo" Version="1.1.63" PrivateAssets="All" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0-pullrequest1269-1530" PrivateAssets="All" />
     <PackageReference Include="System.Net.Http" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Oxide\Oxide.csproj" />
   </ItemGroup>
-
-  <Target Name="SetVersion" DependsOnTargets="GitInfo" BeforeTargets="CoreCompile;GetAssemblyVersion;GenerateNuspec;_GenerateRestoreProjectSpec;EnsureWixToolsetInstalled" Condition="$(GitInfoImported) == 'True'">
-    <PropertyGroup>
-      <VersionPrefix>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</VersionPrefix>
-      <VersionSuffix Condition="'$(GitBranch)' == 'master'">$(GitSemVerDashLabel)</VersionSuffix>
-      <VersionSuffix Condition="'$(GitBranch)' != 'master'">$(GitSemVerDashLabel)-$(GitBranch)-$(GitCommit)</VersionSuffix>
-      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-    </PropertyGroup>
-  </Target>
 </Project>

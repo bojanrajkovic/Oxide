@@ -1,16 +1,16 @@
-version: 1.0.{build}
-configuration:
-  - Debug
-  - Release
+version: "{build}"
+configuration: Release
 image: Visual Studio 2017
+environment:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 install:
-- cmd: >-
-    dotnet restore
-build:
-  verbosity: minimal
+  - ps: choco install gitversion.portable -pre -y -r --no-progress
+before_build:
+  - dotnet restore
+  - ps: gitversion /output buildserver /updateAssemblyInfo
+build_script:
+  - dotnet build
 after_build:
-  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
+  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts /p:Version="%GitVersion_NuGetVersion%"
 artifacts:
-  - path: artifacts\**\*.*
-cache:
-  - '%USERPROFILE%\.nuget\packages'
+  - path: "**\\artifacts\\**\\*.*"
