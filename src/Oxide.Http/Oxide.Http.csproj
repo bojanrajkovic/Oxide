@@ -3,10 +3,7 @@
   <PropertyGroup>
     <DebugType>full</DebugType>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <GitInfoReportImportance>high</GitInfoReportImportance>
-    <GitSkipCache>true</GitSkipCache>
-    <GitVersionFile>Oxide.version</GitVersionFile>
-    <GitIgnoreTagVersion>true</GitIgnoreTagVersion>
+    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup>
