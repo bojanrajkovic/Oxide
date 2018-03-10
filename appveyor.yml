@@ -2,8 +2,10 @@ version: 1.0.{build}
 configuration: Release
 image: Visual Studio 2017
 install:
-- cmd: >-
-    dotnet restore
+  - ps: choco install gitversion.portable -pre -y
+before_build:
+  - dotnet restore
+  - ps: gitversion /l console /output buildserver
 build:
   verbosity: minimal
 #after_build:
