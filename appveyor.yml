@@ -21,6 +21,6 @@ before_build:
 build_script:
   - dotnet build
 after_build:
-  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts
+  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts /p:Version="%GitVersion_NuGetVersion%"
 artifacts:
   - path: "**\\artifacts\\**\\*.*"
