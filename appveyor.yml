@@ -1,7 +1,5 @@
 version: 1.0.{build}
-configuration:
-  - Debug
-  - Release
+configuration: Release
 image: Visual Studio 2017
 install:
 - cmd: >-
