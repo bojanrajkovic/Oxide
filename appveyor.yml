@@ -8,8 +8,8 @@ install:
     dotnet restore
 build:
   verbosity: minimal
-after_build:
-  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
+#after_build:
+#  - dotnet msbuild /t:Restore,Pack /p:VersionPrefix=%VersionPrefix% /p:VersionSuffix=%VersionSuffix% /p:PackageOutputPath=%cd%\artifacts
 artifacts:
   - path: artifacts\**\*.*
 cache:
