@@ -9,7 +9,7 @@ namespace Oxide
     {
         public static Option<T> None<T>() => new None<T>();
         public static Option<T> Some<T>(T value) => new Some<T>(value);
-        public static async Task<T> Unwrap<T>(this Task<Option<T>> self) => (await self).Unwrap();
+        public static async Task<T> Unwrap<T>(this Task<Option<T>> self) => (await self.ConfigureAwait(false)).Unwrap();
     }
 
     public abstract class Option
@@ -77,7 +77,7 @@ namespace Oxide
         public Option<U> Map<U>(Func<T, U> converter)
             => IsSome ? Some(converter(value)) : None<U>();
         public async Task<Option<U>> MapAsync<U>(Func<T, Task<U>> converter)
-            => IsSome ? Some(await converter(value)) : new None<U>();
+            => IsSome ? Some(await converter(value).ConfigureAwait(false)) : new None<U>();
         public U MapOr<U>(U def, Func<T, U> converter)
             => IsSome ? converter(value) : def;
         public U MapOr<U>(Func<U> provider, Func<T, U> converter)
