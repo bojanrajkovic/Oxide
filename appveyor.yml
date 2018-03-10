@@ -11,7 +11,7 @@ before_build:
 build_script:
   - dotnet build
 test_script:
-  - ps: pushd src\\Oxide.Tests; dotnet xunit; popd
+  - ps: pushd src\\Oxide.Tests; dotnet xunit --fx-version=2.0.5; popd
 after_build:
   - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=artifacts /p:Version="%GitVersion_NuGetVersion%"
 artifacts:
