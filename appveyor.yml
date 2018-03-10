@@ -9,6 +9,6 @@ before_build:
 build:
   verbosity: minimal
 after_build:
-  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=.\artifacts
+  - dotnet msbuild /t:Restore,Pack /p:PackageOutputPath=$(appveyor_build_folder)\artifacts
 artifacts:
-  - path: artifacts\**\*.*
+  - path: $(appveyor_build_folder)\artifacts\**\*.*
