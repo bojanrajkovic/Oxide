@@ -14,6 +14,7 @@ over again on projects.
 * Async/await expression support for options, contributed by @garuma
 * Magical parsing extensions that return Result/Option
 * A priority queue, with API inspired by Rust's BinaryHeap
+* Some half-baked HTTP wrappers that need a bit of improvement
 
 ## Building
 
