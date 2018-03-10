@@ -138,11 +138,11 @@ namespace Oxide
         public Result<U, E> Map<U>(Func<T, U> f) =>
             IsOk ? Results.Ok<U, E>(f(value)) : Results.Err<U, E>(error);
         public async Task<Result<U, E>> Map<U>(Func<T, Task<U>> op)
-            => IsOk ? Results.Ok<U, E>(await op(value)) : Results.Err<U, E>(error);
+            => IsOk ? Results.Ok<U, E>(await op(value).ConfigureAwait(false)) : Results.Err<U, E>(error);
         public Result<T, F> MapErr<F>(Func<E, F> f) =>
             IsOk ? Results.Ok<T, F>(value) : Results.Err<T, F>(f(error));
         public async Task<Result<T, F>> MapErr<F>(Func<E, Task<F>> op)
-            => IsOk ? Results.Ok<T, F>(value) : Results.Err<T, F>(await op(error));
+            => IsOk ? Results.Ok<T, F>(value) : Results.Err<T, F>(await op(error).ConfigureAwait(false));
 
         public Result<U, E> And<U>(Result<U, E> other)
             => IsOk ? other : Results.Err<U, E>(error);
@@ -156,12 +156,12 @@ namespace Oxide
         public Result<T, F> OrElse<F>(Func<E, Result<T, F>> op)
             => IsError ? op(error) : Results.Ok<T, F>(value);
         public async Task<Result<T, F>> OrElse<F>(Func<E, Task<Result<T, F>>> op)
-            => IsError ? await op(error) : Results.Ok<T, F>(value);
+            => IsError ? await op(error).ConfigureAwait(false) : Results.Ok<T, F>(value);
 
         public T UnwrapOr(T optb) => IsOk ? value : optb;
         public T UnwrapOrElse(Func<E, T> op) => IsOk ? value : op(error);
         public async Task<T> UnwrapOrElse(Func<E, Task<T>> op)
-            => IsOk ? value : await op(error);
+            => IsOk ? value : await op(error).ConfigureAwait(false);
 
         public T Unwrap() {
             if (IsOk)

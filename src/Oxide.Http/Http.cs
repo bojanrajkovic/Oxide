@@ -13,9 +13,9 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.GetAsync(requestUri);
+                var result = await client.GetAsync(requestUri).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
-                return await result.Content.ReadAsStringAsync();
+                return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             } catch (Exception e) {
                 return e;
             }
@@ -27,9 +27,9 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.GetAsync(requestUri);
+                var result = await client.GetAsync(requestUri).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
-                return await result.Content.ReadAsStreamAsync();
+                return await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
             } catch (Exception e) {
                 return e;
             }
@@ -41,9 +41,9 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.GetAsync(requestUri);
+                var result = await client.GetAsync(requestUri).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
-                return await result.Content.ReadAsByteArrayAsync();
+                return await result.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
             } catch (Exception e) {
                 return e;
             }
@@ -55,7 +55,7 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.GetAsync(requestUri);
+                var result = await client.GetAsync(requestUri).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
                 return result;
             } catch (Exception e) {
@@ -70,7 +70,7 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.PostAsync(requestUri, content);
+                var result = await client.PostAsync(requestUri, content).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
                 return result;
             } catch (Exception e) {
@@ -85,7 +85,7 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.PutAsync(requestUri, content);
+                var result = await client.PutAsync(requestUri, content).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
                 return result;
             } catch (Exception e) {
@@ -99,7 +99,7 @@ namespace Oxide
         )
         {
             try {
-                var result = await client.DeleteAsync(requestUri);
+                var result = await client.DeleteAsync(requestUri).ConfigureAwait(false);
                 result.EnsureSuccessStatusCode();
                 return result;
             } catch (Exception e) {
