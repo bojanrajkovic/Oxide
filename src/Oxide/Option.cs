@@ -63,6 +63,12 @@ namespace Oxide
             => IsSome ? value : throw new Exception(msg);
         public T Unwrap()
             => IsSome ? value : throw new Exception(UnwrapMessage);
+
+        public bool TryUnwrap(out T value) {
+            value = this.value;
+            return IsSome;
+        }
+
         public T UnwrapOr(T def = default(T))
             => IsSome ? value : def;
         public T UnwrapOr(Func<T> provider)
