@@ -32,26 +32,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitInfo" Version="1.1.63" PrivateAssets="All" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0-pullrequest1269-1530" PrivateAssets="All" />
     <PackageReference Include="System.Threading" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
-
-  <Target Name="SetVersion" DependsOnTargets="GitInfo" BeforeTargets="CoreCompile;GetAssemblyVersion;GenerateNuspec;_GenerateRestoreProjectSpec;EnsureWixToolsetInstalled" Condition="'$(GitInfoImported)' == 'True'">
-    <PropertyGroup>
-      <VersionPrefix>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</VersionPrefix>
-      <VersionSuffix Condition="'$(GitBranch)' == 'master'">$(GitSemVerDashLabel)</VersionSuffix>
-      <VersionSuffix Condition="'$(GitBranch)' != 'master'">$(GitSemVerDashLabel)-$(GitBranch)-$(GitCommit)</VersionSuffix>
-      <PackageVersion Condition="'$(GitBranch)' == 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-      <PackageVersion Condition="'$(GitBranch)' != 'master'">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-    </PropertyGroup>
-    <Message Importance="high" Text="##teamcity[buildNumber '$(PackageVersion)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
-    <Message Importance="high" Text="##teamcity[setParameter name='VersionPrefix' value='$(VersionPrefix)']" Condition="'$(TEAMCITY_VERSION)' != ''" />
-    <Message Importance="high" Text="##teamcity[setParameter name='VersionSuffix' value='$([System.String]::Copy('$(VersionSuffix)').TrimStart('-'))']" Condition="'$(TEAMCITY_VERSION)' != ''" />
-    <Exec Command="appveyor SetVariable -Name VersionPrefix -Value &quot;$(VersionPrefix)&quot;"  Condition="'$(APPVEYOR)' == 'True'" />
-    <Exec Command="appveyor SetVariable -Name VersionSuffix -Value &quot;$([System.String]::Copy('$(VersionSuffix)').TrimStart('-'))&quot;"  Condition="'$(APPVEYOR)' == 'True'" />
-    <Exec Command="appveyor UpdateBuild -Version &quot;$(PackageVersion)&quot;" Condition="'$(APPVEYOR)' == 'True'" />
-  </Target>
 </Project>
