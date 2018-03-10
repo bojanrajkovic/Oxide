@@ -1,13 +1,19 @@
 # Oxide
 
-A collection of Rust-like types for .NET.
+A library of useful classes and extensions to .NET. Partially based on
+implementing types from Rust, partially on useful things I've needed over and
+over again on projects.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/tv72jppe3s1fj7un?svg=true)](https://ci.appveyor.com/project/bojanrajkovic/oxide)
+[![Build status](https://ci.appveyor.com/api/projects/status/tv72jppe3s1fj7un?svg=true)][ci]
 
-## Implemented Types
+## Things contained
 
-* [std::option::Option][rust-option]: [Option.cs][our-option]
-* [std::result::Result][rust-result]: [Result.cs][our-result]
+* [std::option::Option from Rust][rust-option]
+* [std::result::Result from Rust][rust-result]
+* Environment variable helper that uses `Option`
+* Async/await expression support for options, contributed by @garuma
+* Magical parsing extensions that return Result/Option
+* A priority queue, with API inspired by Rust's BinaryHeap
 
 ## Building
 
@@ -20,6 +26,5 @@ A collection of Rust-like types for .NET.
    Core-compatible test runner.
 
 [rust-option]: https://doc.rust-lang.org/std/option/enum.Option.html
-[our-option]: src/Oxide/Option.cs
 [rust-result]: https://doc.rust-lang.org/std/result/enum.Result.html
-[our-result]: src/Oxide/Result.cs
+[ci]: https://ci.appveyor.com/project/bojanrajkovic/oxide
