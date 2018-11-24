@@ -47,7 +47,7 @@ namespace Oxide
         ExceptionDispatchInfo errorDispatchInfo;
 
         // Only used by CombinedResult for convenience.
-        internal Result()
+        private protected Result()
         {
             hasValue = true;
             value = default(T);
@@ -55,8 +55,7 @@ namespace Oxide
             hasError = false;
         }
 
-        // See comments on Option constructors.
-        internal Result(E error)
+        private protected Result(E error)
         {
             this.error = error;
 
@@ -67,7 +66,7 @@ namespace Oxide
             hasError = true;
         }
 
-        internal Result(T value)
+        private protected Result(T value)
         {
             this.value = value;
             hasValue = true;
