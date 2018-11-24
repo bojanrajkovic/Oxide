@@ -28,11 +28,8 @@ namespace Oxide
 
         T value;
 
-        // We really want this to be protected _and_ internal, but C# protected internal
-        // means protected _or_ internal, so, just go with this for now. Consider modifying
-        // the IL for real insanity. What would be better is if C# had sealed-if-not-internal.
-        internal Option() { }
-        internal Option(T value) { hasValue = true; this.value = value; }
+        private protected Option() { }
+        private protected Option(T value) { hasValue = true; this.value = value; }
 
         public bool Equals(Option<T> other)
         {
