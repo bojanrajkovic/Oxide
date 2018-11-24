@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <DebugType>full</DebugType>
+    <DebugType Condition="'$(RunCoverage)' == 'True'">full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
