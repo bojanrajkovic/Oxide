@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>
