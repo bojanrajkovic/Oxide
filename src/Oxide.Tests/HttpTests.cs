@@ -133,7 +133,7 @@ namespace Oxide.Tests
         #endregion
 
         #region Post/Put/Delete Tests
-        [Fact]
+        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
         public async Task Post_returns_http_response_on_success()
         {
             const string goodPath = "https://hpqec98e0j4e.runscope.net/";
@@ -146,7 +146,7 @@ namespace Oxide.Tests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [Fact]
+        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
         public async Task Put_returns_http_response_on_success()
         {
             const string goodPath = "https://hpqec98e0j4e.runscope.net/";
@@ -159,7 +159,7 @@ namespace Oxide.Tests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [Fact]
+        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
         public async Task Delete_returns_http_response_on_success()
         {
             const string goodPath = "https://hpqec98e0j4e.runscope.net/";
