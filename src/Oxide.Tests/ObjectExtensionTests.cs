@@ -138,6 +138,25 @@ namespace Oxide.Tests
             Assert.IsType<Some<int>>(res);
             Assert.Equal(self, res.Unwrap());
         }
+
+        [Fact]
+        public void Yield_returns_enumerable_with_only_self()
+        {
+            var self = new object();
+            var enumerable = self.Yield();
+
+            var yielded = Assert.Single(enumerable);
+            Assert.Same(self, yielded);
+        }
+
+        [Fact]
+        public void Identity_returns_self()
+        {
+            var self = new object();
+            var identity = self.Identity();
+
+            Assert.Same(self, identity);
+        }
     }
 
     class FakeDisposable : IDisposable
