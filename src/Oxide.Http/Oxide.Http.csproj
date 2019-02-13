@@ -15,7 +15,7 @@
     <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bojanrajkovic/Oxide</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.github.com/bojanrajkovic/Oxide/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>rust functional http</PackageTags>
+    <PackageTags>rust kotlin functional http</PackageTags>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
