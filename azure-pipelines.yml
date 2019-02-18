@@ -10,21 +10,23 @@ pool:
   
 steps:
   - script: |
-      choco install gitversion.portable -pre -y -r --no-progress
-      choco install codecov -pre -y -r --no-progress
-      choco install opencover.portable -pre -y -r --no-progress
+      choco install gitversion.portable codecov opencover.portable -pre -y -r --no-progress
       gitversion /output buildserver /updateAssemblyInfo
+    displayName: 'Install dependencies and generate version number'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'restore'
       projects: '**/*.csproj'
       arguments: '/p:Version=$(GitVersion.NuGetVersion)'
+      verbosity: 'minimal'
+    displayName: 'Restore'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
       projects: '**/*.csproj'
       verbosity: 'minimal'
       configuration: $(buildConfiguration)
+    displayName: 'Build'
   - powershell: |
       # Run tests & coverage
       $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
@@ -32,7 +34,10 @@ steps:
         -targetArgs:"test" -output:"coverage.xml" -oldstyle `
         -filter:"+[Oxide*]*" -[Oxide.Tests]*" `
         -excludebyattribute:*DebuggerStepThrough*
+    displayName: 'Run tests and coverage'
+  - script: |
       codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
+    displayName: 'Upload coverage to codecov.io"'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'pack'
