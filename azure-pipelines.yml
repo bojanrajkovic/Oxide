@@ -1,0 +1,39 @@
+strategy:
+  matrix:
+    debug:
+      buildConfiguration: 'Debug'
+    release:
+      buildConfiguration: 'Release'
+
+pool:
+  vmImage: 'vs2017-win2016'
+  
+steps:
+  - script: |
+      choco install gitversion.portable -pre -y -r --no-progress
+      choco install codecov -pre -y -r --no-progress
+      choco install opencover.portable -pre -y -r --no-progress
+      gitversion /output buildserver /updateAssemblyInfo
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      arguments: '/p:Version=$(GitVersion_NuGetVersion)'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      verbosity: 'minimal'
+      configuration: $(buildConfiguration)
+  - script: |
+      # Run tests & coverage
+      $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
+      OpenCover.Console -register:user -target:"$dotnetPath" `
+        -targetArgs:"test" -output:"coverage.xml" -oldstyle `
+        -filter:"+[Oxide*]*" -[Oxide.Tests]*" `
+        -excludebyattribute:*DebuggerStepThrough*
+      codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'pack'
+      arguments: '/p:PackageOutputPath=artifacts'
