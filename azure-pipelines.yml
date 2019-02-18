@@ -30,26 +30,28 @@ steps:
       # Run tests & coverage
         $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
       OpenCover.Console.exe -register:user -target:"$dotnetPath" `
-         -targetargs:"test" -output:"coverage.xml" -oldstyle `
+         -targetargs:"test --configuration $(buildConfiguration) --no-build --logger trx --results-directory $(Agent.TempDirectory)" `
+         -output:"coverage.xml" -oldstyle `
          -filter:"+[Oxide*]* -[Oxide.Tests]*" `
          -excludebyattribute:*DebuggerStepThrough*
     displayName: 'Run tests and coverage'
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/TEST-*.trx'
+      searchFolder: '$(Agent.TempDirectory)'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      buildConfiguration: '$(buildConfiguration)'
+      publishRunAttachments: true
   - script: |
       codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
     displayName: 'Upload coverage to codecov.io'
   - script: |
-      dotnet msbuild /t:Restore /p:Version="$(GitVersion.NuGetVersion)" /v:q
-    displayName: 'Fix up version number for package'
-    condition: eq(variables['buildConfiguration'],'Release')
-  - task: DotNetCoreCLI@2
-    condition: eq(variables['buildConfiguration'],'Release')
-    inputs:
-      command: 'pack'
-      packDirectory: '$(Build.ArtifactStagingDirectory)'
-      verbosityPack: 'minimal'
-      configuration: '$(buildConfiguration)'
-      nobuild: true
+      dotnet msbuild /t:Restore,Pack /p:Configuration=$(buildConfiguration) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:Version="$(GitVersion.NuGetVersion)" /v:minimal
     displayName: 'Pack NuGet Packages'
+    condition: eq(variables['buildConfiguration'],'Release')
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Build Artifacts'
     condition: eq(variables['buildConfiguration'],'Release')
