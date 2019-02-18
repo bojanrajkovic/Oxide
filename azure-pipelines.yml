@@ -40,6 +40,7 @@ steps:
   - script: |
       dotnet msbuild /t:Restore /p:Version="$(GitVersion.NuGetVersion)" /v:q
     displayName: 'Fix up version number for package'
+    condition: eq(variables['buildConfiguration'],'Release')
   - task: DotNetCoreCLI@2
     condition: eq(variables['buildConfiguration'],'Release')
     inputs:
@@ -47,7 +48,7 @@ steps:
       packDirectory: '$(Build.ArtifactStagingDirectory)'
       verbosityPack: 'minimal'
       configuration: '$(buildConfiguration)'
-      arguments: '--configuration $(buildConfiguration) /p:Version="$(GitVersion.NuGetVersion)"'
+      nobuild: true
     displayName: 'Pack NuGet Packages'
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Build Artifacts'
