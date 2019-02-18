@@ -17,7 +17,6 @@ steps:
     inputs:
       command: 'restore'
       projects: '**/*.csproj'
-      arguments: '/p:Version=$(GitVersion.NuGetVersion)'
       verbosityRestore: 'minimal'
     displayName: 'Restore'
   - task: DotNetCoreCLI@2
@@ -38,9 +37,17 @@ steps:
   - script: |
       codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
     displayName: 'Upload coverage to codecov.io'
+  - script: |
+      dotnet msbuild /t:Restore /p:Version="$(GitVersion.NuGetVersion)" /v:q
+    displayName: 'Fix up version number for package'
   - task: DotNetCoreCLI@2
+    condition: eq(variables['buildConfiguration'],'Release')
     inputs:
       command: 'pack'
-      arguments: '/p:PackageOutputPath=artifacts'
+      packDirectory: '$(Build.ArtifactStagingDirectory)'
       verbosityPack: 'minimal'
     displayName: 'Pack NuGet Packages'
+  - task: PublishBuildArtifacts@1
+    condition: eq(variables['buildConfiguration'],'Release')
+    inputs:
+      parallel: true
