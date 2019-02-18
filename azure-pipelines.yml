@@ -24,7 +24,7 @@ steps:
       command: 'build'
       projects: '**/*.csproj'
       verbosity: 'minimal'
-      configuration: $(buildConfiguration)
+      arguments: '--configuration $(buildConfiguration)'
     displayName: 'Build'
   - powershell: |
       # Run tests & coverage
@@ -46,8 +46,11 @@ steps:
       command: 'pack'
       packDirectory: '$(Build.ArtifactStagingDirectory)'
       verbosityPack: 'minimal'
+      configuration: '$(buildConfiguration)'
+      arguments: '--configuration $(buildConfiguration) /p:Version="$(GitVersion.NuGetVersion)"'
     displayName: 'Pack NuGet Packages'
   - task: PublishBuildArtifacts@1
+    displayName: 'Publish Build Artifacts'
     condition: eq(variables['buildConfiguration'],'Release')
     inputs:
       parallel: true
