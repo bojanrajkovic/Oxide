@@ -18,14 +18,14 @@ steps:
     inputs:
       command: 'restore'
       projects: '**/*.csproj'
-      arguments: '/p:Version=$(GitVersion_NuGetVersion)'
+      arguments: '/p:Version=$(GitVersion.NuGetVersion)'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
       projects: '**/*.csproj'
       verbosity: 'minimal'
       configuration: $(buildConfiguration)
-  - script: |
+  - powershell: |
       # Run tests & coverage
       $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
       OpenCover.Console -register:user -target:"$dotnetPath" `
