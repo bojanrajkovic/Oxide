@@ -39,7 +39,7 @@ steps:
     displayName: 'Publish Test Results'
     inputs:
       testResultsFormat: 'VSTest'
-      testResultsFiles: '**/TEST-*.trx'
+      testResultsFiles: '**/*.trx'
       searchFolder: '$(Agent.TempDirectory)'
       mergeTestResults: true
       failTaskOnFailedTests: true
