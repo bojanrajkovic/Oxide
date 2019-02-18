@@ -18,7 +18,7 @@ steps:
       command: 'restore'
       projects: '**/*.csproj'
       arguments: '/p:Version=$(GitVersion.NuGetVersion)'
-      verbosity: 'minimal'
+      verbosityRestore: 'minimal'
     displayName: 'Restore'
   - task: DotNetCoreCLI@2
     inputs:
@@ -29,16 +29,18 @@ steps:
     displayName: 'Build'
   - powershell: |
       # Run tests & coverage
-      $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
-      OpenCover.Console -register:user -target:"$dotnetPath" `
-        -targetArgs:"test" -output:"coverage.xml" -oldstyle `
-        -filter:"+[Oxide*]*" -[Oxide.Tests]*" `
-        -excludebyattribute:*DebuggerStepThrough*
+        $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
+      OpenCover.Console.exe -register:user -target:"$dotnetPath" `
+         -targetargs:"test" -output:"coverage.xml" -oldstyle `
+         -filter:"+[Oxide*]* -[Oxide.Tests]*" `
+         -excludebyattribute:*DebuggerStepThrough*
     displayName: 'Run tests and coverage'
   - script: |
       codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
-    displayName: 'Upload coverage to codecov.io"'
+    displayName: 'Upload coverage to codecov.io'
   - task: DotNetCoreCLI@2
     inputs:
       command: 'pack'
       arguments: '/p:PackageOutputPath=artifacts'
+      verbosityPack: 'minimal'
+    displayName: 'Pack NuGet Packages'
