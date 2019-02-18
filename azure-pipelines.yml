@@ -59,7 +59,8 @@ steps:
     inputs:
       parallel: true
   - script: |
-      sleet push $(Build.ArtifactStagingDirectory)
+      "%USERPROFILE%\.dotnet\tools\sleet" push $(Build.ArtifactStagingDirectory)
+    condition: eq(variables['buildConfiguration'],'Release')
     displayName: 'Push NuGet Package To Feed'
     env:
       SLEET_ACCESS_KEY_ID: $(SLEET_ACCESS_KEY_ID)
