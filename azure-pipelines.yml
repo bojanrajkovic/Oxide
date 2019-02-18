@@ -12,6 +12,7 @@ steps:
   - script: |
       choco install gitversion.portable codecov opencover.portable -pre -y -r --no-progress
       gitversion /output buildserver /updateAssemblyInfo
+      dotnet tool install -g sleet
     displayName: 'Install dependencies and generate version number'
   - task: DotNetCoreCLI@2
     inputs:
@@ -57,3 +58,9 @@ steps:
     condition: eq(variables['buildConfiguration'],'Release')
     inputs:
       parallel: true
+  - script: |
+      sleet push $(Build.ArtifactStagingDirectory)
+    displayName: 'Push NuGet Package To Feed'
+    env:
+      SLEET_ACCESS_KEY_ID: $(SLEET_ACCESS_KEY_ID)
+      SLEET_SECRET_ACCESS_KEY: $(SLEET_SECRET_ACCESS_KEY)
