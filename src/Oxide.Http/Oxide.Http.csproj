@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
+    <DebugType Condition="'$(RunCoverage)' == 'true'">full</DebugType>
     <TargetFramework>netstandard1.4</TargetFramework>
     <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
   </PropertyGroup>

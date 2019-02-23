@@ -36,6 +36,8 @@ steps:
          -filter:"+[Oxide*]* -[Oxide.Tests]*" `
          -excludebyattribute:*DebuggerStepThrough*
     displayName: 'Run tests and coverage'
+    env:
+      RunCoverage: "true"
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
     inputs:
@@ -50,7 +52,7 @@ steps:
       codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
     displayName: 'Upload coverage to codecov.io'
   - script: |
-      dotnet msbuild /t:Restore,Pack /p:Configuration=$(buildConfiguration) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:Version="$(GitVersion.NuGetVersion)" /v:minimal
+      dotnet msbuild /t:Restore,Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=$(buildConfiguration) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:Version="$(GitVersion.NuGetVersion)" /v:minimal
     displayName: 'Pack NuGet Packages'
     condition: eq(variables['buildConfiguration'],'Release')
   - task: CopyFiles@2
