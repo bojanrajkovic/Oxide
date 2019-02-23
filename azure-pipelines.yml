@@ -53,15 +53,13 @@ steps:
       dotnet msbuild /t:Restore,Pack /p:Configuration=$(buildConfiguration) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:Version="$(GitVersion.NuGetVersion)" /v:minimal
     displayName: 'Pack NuGet Packages'
     condition: eq(variables['buildConfiguration'],'Release')
+  - task: CopyFiles@2
+    displayName: 'Copy sleet.json To Artifacts'
+    inputs:
+      contents: 'sleet.json'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Build Artifacts'
     condition: eq(variables['buildConfiguration'],'Release')
     inputs:
       parallel: true
-  - script: |
-      "%USERPROFILE%\.dotnet\tools\sleet" push $(Build.ArtifactStagingDirectory)
-    condition: eq(variables['buildConfiguration'],'Release')
-    displayName: 'Push NuGet Package To Feed'
-    env:
-      SLEET_ACCESS_KEY_ID: $(SLEET_ACCESS_KEY_ID)
-      SLEET_SECRET_ACCESS_KEY: $(SLEET_SECRET_ACCESS_KEY)
