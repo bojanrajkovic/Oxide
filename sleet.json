@@ -1,0 +1,17 @@
+{
+  "username": "Oxide CI",
+  "useremail": "oxide-ci@coderinserepeat.com",
+  "sources": [
+    {
+      "name": "oxide-ci-feed",
+      "type": "s3",
+      "bucketName": "crr-nuget",
+      "region": "us-east-1",
+      "accessKeyId": "$SLEET_ACCESS_KEY_ID$",
+      "secretAccessKey": "$SLEET_SECRET_ACCESS_KEY$",
+      "path": "https://s3.amazonaws.com/crr-nuget/oxide-ci/",
+      "baseUri": "https://nuget.coderinserepeat.com/oxide-ci/",
+      "feedSubPath": "oxide-ci"
+    }
+  ]
+}

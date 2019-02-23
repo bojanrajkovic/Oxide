@@ -4,7 +4,7 @@ A library of useful classes and extensions to .NET. Partially based on
 implementing types from Rust and Kotlin, partially on useful things I've needed
 over and over again on projects.
 
-[![Build status][ci-image]][ci]
+[![Build Status][ci-image]][ci]
 
 ## Things contained
 
@@ -32,6 +32,6 @@ over and over again on projects.
 
 [rust-option]: https://doc.rust-lang.org/std/option/enum.Option.html
 [rust-result]: https://doc.rust-lang.org/std/result/enum.Result.html
-[ci]: https://ci.appveyor.com/project/bojanrajkovic/oxide
-[ci-image]: https://ci.appveyor.com/api/projects/status/tv72jppe3s1fj7un?svg=true
+[ci]: https://dev.azure.com/brajkovic/Oxide/_build/latest?definitionId=1&branchName=master
+[ci-image]: https://dev.azure.com/brajkovic/Oxide/_apis/build/status/Oxide%20CI?branchName=master
 [kotlin-doc]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html

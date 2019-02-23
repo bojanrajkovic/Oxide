@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
+    <DebugType Condition="'$(RunCoverage)' == 'true'">full</DebugType>
     <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
   </PropertyGroup>
 

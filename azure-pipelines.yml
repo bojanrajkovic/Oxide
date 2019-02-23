@@ -1,0 +1,67 @@
+strategy:
+  matrix:
+    debug:
+      buildConfiguration: 'Debug'
+    release:
+      buildConfiguration: 'Release'
+
+pool:
+  vmImage: 'vs2017-win2016'
+  
+steps:
+  - script: |
+      choco install gitversion.portable codecov opencover.portable -pre -y -r --no-progress
+      gitversion /output buildserver /updateAssemblyInfo
+      dotnet tool install -g sleet
+    displayName: 'Install dependencies and generate version number'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      verbosityRestore: 'minimal'
+    displayName: 'Restore'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      verbosity: 'minimal'
+      arguments: '--configuration $(buildConfiguration)'
+    displayName: 'Build'
+  - powershell: |
+      # Run tests & coverage
+        $dotnetPath=(Join-Path $env:ProgramFiles (Join-Path dotnet dotnet.exe))
+      OpenCover.Console.exe -register:user -target:"$dotnetPath" `
+         -targetargs:"test --configuration $(buildConfiguration) --no-build --logger trx --results-directory $(Agent.TempDirectory)" `
+         -output:"coverage.xml" -oldstyle `
+         -filter:"+[Oxide*]* -[Oxide.Tests]*" `
+         -excludebyattribute:*DebuggerStepThrough*
+    displayName: 'Run tests and coverage'
+    env:
+      RunCoverage: "true"
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+      searchFolder: '$(Agent.TempDirectory)'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      buildConfiguration: '$(buildConfiguration)'
+      publishRunAttachments: true
+  - script: |
+      codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
+    displayName: 'Upload coverage to codecov.io'
+  - script: |
+      dotnet msbuild /t:Restore,Pack /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg /p:Configuration=$(buildConfiguration) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:Version="$(GitVersion.NuGetVersion)" /v:minimal
+    displayName: 'Pack NuGet Packages'
+    condition: eq(variables['buildConfiguration'],'Release')
+  - task: CopyFiles@2
+    displayName: 'Copy sleet.json To Artifacts'
+    inputs:
+      contents: 'sleet.json'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Build Artifacts'
+    condition: eq(variables['buildConfiguration'],'Release')
+    inputs:
+      parallel: true
