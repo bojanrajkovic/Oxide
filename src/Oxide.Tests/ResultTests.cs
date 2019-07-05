@@ -436,6 +436,30 @@ namespace Oxide.Tests
         }
 
         [Fact]
+        public void Can_try_unwrap_both_and_output_value()
+        {
+            var ok = Ok<int, string>(10);
+            if (ok.TryUnwrap(out var value, out var error)) {
+                Assert.Equal(10, value);
+                Assert.Null(error);
+            } else {
+                Assert.False(true, "Should not be reached, TryUnwrap returned false for Ok<T, E>.");
+            }
+        }
+
+        [Fact]
+        public void Can_try_unwrap_both_and_output_error()
+        {
+            var error = Err<int, string>("error");
+            if (error.TryUnwrap(out var value, out var err)) {
+                Assert.False(true, "Should not be reached, TryUnwrap returned true for Error<T, E>.");
+            } else {
+                Assert.Equal(default(int), value);
+                Assert.Equal("error", err);
+            }
+        }
+
+        [Fact]
         public void Can_try_unwrap_error_for_pattern_matching()
         {
             var ok = Err<int, string>("error");
