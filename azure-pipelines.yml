@@ -14,6 +14,11 @@ steps:
       gitversion /output buildserver /updateAssemblyInfo
       dotnet tool install -g sleet
     displayName: 'Install dependencies and generate version number'
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk'
+    inputs:
+      packageType: sdk
+      version: 3.0.100-preview6-012264
   - task: DotNetCoreCLI@2
     inputs:
       command: 'restore'
