@@ -436,6 +436,52 @@ namespace Oxide.Tests
         }
 
         [Fact]
+        public void Can_try_unwrap_both_and_output_value()
+        {
+            var ok = Ok<int, string>(10);
+            if (ok.TryUnwrap(out var value, out var error)) {
+                Assert.Equal(10, value);
+                Assert.Null(error);
+            } else {
+                Assert.False(true, "Should not be reached, TryUnwrap returned false for Ok<T, E>.");
+            }
+        }
+
+        [Fact]
+        public void Can_try_unwrap_both_and_output_error()
+        {
+            var error = Err<int, string>("error");
+            if (error.TryUnwrap(out var value, out var err)) {
+                Assert.False(true, "Should not be reached, TryUnwrap returned true for Error<T, E>.");
+            } else {
+                Assert.Equal(default(int), value);
+                Assert.Equal("error", err);
+            }
+        }
+
+        [Fact]
+        public void Can_use_positional_patterns_with_ok()
+        {
+            var ok = Ok<int, string>(10);
+            var val = ok switch {
+                var (value, error) when ok.IsOk => value*10,
+                var (value, error) when ok.IsError => -1
+            };
+            Assert.Equal(10*10, val);
+        }
+
+        [Fact]
+        public void Can_use_positional_patterns_with_err()
+        {
+            var err = Err<int, string>("hello");
+            var val = err switch {
+                var (value, error) when err.IsOk => null,
+                var (value, error) when err.IsError => error.ToUpper()
+            };
+            Assert.Equal("HELLO", val);
+        }
+
+        [Fact]
         public void Can_try_unwrap_error_for_pattern_matching()
         {
             var ok = Err<int, string>("error");

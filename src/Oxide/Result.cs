@@ -176,6 +176,11 @@ namespace Oxide
             return IsOk;
         }
 
+        public bool TryUnwrap(out T value, out E error) {
+            Deconstruct(out value, out error);
+            return IsOk;
+        }
+
         public T Expect(string msg) {
             if (IsOk)
                 return value;
