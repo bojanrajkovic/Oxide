@@ -177,8 +177,7 @@ namespace Oxide
         }
 
         public bool TryUnwrap(out T value, out E error) {
-            value = this.value;
-            error = this.error;
+            Deconstruct(out value, out error);
             return IsOk;
         }
 
