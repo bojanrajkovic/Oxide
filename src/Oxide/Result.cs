@@ -24,6 +24,13 @@ namespace Oxide
                     return e;
                 }
             };
+
+        public static async Task<Result<TOut, TError>> AndThen<TIn, TOut, TError>(
+            this Task<Result<TIn, TError>> resTask,
+            Func<TIn, Result<TOut, TError>> continuation
+        ) {
+            return (await resTask).AndThen(continuation);
+        }
     }
 
     public abstract class Result
