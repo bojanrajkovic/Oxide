@@ -229,6 +229,16 @@ namespace Oxide.Tests
             => Assert.Equal (4, Err<int, string>("taco").MapErr(s => s.Length).Err());
 
         [Fact]
+        public async Task Continue_task_of_result_without_await()
+        {
+            var task = Task.FromResult(Ok<int, string>(10));
+            var result = await task.AndThen(i => Ok<int, string>(i*5));
+
+            Assert.True(result.IsOk);
+            Assert.Equal(50, result.Unwrap());
+        }
+
+        [Fact]
         public async Task Async_map_err_on_ok_returns_ok()
             => Assert.Equal (10, await Ok<int, string>(10).MapErr<TimeSpan>(async s => {
                 var ts = TimeSpan.FromMilliseconds(s.Length * 100);
