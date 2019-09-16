@@ -31,6 +31,14 @@ namespace Oxide
         ) {
             return (await resTask).AndThen(continuation);
         }
+
+        public static async Task<Result<TOut, TError>> AndThen<TIn, TOut, TError>(
+            this Task<Result<TIn, TError>> self,
+            Func<TIn, Task<Result<TOut, TError>>> continuation
+        ) {
+            var ret = await self;
+            return await ret.AndThen(continuation);
+        }
     }
 
     public abstract class Result
