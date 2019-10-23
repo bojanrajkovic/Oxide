@@ -10,6 +10,21 @@ namespace Oxide
         public static Option<T> None<T>() => new None<T>();
         public static Option<T> Some<T>(T value) => new Some<T>(value);
         public static async Task<T> Unwrap<T>(this Task<Option<T>> self) => (await self.ConfigureAwait(false)).Unwrap();
+        
+        public static async Task<Option<TOut>> AndThen<TIn, TOut>(
+            this Task<Option<TIn>> self,
+            Func<TIn, Option<TOut>> continuation
+        ) {
+            return (await self).AndThen(continuation);
+        }
+
+        public static async Task<Option<TOut>> AndThen<TIn, TOut>(
+            this Task<Option<TIn>> self,
+            Func<TIn, Task<Option<TOut>>> continuation
+        ) {
+            var ret = await self;
+            return await ret.AndThenAsync(continuation);
+        }
     }
 
     public abstract class Option
