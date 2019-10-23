@@ -377,8 +377,7 @@ namespace Oxide.Tests
         {
             var none = None<TimeSpan>();
             var res = await none.AndThenAsync<double>(async ts => {
-                await Task.Delay(ts);
-                return ts.TotalDays;
+                return await Task.FromResult(ts.TotalDays);
             });
 
             Assert.IsType<None<double>>(res);
