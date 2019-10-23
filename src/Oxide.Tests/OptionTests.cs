@@ -353,7 +353,7 @@ namespace Oxide.Tests
             var timespan = TimeSpan.FromSeconds(1);
             var task = Task.FromResult(Some(timespan));
             
-            var res = await task.AndThen(ts => ts.TotalDays);
+            var res = await task.AndThen(ts => Some(ts.TotalDays));
             
             Assert.Equal(timespan.TotalDays, res);
         }
