@@ -358,7 +358,7 @@ namespace Oxide.Tests
             Assert.Equal(timespan.TotalDays, res);
         }
         
-        [Fact]
+        [SkipOnAzureFact]
         public async Task Continue_task_of_option_with_async_continuation()
         {
             var timespan = TimeSpan.FromSeconds(1);
@@ -372,7 +372,7 @@ namespace Oxide.Tests
             Assert.Equal(timespan.TotalDays, res);
         }
 
-        [Fact(Skip = "This test fails in CI for some dumb reason and I don't have a day to debug it.")]
+        [Fact]
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
