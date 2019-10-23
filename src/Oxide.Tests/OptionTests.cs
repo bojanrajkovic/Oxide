@@ -372,7 +372,7 @@ namespace Oxide.Tests
             Assert.Equal(timespan.TotalDays, res);
         }
 
-        [Fact]
+        [SkipOnAzureFact]
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
