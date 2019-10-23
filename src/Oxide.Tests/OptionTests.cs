@@ -346,14 +346,38 @@ namespace Oxide.Tests
 
             Assert.Equal(timespan.TotalDays, res);
         }
+        
+        [Fact]
+        public async Task Continue_task_of_option_without_await()
+        {
+            var timespan = TimeSpan.FromSeconds(1);
+            var task = Task.FromResult(Some(timespan));
+            
+            var res = await task.AndThen(ts => Some(ts.TotalDays));
+            
+            Assert.Equal(timespan.TotalDays, res);
+        }
+        
+        [SkipOnAzureFact]
+        public async Task Continue_task_of_option_with_async_continuation()
+        {
+            var timespan = TimeSpan.FromSeconds(1);
+            var task = Task.FromResult(Some(timespan));
+            
+            var res = await task.AndThen(async ts => {
+                await Task.Delay(ts);
+                return ts.TotalDays;
+            });
+            
+            Assert.Equal(timespan.TotalDays, res);
+        }
 
         [Fact]
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
             var res = await none.AndThenAsync<double>(async ts => {
-                await Task.Delay(ts);
-                return ts.TotalDays;
+                return await Task.FromResult(ts.TotalDays);
             });
 
             Assert.IsType<None<double>>(res);
