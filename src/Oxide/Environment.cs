@@ -1,7 +1,5 @@
 ﻿using static Oxide.Options;
 
-#if NETSTANDARD1_3
-
 namespace Oxide
 {
     class Environment
@@ -20,5 +18,3 @@ namespace Oxide
         }
     }
 }
-
-#endif

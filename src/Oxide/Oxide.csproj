@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <DebugType>portable</DebugType>
     <DebugType Condition="'$(RunCoverage)' == 'true'">full</DebugType>
     <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
@@ -30,10 +30,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
-    <PackageReference Include="System.Runtime" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
   </ItemGroup>
 </Project>
