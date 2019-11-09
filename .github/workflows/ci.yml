@@ -20,9 +20,12 @@ jobs:
         dotnet tool install -g sleet
         dotnet tool install -g codecov.tool
     - name: Generate Version Number
-      run: |
-        ~/.dotnet/tools/dotnet-gitversion -updateAssemblyInfo
-        echo "::set-env name=PackageVersion::$(~/.dotnet/tools/dotnet-gitversion -showvariable NugetVersion)"
+      run: >
+        ~/.dotnet/tools/dotnet-gitversion
+        -updateAssemblyInfo
+        -nofetch
+        -exec /bin/sh
+        -execargs "-c \"echo ::set-env name=PackageVersion::$GitVersion_NuGetVersion\""
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
@@ -45,7 +48,7 @@ jobs:
         /p:SymbolPackageFormat=snupkg
         /p:Configuration=Release
         /p:PackageOutputPath=artifacts
-        /p:Version=$PackageVersion
+        /p:Version=${PackageVersion}
         /v:minimal
     - name: Upload Artifacts
       uses: actions/upload-artifact@v1
