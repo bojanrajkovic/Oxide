@@ -6,6 +6,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       name: Check Out Source
+    - name: Prepare repository
+      run: git checkout "${GITHUB_REF:11}"
     - name: Set up .NET Core SDK for Tools
       uses: actions/setup-dotnet@v1
       with:
@@ -20,7 +22,7 @@ jobs:
     - name: Generate Version Number
       uses: docker://gittools/gitversion:5.1.3-linux-ubuntu-18.04-netcoreapp3.0
       with:
-        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_NuGetVersion > /github/workspace/version.txt\""
+        args: /github/workspace /updateassemblyinfo /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_NuGetVersion > /github/workspace/version.txt\""
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
