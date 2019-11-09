@@ -1,0 +1,34 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v1
+      name: Check Out Source
+    - name: Set Up .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
+    - name: Install Tools
+      run: |
+        dotnet tool install --global dotnet-reportgenerator-globaltool
+        dotnet tool install --global GitVersion.Tool
+        dotnet tool install --global Codecov.Tool
+        dotnet tool install --global sleet
+    - name: Generate Version Number
+      run: gitversion /output buildserver /updateAssemblyInfo
+    - name: Run Build
+      run: dotnet build -c Release
+    - name: Run Tests
+      run: >
+        dotnet
+        test
+        /p:CollectCoverage=true
+        /p:CoverletOutputFormat=OpenCover
+        /p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
+    - name: Upload Coverage
+      run: codecov -f "src/Oxide.Tests/coverage.opencover.xml"
