@@ -13,6 +13,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
+    - name: Set up .NET Core SDK for Tools
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.0
     - name: Install Tools
       run: |
         dotnet tool restore
@@ -21,7 +25,7 @@ jobs:
         dotnet tool run
         dotnet-gitversion
         --
-        -output buildserver
+        -output json
         -updateAssemblyInfo
     - name: Run Build
       run: dotnet build -c Release
