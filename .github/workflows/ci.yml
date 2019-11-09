@@ -22,7 +22,7 @@ jobs:
     - name: Generate Version Number
       run: |
         ~/.dotnet/tools/dotnet-gitversion -updateAssemblyInfo
-        echo "::set-env name=PackageVersion::$(~/.dotnet/tools/dotnet-gitversion -showvariable NugetVersion)
+        echo "::set-env name=PackageVersion::$(~/.dotnet/tools/dotnet-gitversion -showvariable NugetVersion)"
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
