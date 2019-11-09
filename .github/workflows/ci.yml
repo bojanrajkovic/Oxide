@@ -16,16 +16,11 @@ jobs:
         dotnet-version: 3.0.100
     - name: Install Tools
       run: |
-        dotnet tool install -g gitversion.tool
-        dotnet tool install -g sleet
         dotnet tool install -g codecov.tool
     - name: Generate Version Number
-      run: >
-        ~/.dotnet/tools/dotnet-gitversion
-        -updateAssemblyInfo
-        -nofetch
-        -exec /bin/sh
-        -execargs "-c \"echo ::set-env name=PackageVersion::$GitVersion_NuGetVersion\""
+      uses: docker://gittools/gitversion:5.1.3-linux-ubuntu-18.04-netcoreapp3.0
+      with:
+        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_NuGetVersion > /github/workspace/version.txt\""
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
@@ -48,7 +43,7 @@ jobs:
         /p:SymbolPackageFormat=snupkg
         /p:Configuration=Release
         /p:PackageOutputPath=artifacts
-        /p:Version=${PackageVersion}
+        /p:Version=$(cat /github/workspace/version.txt)
         /v:minimal
     - name: Upload Artifacts
       uses: actions/upload-artifact@v1
