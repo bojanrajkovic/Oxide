@@ -9,14 +9,14 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       name: Check Out Source
-    - name: Set Up .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.0.100
     - name: Set up .NET Core SDK for Tools
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.402
+    - name: Set Up .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
     - name: Install Tools
       run: |
         dotnet tool restore
