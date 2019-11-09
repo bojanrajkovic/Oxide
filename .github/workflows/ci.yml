@@ -15,12 +15,14 @@ jobs:
         dotnet-version: 3.0.100
     - name: Install Tools
       run: |
-        dotnet tool install --global dotnet-reportgenerator-globaltool
-        dotnet tool install --global GitVersion.Tool
-        dotnet tool install --global Codecov.Tool
-        dotnet tool install --global sleet
+        dotnet tool restore
     - name: Generate Version Number
-      run: gitversion /output buildserver /updateAssemblyInfo
+      run: >
+        dotnet tool run
+        dotnet-gitversion
+        --
+        -output buildserver
+        -updateAssemblyInfo
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
@@ -31,4 +33,9 @@ jobs:
         /p:CoverletOutputFormat=OpenCover
         /p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
     - name: Upload Coverage
-      run: codecov -f "src/Oxide.Tests/coverage.opencover.xml"
+      run: >
+        dotnet tool run
+        codecov
+        --
+        -f "src/Oxide.Tests/coverage.opencover.xml"
+        -t ${{ secrets.CODECOV_TOKEN }}
