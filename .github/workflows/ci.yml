@@ -2,10 +2,7 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
       name: Check Out Source
@@ -19,14 +16,13 @@ jobs:
         dotnet-version: 3.0.100
     - name: Install Tools
       run: |
-        dotnet tool restore
+        dotnet tool install -g gitversion.tool
+        dotnet tool install -g sleet
+        dotnet tool install -g codecov.tool
     - name: Generate Version Number
-      run: >
-        dotnet tool run
-        dotnet-gitversion
-        --
-        -output json
-        -updateAssemblyInfo
+      run: |
+        ~/.dotnet/tools/dotnet-gitversion -updateAssemblyInfo
+        echo "::set-env name=PackageVersion::$(~/.dotnet/tools/dotnet-gitversion -showvariable NugetVersion)
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
@@ -37,9 +33,22 @@ jobs:
         /p:CoverletOutputFormat=OpenCover
         /p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
     - name: Upload Coverage
+      run: |
+        export DOTNET_ROOT=/opt/hostedtoolcache/dncs/2.2.204/x64
+        ~/.dotnet/tools/codecov -f "src/Oxide.Tests/coverage.opencover.xml" -t ${{ secrets.CODECOV_TOKEN }}
+    - name: Pack NuGet
       run: >
-        dotnet tool run
-        codecov
-        --
-        -f "src/Oxide.Tests/coverage.opencover.xml"
-        -t ${{ secrets.CODECOV_TOKEN }}
+        dotnet
+        msbuild
+        /t:Restore,Pack
+        /p:IncludeSymbols=true
+        /p:SymbolPackageFormat=snupkg
+        /p:Configuration=Release
+        /p:PackageOutputPath=artifacts
+        /p:Version=$PackageVersion
+        /v:minimal
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: NuGet Packages
+        path: artifacts
