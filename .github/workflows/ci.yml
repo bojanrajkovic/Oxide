@@ -21,10 +21,10 @@ jobs:
     - name: Install Tools
       run: |
         dotnet tool install -g codecov.tool
+        dotnet tool install -g gitversion.tool
     - name: Generate Version Number
-      uses: docker://gittools/gitversion:5.1.3-linux-ubuntu-18.04-netcoreapp3.0
-      with:
-        args: /github/workspace /updateassemblyinfo /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_NuGetVersion > /github/workspace/version.txt\""
+      run: |
+        ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /exec /bin/sh /execargs "-c \"echo ::set-env name=PackageVersion::\$GitVersion_NuGetVersion\""
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
