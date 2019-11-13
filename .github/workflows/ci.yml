@@ -42,12 +42,12 @@ jobs:
     - name: Pack NuGet
       run: >
         dotnet
-        msbuild
-        /t:Restore,Pack
-        /p:IncludeSymbols=true
+        pack
+        --include-symbols
+        --no-build
+        -c Release
+        -o ./artifacts
         /p:SymbolPackageFormat=snupkg
-        /p:Configuration=Release
-        /p:PackageOutputPath=artifacts
         /p:Version=$PackageVersion
         /v:minimal
     - name: Upload Artifacts
