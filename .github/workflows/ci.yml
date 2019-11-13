@@ -25,7 +25,7 @@ jobs:
     - name: Generate Version Number
       run: |
         ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /output json | tee -a version.json
-        echo "::set-env name=PackageVersion::$(cat version.json | jq .NuGetVersionV2)"
+        echo "::set-env name=PackageVersion::$(cat version.json | jq -r .NuGetVersionV2)"
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
