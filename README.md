@@ -32,6 +32,6 @@ over and over again on projects.
 
 [rust-option]: https://doc.rust-lang.org/std/option/enum.Option.html
 [rust-result]: https://doc.rust-lang.org/std/result/enum.Result.html
-[ci]: https://dev.azure.com/brajkovic/Oxide/_build/latest?definitionId=1&branchName=master
-[ci-image]: https://dev.azure.com/brajkovic/Oxide/_apis/build/status/Oxide%20CI?branchName=master
+[ci]: https://github.com/bojanrajkovic/Oxide/actions
+[ci-image]: https://github.com/bojanrajkovic/Oxide/workflows/CI/badge.svg
 [kotlin-doc]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/index.html
