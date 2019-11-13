@@ -24,7 +24,8 @@ jobs:
         dotnet tool install -g gitversion.tool
     - name: Generate Version Number
       run: |
-        ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /exec /bin/sh /execargs "-c \"echo ::set-env name=PackageVersion::\$GitVersion_NuGetVersion\""
+        ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /output json | tee -a version.json
+        echo "::set-env name=PackageVersion::$(cat version.json | jq .NuGetVersionV2)"
     - name: Run Build
       run: dotnet build -c Release
     - name: Run Tests
