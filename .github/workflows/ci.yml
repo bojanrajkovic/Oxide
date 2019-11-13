@@ -22,6 +22,7 @@ jobs:
       run: |
         dotnet tool install -g codecov.tool
         dotnet tool install -g gitversion.tool
+        dotnet tool install -g sleet
     - name: Generate Version Number
       run: |
         ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /output json | tee -a version.json
@@ -55,3 +56,17 @@ jobs:
       with:
         name: NuGet Packages
         path: artifacts
+    - name: Push All Builds To CI Feed
+      run: >
+        ~/.dotnet/tools/sleet push
+        ./artifacts
+        --verbose
+        -p SLEET_ACCESS_KEY_ID=${{ secrets.SLEET_ACCESS_KEY_ID }}
+        -p SLEET_SECRET_ACCESS_KEY=${{ secrets.SLEET_SECRET_ACCESS_KEY }}
+    - name: Push Master Builds To NuGet
+      run: >
+        nuget push
+        -ApiKey ${{ secrets.NUGET_API_KEY }}
+        -Source https://api.nuget.org/v3/index.json
+        ./artifacts/*.nupkg
+      if: endsWith(github.ref, 'master')
