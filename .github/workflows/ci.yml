@@ -48,7 +48,7 @@ jobs:
         /p:SymbolPackageFormat=snupkg
         /p:Configuration=Release
         /p:PackageOutputPath=artifacts
-        /p:Version=$(cat /github/workspace/version.txt)
+        /p:Version=$PackageVersion
         /v:minimal
     - name: Upload Artifacts
       uses: actions/upload-artifact@v1
