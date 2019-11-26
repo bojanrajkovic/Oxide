@@ -129,7 +129,7 @@ namespace Oxide.Tests
         public void Try_unwrap_returns_true_for_some()
         {
             int value;
-            Assert.True(Some<int>(int.MaxValue).TryUnwrap(out value));
+            Assert.True(Some(int.MaxValue).TryUnwrap(out value));
             Assert.Equal(int.MaxValue, value);
         }
 
@@ -171,7 +171,7 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrap_or_none_with_unspecified_value_returns_default()
-            => Assert.Equal(default(long), None<long>().UnwrapOr());
+            => Assert.Equal(default, None<long>().UnwrapOr());
 
         [Fact]
         public void Unwrap_or_function_does_not_call_function_with_some()
@@ -353,19 +353,20 @@ namespace Oxide.Tests
             var timespan = TimeSpan.FromSeconds(1);
             var task = Task.FromResult(Some(timespan));
 
-            var res = await task.AndThen(ts => Some(ts.TotalDays));
+            var res = await task.AndThenAsync(ts => Some(ts.TotalDays));
 
             Assert.Equal(timespan.TotalDays, res);
         }
 
+        [Fact]
         public async Task Continue_task_of_option_with_async_continuation()
         {
             var timespan = TimeSpan.FromSeconds(1);
             var task = Task.FromResult(Some(timespan));
 
-            var res = await task.AndThen(async ts => {
+            var res = await task.AndThenAsync(async ts => {
                 await Task.Delay(ts);
-                return ts.TotalDays;
+                return Some(ts.TotalDays);
             });
 
             Assert.Equal(timespan.TotalDays, res);
@@ -375,9 +376,7 @@ namespace Oxide.Tests
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
-            var res = await none.AndThenAsync<double>(async ts => {
-                return await Task.FromResult(ts.TotalDays);
-            });
+            var res = await none.AndThenAsync<double>(async ts => await Task.FromResult(ts.TotalDays));
 
             Assert.IsType<None<double>>(res);
             Assert.True(res.IsNone);
@@ -434,22 +433,6 @@ namespace Oxide.Tests
             Assert.NotSame(none, res);
             Assert.True(called);
             Assert.Equal(TimeSpan.FromSeconds(10), res.Unwrap());
-        }
-#endregion
-
-#region Take Tests
-        [Fact]
-        public void Option_is_none_after_take()
-        {
-            var some = Some(100);
-
-            Assert.True(some.IsSome);
-            Assert.False(some.IsNone);
-
-            some.Take();
-
-            Assert.False(some.IsSome);
-            Assert.True(some.IsNone);
         }
 #endregion
 
