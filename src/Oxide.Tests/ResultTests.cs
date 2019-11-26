@@ -232,7 +232,7 @@ namespace Oxide.Tests
         public async Task Continue_task_of_result_without_await()
         {
             var task = Task.FromResult(Ok<int, string>(10));
-            var result = await task.AndThen(i => Ok<int, string>(i*5));
+            var result = await task.AndThenAsync(i => Ok<int, string>(i*5));
 
             Assert.True(result.IsOk);
             Assert.Equal(50, result.Unwrap());
@@ -242,7 +242,7 @@ namespace Oxide.Tests
         public async Task Continue_task_of_result_with_async_continuation()
         {
             var task = Task.FromResult(Ok<int, string>(10));
-            var result = await task.AndThen(async i => await Task.FromResult(Ok<int, string>(i*5)));
+            var result = await task.AndThenAsync(async i => await Task.FromResult(Ok<int, string>(i*5)));
 
             Assert.True(result.IsOk);
             Assert.Equal(50, result.Unwrap());
@@ -485,7 +485,8 @@ namespace Oxide.Tests
             var ok = Ok<int, string>(10);
             var val = ok switch {
                 var (value, error) when ok.IsOk => value*10,
-                var (value, error) when ok.IsError => -1
+                var (value, error) when ok.IsError => -1,
+                var (_,_) => 0
             };
             Assert.Equal(10*10, val);
         }
@@ -496,7 +497,8 @@ namespace Oxide.Tests
             var err = Err<int, string>("hello");
             var val = err switch {
                 var (value, error) when err.IsOk => null,
-                var (value, error) when err.IsError => error.ToUpper()
+                var (value, error) when err.IsError => error.ToUpper(),
+                var (_, _) => null
             };
             Assert.Equal("HELLO", val);
         }

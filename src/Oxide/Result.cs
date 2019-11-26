@@ -10,10 +10,10 @@ namespace Oxide
 {
     public static class Results
     {
-        public static Result<T, E> Ok<T, E>(T value)
-            => new Ok<T, E>(value);
-        public static Result<T, E> Err<T, E>(E error)
-            => new Error<T, E>(error);
+        public static Result<TResult, TError> Ok<TResult, TError>(TResult value)
+            => new Ok<TResult, TError>(value);
+        public static Result<TResult, TError> Err<TResult, TError>(TError error)
+            => new Error<TResult, TError>(error);
 
         public static Func<TIn, Result<TOut, TException>> GetSafeInvoker<TIn, TOut, TException>(Func<TIn, TOut> fn)
             where TException : Exception
@@ -25,14 +25,14 @@ namespace Oxide
                 }
             };
 
-        public static async Task<Result<TOut, TError>> AndThen<TIn, TOut, TError>(
+        public static async Task<Result<TOut, TError>> AndThenAsync<TIn, TOut, TError>(
             this Task<Result<TIn, TError>> resTask,
             Func<TIn, Result<TOut, TError>> continuation
         ) {
             return (await resTask).AndThen(continuation);
         }
 
-        public static async Task<Result<TOut, TError>> AndThen<TIn, TOut, TError>(
+        public static async Task<Result<TOut, TError>> AndThenAsync<TIn, TOut, TError>(
             this Task<Result<TIn, TError>> self,
             Func<TIn, Task<Result<TOut, TError>>> continuation
         ) {
@@ -43,214 +43,189 @@ namespace Oxide
 
     public abstract class Result
     {
-        public virtual bool IsOk => hasValue && !hasError;
-        public virtual bool IsError => hasError && !hasValue;
+        public bool IsOk => HasValue && !hasError;
+        public bool IsError => hasError && !HasValue;
 
-        protected bool hasValue, hasError;
+        private protected Result(bool hasValue, bool hasError)
+        {
+            HasValue = hasValue;
+            this.hasError = hasError;
+        }
 
-        public static Result<IEnumerable<T>, E> Combine<T, E>(params Result<T, E>[] results)
-            => new CombinedResult<T, E>(results);
+        protected readonly bool HasValue;
+        readonly bool hasError;
 
-        public static Result<IEnumerable<T>, E> Combine<T, E>(IEnumerable<Result<T, E>> results)
-            => new CombinedResult<T, E>(results);
+        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(params Result<TResult, TError>[] results)
+            => Combine((IEnumerable<Result<TResult, TError>>)results);
+
+        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(IEnumerable<Result<TResult, TError>> results)
+        {
+            var list = results.ToList();
+            var badResult = list.FirstOrDefault(r => r.IsError);
+            return badResult == null ? Results.Ok<IEnumerable<TResult>, TError>(list.Select(r => r.Unwrap())) : badResult.UnwrapError();
+        }
     }
 
-    public class Result<T, E> : Result, IEquatable<Result<T, E>>
+    public class Result<TResult, TError> : Result, IEquatable<Result<TResult, TError>>
     {
-        protected T value;
-        protected E error;
-        ExceptionDispatchInfo errorDispatchInfo;
+        protected readonly TResult Value;
+        protected readonly TError Error;
+        readonly ExceptionDispatchInfo errorDispatchInfo;
 
-        // Only used by CombinedResult for convenience.
-        private protected Result()
+        private protected Result(TError error) : base(false, true)
         {
-            hasValue = true;
-            value = default(T);
+            Error = error;
 
-            hasError = false;
+            if (error is Exception exception)
+                errorDispatchInfo = ExceptionDispatchInfo.Capture(exception);
         }
 
-        private protected Result(E error)
+        private protected Result(TResult value) : base(true, false)
         {
-            this.error = error;
-
-            if (error is Exception)
-                errorDispatchInfo = ExceptionDispatchInfo.Capture(error as Exception);
-
-            hasValue = false;
-            hasError = true;
+            Value = value;
         }
 
-        private protected Result(T value)
+        void Throw(TError error)
         {
-            this.value = value;
-            hasValue = true;
-            hasError = false;
-        }
-
-        void Throw(E error)
-        {
-            if (errorDispatchInfo != null)
-                errorDispatchInfo.Throw();
+            errorDispatchInfo?.Throw();
             throw new Exception(error.ToString());
         }
 
-        void ThrowWrapped(string message, E error)
+        static void ThrowWrapped(string message, TError error)
         {
-            if (error is Exception)
-                throw new Exception(message, error as Exception);
+            if (error is Exception exception)
+                throw new Exception(message, exception);
             throw new Exception($"{message}: {error}");
         }
 
-        public bool Equals(Result<T, E> other)
+        public bool Equals(Result<TResult, TError> other)
         {
             if (ReferenceEquals(other, null))
                 return false;
 
-            if (hasValue != other.hasValue)
+            if (HasValue != other.HasValue)
                 return false;
 
-            if (hasValue)
-                return Equals(value, other.value);
-            return Equals(error, other.error);
+            return HasValue ? Equals(Value, other.Value) : Equals(Error, other.Error);
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is Result<T, E>)
-                return Equals((Result<T, E>) obj);
-            return false;
+            return obj is Result<TResult, TError> result && Equals(result);
         }
 
         public override int GetHashCode() {
-            if (hasValue)
-                return ReferenceEquals(value, null) ? -1 : value.GetHashCode();
-            return ReferenceEquals(error, null) ? -2 : error.GetHashCode();
+            if (IsOk)
+                return ReferenceEquals(Value, null) ? -1 : Value.GetHashCode();
+            return ReferenceEquals(Error, null) ? -2 : Error.GetHashCode();
         }
 
-        public void Deconstruct(out T value, out E error)
+        public void Deconstruct(out TResult value, out TError error)
         {
-            value = this.value;
-            error = this.error;
+            value = Value;
+            error = Error;
         }
 
-        public static bool operator==(Result<T, E> left, Result<T, E> right)
+        // TODO: Properly implement == and != to check IsOk & compare values or errors as needed.
+        public static bool operator==(Result<TResult, TError> left, Result<TResult, TError> right)
             => Equals(left, right);
 
-        public static bool operator !=(Result<T, E> left, Result<T, E> right)
+        public static bool operator !=(Result<TResult, TError> left, Result<TResult, TError> right)
             => !Equals(left, right);
 
-        public static implicit operator Result<T, E>(T value)
-            => Results.Ok<T, E>(value);
+        public static implicit operator Result<TResult, TError>(TResult value)
+            => Results.Ok<TResult, TError>(value);
 
-        public static implicit operator Result<T, E>(E error)
-            => Results.Err<T, E>(error);
+        public static implicit operator Result<TResult, TError>(TError error)
+            => Results.Err<TResult, TError>(error);
 
-        public Option<T> Ok() => IsOk ? Some(value) : None<T>();
-        public Option<E> Err() => IsOk ? None<E>() : Some(error);
+        public Option<TResult> Ok() => IsOk ? Some(Value) : None<TResult>();
+        public Option<TError> Err() => IsOk ? None<TError>() : Some(Error);
 
-        public Result<U, E> Map<U>(Func<T, U> f) =>
-            IsOk ? Results.Ok<U, E>(f(value)) : Results.Err<U, E>(error);
-        public async Task<Result<U, E>> Map<U>(Func<T, Task<U>> op)
-            => IsOk ? Results.Ok<U, E>(await op(value).ConfigureAwait(false)) : Results.Err<U, E>(error);
-        public Result<T, F> MapErr<F>(Func<E, F> f) =>
-            IsOk ? Results.Ok<T, F>(value) : Results.Err<T, F>(f(error));
-        public async Task<Result<T, F>> MapErr<F>(Func<E, Task<F>> op)
-            => IsOk ? Results.Ok<T, F>(value) : Results.Err<T, F>(await op(error).ConfigureAwait(false));
+        public Result<TOutput, TError> Map<TOutput>(Func<TResult, TOutput> f) =>
+            IsOk ? Results.Ok<TOutput, TError>(f(Value)) : Results.Err<TOutput, TError>(Error);
+        public async Task<Result<TOutput, TError>> Map<TOutput>(Func<TResult, Task<TOutput>> op)
+            => IsOk ? Results.Ok<TOutput, TError>(await op(Value).ConfigureAwait(false)) : Results.Err<TOutput, TError>(Error);
+        public Result<TResult, TErrorOutput> MapErr<TErrorOutput>(Func<TError, TErrorOutput> f) =>
+            IsOk ? Results.Ok<TResult, TErrorOutput>(Value) : Results.Err<TResult, TErrorOutput>(f(Error));
+        public async Task<Result<TResult, TErrorOutput>> MapErr<TErrorOutput>(Func<TError, Task<TErrorOutput>> op)
+            => IsOk ? Results.Ok<TResult, TErrorOutput>(Value) : Results.Err<TResult, TErrorOutput>(await op(Error).ConfigureAwait(false));
 
-        public Result<U, E> And<U>(Result<U, E> other)
-            => IsOk ? other : Results.Err<U, E>(error);
-        public Result<U, E> AndThen<U>(Func<T, Result<U, E>> op)
-            => IsOk ? op(value) : Results.Err<U, E>(error);
-        public Task<Result<U, E>> AndThen<U>(Func<T, Task<Result<U, E>>> op)
-            => IsOk ? op(value) : Task.FromResult(Results.Err<U, E>(error));
+        public Result<TOutput, TError> And<TOutput>(Result<TOutput, TError> other)
+            => IsOk ? other : Results.Err<TOutput, TError>(Error);
+        public Result<TOutput, TError> AndThen<TOutput>(Func<TResult, Result<TOutput, TError>> op)
+            => IsOk ? op(Value) : Results.Err<TOutput, TError>(Error);
+        public Task<Result<TOutput, TError>> AndThen<TOutput>(Func<TResult, Task<Result<TOutput, TError>>> op)
+            => IsOk ? op(Value) : Task.FromResult(Results.Err<TOutput, TError>(Error));
 
-        public Result<T, F> Or<F>(Result<T, F> res)
-            => IsError ? res : Results.Ok<T, F>(value);
-        public Result<T, F> OrElse<F>(Func<E, Result<T, F>> op)
-            => IsError ? op(error) : Results.Ok<T, F>(value);
-        public async Task<Result<T, F>> OrElse<F>(Func<E, Task<Result<T, F>>> op)
-            => IsError ? await op(error).ConfigureAwait(false) : Results.Ok<T, F>(value);
+        public Result<TResult, TErrorOutput> Or<TErrorOutput>(Result<TResult, TErrorOutput> res)
+            => IsError ? res : Results.Ok<TResult, TErrorOutput>(Value);
+        public Result<TResult, TErrorOutput> OrElse<TErrorOutput>(Func<TError, Result<TResult, TErrorOutput>> op)
+            => IsError ? op(Error) : Results.Ok<TResult, TErrorOutput>(Value);
+        public async Task<Result<TResult, TErrorOutput>> OrElse<TErrorOutput>(Func<TError, Task<Result<TResult, TErrorOutput>>> op)
+            => IsError ? await op(Error).ConfigureAwait(false) : Results.Ok<TResult, TErrorOutput>(Value);
 
-        public T UnwrapOr(T optb) => IsOk ? value : optb;
-        public T UnwrapOrElse(Func<E, T> op) => IsOk ? value : op(error);
-        public async Task<T> UnwrapOrElse(Func<E, Task<T>> op)
-            => IsOk ? value : await op(error).ConfigureAwait(false);
+        public TResult UnwrapOr(TResult other) => IsOk ? Value : other;
+        public TResult UnwrapOrElse(Func<TError, TResult> op) => IsOk ? Value : op(Error);
+        public async Task<TResult> UnwrapOrElse(Func<TError, Task<TResult>> op)
+            => IsOk ? Value : await op(Error).ConfigureAwait(false);
 
-        public T Unwrap() {
+        public TResult Unwrap() {
             if (IsOk)
-                return value;
-            Throw(error);
+                return Value;
+
+            Throw(Error);
 
             // This is never actually reached, as `Throw`, well, throws.
-            return default(T);
+            return default;
         }
 
-        public bool TryUnwrap(out T value) {
-            value = this.value;
+        public bool TryUnwrap(out TResult value) {
+            value = Value;
             return IsOk;
         }
 
-        public bool TryUnwrap(out T value, out E error) {
+        public bool TryUnwrap(out TResult value, out TError error) {
             Deconstruct(out value, out error);
             return IsOk;
         }
 
-        public T Expect(string msg) {
+        public TResult Expect(string msg) {
             if (IsOk)
-                return value;
-            ThrowWrapped(msg, error);
+                return Value;
+            ThrowWrapped(msg, Error);
 
             // This is never actually reached, as `Throw`, well, throws.
-            return default(T);
+            return default;
         }
 
-        public E UnwrapError() {
+        public TError UnwrapError() {
             if (IsError)
-                return error;
-            throw new Exception(value.ToString());
+                return Error;
+            throw new Exception(Value.ToString());
         }
 
-        public bool TryUnwrapError(out E error) {
-            error = this.error;
+        public bool TryUnwrapError(out TError error) {
+            error = Error;
             return IsError;
         }
 
-        public E ExpectError(string msg) {
+        public TError ExpectError(string msg) {
             if (IsError)
-                return error;
-            throw new Exception($"{msg}: {value}");
+                return Error;
+            throw new Exception($"{msg}: {Value}");
         }
 
-        public T UnwrapOrDefault() => IsOk ? value : default(T);
+        public TResult UnwrapOrDefault() => IsOk ? Value : default;
     }
 
-    class CombinedResult<T, E> : Result<IEnumerable<T>, E>
+    public sealed class Error<TResult, TError> : Result<TResult, TError>
     {
-        public CombinedResult (IEnumerable<Result<T, E>> results) : base()
-        {
-            var badResult = results.FirstOrDefault(r => r.IsError);
-            if (badResult == null) {
-                hasError = false;
-                hasValue = true;
-
-                value = results.Select(r => r.Unwrap()).ToList();
-            } else {
-                hasError = true;
-                hasValue = false;
-
-                error = badResult.UnwrapError();
-            }
-        }
+        internal Error(TError error) : base(error) {}
     }
 
-    public sealed class Error<T, E> : Result<T, E>
+    public sealed class Ok<TResult, TError> : Result<TResult, TError>
     {
-        internal Error(E error) : base(error) {}
-    }
-
-    public sealed class Ok<T, E> : Result<T, E>
-    {
-        internal Ok(T value) : base(value) {}
+        internal Ok(TResult value) : base(value) {}
     }
 }
