@@ -365,7 +365,7 @@ namespace Oxide.Tests
 
             var res = await task.AndThen(async ts => {
                 await Task.Delay(ts);
-                return Some(ts.TotalDays);
+                return ts.TotalDays;
             });
 
             Assert.Equal(timespan.TotalDays, res);
