@@ -18,16 +18,16 @@ namespace Oxide.Tests
 
 #region IsNone/IsSome Tests
         [Fact]
-        public void SomeIsNotNone() => Assert.False(Some(1).IsNone);
+        public void Some_is_not_none() => Assert.False(Some(1).IsNone);
 
         [Fact]
-        public void SomeIsSome() => Assert.True(Some(1).IsSome);
+        public void Some_is_some() => Assert.True(Some(1).IsSome);
 
         [Fact]
-        public void NoneIsNone() => Assert.True(None<int>().IsNone);
+        public void None_is_none() => Assert.True(None<int>().IsNone);
 
         [Fact]
-        public void NoneIsNotSome() => Assert.False(None<int>().IsSome);
+        public void None_is_not_some() => Assert.False(None<int>().IsSome);
 #endregion
 
 
@@ -36,6 +36,10 @@ namespace Oxide.Tests
         [MemberData(nameof(Options))]
         public void Is_never_equal_to_null(Option opt)
             => Assert.False(opt.Equals(null));
+
+        [Fact]
+        public void Equals_with_null_rhs_returns_false()
+            => Assert.False(Some(5).Equals(null));
 
         [Theory]
         [MemberData(nameof(Options))]

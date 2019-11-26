@@ -66,9 +66,9 @@ namespace Oxide
         }
 
         public static bool operator ==(Option<TOption> left, Option<TOption> right)
-            => left != null && left.Equals(right);
+            => !ReferenceEquals(left, null) && left.Equals(right);
         public static bool operator !=(Option<TOption> left, Option<TOption> right)
-            => left != null && !left.Equals(right);
+            => !ReferenceEquals(left, null) && !left.Equals(right);
         public static implicit operator Option<TOption>(TOption value)
             => value == null ? None<TOption>() : Some(value);
 
