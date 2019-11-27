@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -18,23 +17,26 @@ namespace Oxide.Tests
         [Fact]
         public void Safe_wrapper_catches_exception_and_converts()
         {
-            Func<string, int> fn = str => str.Length;
-            var safe = GetSafeInvoker<string, int, NullReferenceException>(fn);
+            int Fn(string str) => str.Length;
+
+            var safe = GetSafeInvoker<string, int, NullReferenceException>(Fn);
             var res = safe(null);
 
             Assert.True(res.IsError);
 
             var ex = res.UnwrapError();
-            Assert.NotNull(ex);
+            Assert.IsType<NullReferenceException>(ex);
         }
 
         [Fact]
         public void Safe_wrapper_returns_result_of_original_function()
         {
-            Func<string, int> fn = str => str.Length;
-            var safe = GetSafeInvoker<string, int, NullReferenceException>(fn);
-            var res = safe("tacocat");
-            var original = fn("tacocat");
+            const string arg = "tacocat";
+            int Fn(string str) => str.Length;
+
+            var safe = GetSafeInvoker<string, int, NullReferenceException>(Fn);
+            var res = safe(arg);
+            var original = Fn(arg);
 
             Assert.True(res.IsOk);
             Assert.Equal(original, res);
@@ -85,7 +87,7 @@ namespace Oxide.Tests
         public void Can_deconstruct_result_into_value_and_error()
         {
             var res = Ok<int, Exception>(5);
-            (var number, var exception) = res;
+            var (number, exception) = res;
 
             Assert.Equal(5, number);
             Assert.Null(exception);
@@ -96,6 +98,14 @@ namespace Oxide.Tests
         [Fact]
         public void Result_equals_null_is_false()
             => Assert.False(Ok<int, string>(5).Equals(null));
+
+        [Fact]
+        public void Result_equalsequals_null_is_false()
+            => Assert.False(Ok<int, string>(5) == null);
+
+        [Fact]
+        public void Result_not_equals_null_is_true()
+            => Assert.True(Ok<int, string>(5) != null);
 
         [Fact]
         public void Result_not_equals_error()
@@ -116,10 +126,6 @@ namespace Oxide.Tests
         [Fact]
         public void Error_does_not_equal_other_error_if_errors_mismatched()
             => Assert.False(Err<int, string>("error").Equals(Err<int, string>("mistake")));
-
-        [Fact]
-        public void Result_does_not_equal_some_other_object()
-            => Assert.False(Ok<int, string>(5).Equals((object)5));
 
         [Fact]
         public void Result_does_not_equal_error_via_object()
@@ -195,15 +201,15 @@ namespace Oxide.Tests
 #region Map Tests
         [Fact]
         public void Map_function_is_applied_to_ok()
-            => Assert.Equal(10, Ok<int, string>(5).Map<int>(i => i*2));
+            => Assert.Equal(10, Ok<int, string>(5).Map(i => i*2));
 
         [Fact]
         public void Map_on_error_returns_error()
-            => Assert.Equal("taco", Err<int, string>("taco").Map<int>(i => i*2));
+            => Assert.Equal("taco", Err<int, string>("taco").Map(i => i*2));
 
         [Fact]
         public async Task Async_map_function_is_applied_to_ok()
-            => Assert.Equal(10, await Ok<int, string>(5).Map<int>(async i => {
+            => Assert.Equal(10, await Ok<int, string>(5).MapAsync(async i => {
                 await Task.Delay(TimeSpan.FromMilliseconds(i*100));
                 return i*2;
             }));
@@ -212,17 +218,19 @@ namespace Oxide.Tests
         public async Task Async_map_function_is_not_called_on_error()
         {
             var called = false;
-            Assert.Equal("taco", await Err<int, string>("taco").Map<int>(async i => {
+            var result = await Err<int, string>("taco").MapAsync(async i => {
                 called = true;
-                await Task.Delay(TimeSpan.FromMilliseconds(i*100));
-                return i*2;
-            }));
+                await Task.Delay(TimeSpan.FromMilliseconds(i * 100));
+                return i * 2;
+            });
+
+            Assert.Equal("taco", result);
             Assert.False(called);
         }
 
         [Fact]
         public void Map_err_on_ok_returns_ok_value()
-            => Assert.Equal (10, Ok<int, string>(10).MapErr<int>(s => s.Length).Unwrap());
+            => Assert.Equal (10, Ok<int, string>(10).MapErr(s => s.Length).Unwrap());
 
         [Fact]
         public void Map_err_on_err_applies_mapper()
@@ -250,7 +258,7 @@ namespace Oxide.Tests
 
         [Fact]
         public async Task Async_map_err_on_ok_returns_ok()
-            => Assert.Equal (10, await Ok<int, string>(10).MapErr<TimeSpan>(async s => {
+            => Assert.Equal (10, await Ok<int, string>(10).MapErrAsync(async s => {
                 var ts = TimeSpan.FromMilliseconds(s.Length * 100);
                 await Task.Delay(ts);
                 return ts;
@@ -258,7 +266,7 @@ namespace Oxide.Tests
 
         [Fact]
         public async Task Async_map_err_on_err_is_called()
-            => Assert.Equal(Err<int, TimeSpan>(TimeSpan.FromMilliseconds(400)), await Err<int, string>("taco").MapErr<TimeSpan>(async s => {
+            => Assert.Equal(Err<int, TimeSpan>(TimeSpan.FromMilliseconds(400)), await Err<int, string>("taco").MapErrAsync(async s => {
                 var ts = TimeSpan.FromMilliseconds(s.Length * 100);
                 await Task.Delay(ts);
                 return ts;
@@ -284,7 +292,7 @@ namespace Oxide.Tests
 
         [Fact]
         public async Task Async_ok_and_then_result_returns_new_result()
-            => Assert.Equal(10, await Ok<int, string>(5).AndThen<int>(async i => {
+            => Assert.Equal(10, await Ok<int, string>(5).AndThenAsync<int>(async i => {
                 await Task.Delay(i*100);
                 return i*2;
             }));
@@ -292,7 +300,7 @@ namespace Oxide.Tests
         [Fact]
         public async Task Async_err_and_then_result_returns_error() {
             var called = false;
-            Assert.Equal("taco", await Err<int, string>("taco").AndThen<int>(async i => {
+            Assert.Equal("taco", await Err<int, string>("taco").AndThenAsync<int>(async i => {
                 called = true;
                 await Task.Delay(i*100);
                 return i*2;
@@ -312,16 +320,16 @@ namespace Oxide.Tests
 
         [Fact]
         public void Ok_or_else_gives_value()
-            => Assert.Equal(Ok<int, int>(10), Ok<int, string>(10).OrElse<int>(err => Err<int, int>(err.Length)));
+            => Assert.Equal(Ok<int, int>(10), Ok<int, string>(10).OrElse(err => Err<int, int>(err.Length)));
 
         [Fact]
         public void Err_or_else_returns_err()
-            => Assert.Equal(Err<int, int>(4), Err<int, string>("taco").OrElse<int>(err => Err<int, int>(err.Length)));
+            => Assert.Equal(Err<int, int>(4), Err<int, string>("taco").OrElse(err => Err<int, int>(err.Length)));
 
         [Fact]
         public async Task Async_ok_or_else_gives_value_and_is_not_called() {
             var called = false;
-            Assert.Equal(Ok<int, int>(10), await Ok<int, string>(10).OrElse<int>(async s => {
+            Assert.Equal(Ok<int, int>(10), await Ok<int, string>(10).OrElseAsync(async s => {
                 called = true;
                 await Task.Delay(s.Length * 100);
                 return Err<int, int>(s.Length);
@@ -331,8 +339,8 @@ namespace Oxide.Tests
 
         [Fact]
         public async Task Async_error_or_else_transforms_error()
-            => Assert.Equal(Err<int, TimeSpan>(TimeSpan.FromMilliseconds(400)), await Err<int, string>("taco").OrElse<TimeSpan>(async s => {
-                var ts = TimeSpan.FromMilliseconds(s.Length * 100);;
+            => Assert.Equal(Err<int, TimeSpan>(TimeSpan.FromMilliseconds(400)), await Err<int, string>("taco").OrElseAsync<TimeSpan>(async s => {
+                var ts = TimeSpan.FromMilliseconds(s.Length * 100);
                 await Task.Delay(ts);
                 return ts;
             }));
@@ -357,11 +365,11 @@ namespace Oxide.Tests
 
         [Fact]
         public async Task Async_unwrap_or_else_ok_returns_value()
-            => Assert.Equal(11, await Ok<int, string>(11).UnwrapOrElse(async err => await Task.FromResult(15)));
+            => Assert.Equal(11, await Ok<int, string>(11).UnwrapOrElseAsync(async err => await Task.FromResult(15)));
 
         [Fact]
         public async Task Async_unwrap_or_else_err_returns_transform()
-            => Assert.Equal(4, await Err<int, string>("taco").UnwrapOrElse(async err => await Task.FromResult(err.Length)));
+            => Assert.Equal(4, await Err<int, string>("taco").UnwrapOrElseAsync(async err => await Task.FromResult(err.Length)));
 
         [Fact]
         public void Unwrap_ok_returns_value()
@@ -426,7 +434,7 @@ namespace Oxide.Tests
         public void Expect_error_on_ok_throws_exception()
         {
             var ex = Assert.Throws<Exception>(() => Ok<int, string>(10).ExpectError("Expected error, got"));
-            Assert.Equal($"Expected error, got: 10", ex.Message);
+            Assert.Equal("Expected error, got: 10", ex.Message);
         }
 
         [Fact]
@@ -439,7 +447,7 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrap_or_default_on_err_returns_default_value()
-            => Assert.Equal(default(string), Err<string, int>(5).UnwrapOrDefault());
+            => Assert.Equal(default, Err<string, int>(5).UnwrapOrDefault());
 
         [Fact]
         public void Can_try_unwrap_for_pattern_matching()
@@ -449,7 +457,7 @@ namespace Oxide.Tests
                 case var _ when ok.TryUnwrap(out var result):
                     Assert.Equal(10, result);
                     break;
-                case var _ when ok.TryUnwrapError(out var error):
+                case var _ when ok.TryUnwrapError(out _):
                     Assert.True(false, "Should not be reached.");
                     break;
             }
@@ -474,7 +482,7 @@ namespace Oxide.Tests
             if (error.TryUnwrap(out var value, out var err)) {
                 Assert.False(true, "Should not be reached, TryUnwrap returned true for Error<T, E>.");
             } else {
-                Assert.Equal(default(int), value);
+                Assert.Equal(default, value);
                 Assert.Equal("error", err);
             }
         }
@@ -484,9 +492,9 @@ namespace Oxide.Tests
         {
             var ok = Ok<int, string>(10);
             var val = ok switch {
-                var (value, error) when ok.IsOk => value*10,
-                var (value, error) when ok.IsError => -1,
-                var (_,_) => 0
+                var (value, _) when ok.IsOk => value*10,
+                var (_, _) when ok.IsError => -1,
+                _ => 0
             };
             Assert.Equal(10*10, val);
         }
@@ -496,9 +504,9 @@ namespace Oxide.Tests
         {
             var err = Err<int, string>("hello");
             var val = err switch {
-                var (value, error) when err.IsOk => null,
-                var (value, error) when err.IsError => error.ToUpper(),
-                var (_, _) => null
+                var (_, _) when err.IsOk => null,
+                var (_, error) when err.IsError => error.ToUpper(),
+                _ => null
             };
             Assert.Equal("HELLO", val);
         }
@@ -508,7 +516,7 @@ namespace Oxide.Tests
         {
             var ok = Err<int, string>("error");
             switch (ok) {
-                case var _ when ok.TryUnwrap(out var result):
+                case var _ when ok.TryUnwrap(out _):
                     Assert.True(false, "Should not be reached.");
                     break;
                 case var _ when ok.TryUnwrapError(out var error):
@@ -529,7 +537,7 @@ namespace Oxide.Tests
             var combined = Result.Combine(oks);
 
             Assert.True(combined.IsOk);
-            Assert.Equal(sum, combined.AndThen<int>(ints => ints.Sum()));
+            Assert.Equal(sum, combined.AndThen<int>(values => values.Sum()));
         }
 
         [Fact]
