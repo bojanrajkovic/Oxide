@@ -6,9 +6,6 @@ namespace Oxide
     {
         public static Option<string> GetEnvironmentVariable(string environmentVariable)
         {
-            if (string.IsNullOrWhiteSpace(environmentVariable))
-                return None<string>();
-
             try {
                 var value = System.Environment.GetEnvironmentVariable(environmentVariable);
                 return string.IsNullOrWhiteSpace(value) ? None<string>() : Some(value);
