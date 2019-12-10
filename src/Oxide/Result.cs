@@ -16,17 +16,6 @@ namespace Oxide
         public static Result<TResult, TError> Err<TResult, TError>(TError error)
             => new Error<TResult, TError>(error);
 
-        public static Func<TIn, Result<TOut, TException>> GetSafeInvoker<TIn, TOut, TException>(
-            Func<TIn, TOut> fn
-        ) where TException : Exception
-            => arg => {
-                try {
-                    return fn(arg);
-                } catch (TException e) {
-                    return e;
-                }
-            };
-
         public static async Task<Result<TOut, TError>> AndThenAsync<TIn, TOut, TError>(
             this Task<Result<TIn, TError>> resTask,
             Func<TIn, Result<TOut, TError>> continuation
