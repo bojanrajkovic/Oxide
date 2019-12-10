@@ -504,7 +504,7 @@ namespace Oxide.Tests
             var r = new Random();
             var oks = Enumerable.Range(0, 10).Select(_ => Ok<int, string>(r.Next(1, 1001))).ToArray();
             var sum = oks.Sum(o => o.Unwrap());
-            var combined = Result.Combine(oks);
+            var combined = Combine(oks);
 
             Assert.True(combined.IsOk);
             Assert.Equal(sum, combined.AndThen<int>(values => values.Sum()));
@@ -522,7 +522,7 @@ namespace Oxide.Tests
             }).ToList();
             var firstError = results.First(res => res.IsError).UnwrapError();
 
-            var combined = Result.Combine(results);
+            var combined = Combine(results);
 
             Assert.True(combined.IsError);
             Assert.Equal(firstError, combined.UnwrapError());

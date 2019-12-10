@@ -27,6 +27,27 @@ namespace Oxide
         ) {
             var ret = await self.ConfigureAwait(false);
             return await ret.AndThenAsync(continuation).ConfigureAwait(false);
+        /// <summary>
+        ///     Combines multiple <see cref="Result{TResult,TError}" /> into a single value.
+        /// </summary>
+        /// <param name="results">The results to combine.</param>
+        /// <typeparam name="TResult">The type of the wrapped value in each result.</typeparam>
+        /// <typeparam name="TError">The type of the wrapped error in each result.</typeparam>
+        /// <returns>A combined result with all of the values as the wrapped value, or the first error encountered.</returns>
+        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(
+            params Result<TResult, TError>[] results
+        ) => Combine((IEnumerable<Result<TResult, TError>>)results);
+
+        /// <inheritdoc cref="Combine{TResult,TError}(Oxide.Result{TResult,TError}[])" />
+        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(
+            IEnumerable<Result<TResult, TError>> results
+        )
+        {
+            var list = results.ToList();
+            var badResult = list.FirstOrDefault(r => r.IsError);
+            return badResult == null
+                ? Ok<IEnumerable<TResult>, TError>(list.Select(r => r.Unwrap()))
+                : badResult.UnwrapError();
         }
     }
 
@@ -44,19 +65,7 @@ namespace Oxide
         protected readonly bool HasValue;
         readonly bool hasError;
 
-        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(
-            params Result<TResult, TError>[] results
-        ) => Combine((IEnumerable<Result<TResult, TError>>)results);
 
-        public static Result<IEnumerable<TResult>, TError> Combine<TResult, TError>(
-            IEnumerable<Result<TResult, TError>> results
-        ) {
-            var list = results.ToList();
-            var badResult = list.FirstOrDefault(r => r.IsError);
-            return badResult == null
-                ? Results.Ok<IEnumerable<TResult>, TError>(list.Select(r => r.Unwrap()))
-                : badResult.UnwrapError();
-        }
     }
 
     public class Result<TResult, TError> : Result, IEquatable<Result<TResult, TError>>
