@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <DebugType>portable</DebugType>
-    <DebugType Condition="'$(RunCoverage)' == 'true'">full</DebugType>
-    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,16 +20,6 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <RepositoryUrl>https://github.com/bojanrajkovic/Oxide</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;  </DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
-  </ItemGroup>
 </Project>
