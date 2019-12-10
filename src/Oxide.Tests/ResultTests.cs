@@ -413,11 +413,11 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrap_or_default_on_ok_returns_value()
-            => Assert.Equal(10, Ok<int, string>(10).UnwrapOrDefault());
+            => Assert.Equal(10, Ok<int, string>(10).UnwrapOr());
 
         [Fact]
         public void Unwrap_or_default_on_err_returns_default_value()
-            => Assert.Equal(default, Err<string, int>(5).UnwrapOrDefault());
+            => Assert.Equal(default, Err<string, int>(5).UnwrapOr());
 
         [Fact]
         public void Can_try_unwrap_for_pattern_matching()

@@ -161,9 +161,10 @@ namespace Oxide
         )  => IsError
                 ? await op(Error).ConfigureAwait(false)
                 : Results.Ok<TResult, TErrorOutput>(Value);
+        public TResult UnwrapOr(TResult other = default)
+            => IsOk ? value : other;
 
-        public TResult UnwrapOr(TResult other)
-            => IsOk ? Value : other;
+
         public TResult UnwrapOrElse(Func<TError, TResult> op)
             => IsOk ? Value : op(Error);
 
@@ -214,8 +215,6 @@ namespace Oxide
         public TError ExpectError(string msg)
             => IsError ? Error : throw new Exception($"{msg}: {Value}");
 
-        public TResult UnwrapOrDefault()
-            => IsOk ? Value : default;
     }
 
     public sealed class Error<TResult, TError> : Result<TResult, TError>
