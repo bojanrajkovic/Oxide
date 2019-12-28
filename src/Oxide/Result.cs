@@ -395,6 +395,36 @@ namespace Oxide
             => IsOk ? op(value) : Results.Err<TOutput, TError>(error);
 
         /// <summary>
+        ///     Applies <paramref name="op" /> to a contained <see cref="Ok{TResult,TError}" />, and returns the
+        ///     unmodified <see cref="Result{TResult,TError}" /> instance.
+        /// </summary>
+        /// <param name="op">The operation to apply to the contained value.</param>
+        /// <returns>This instance.</returns>
+        public Result<TResult, TError> IfOk(Action<TResult> op)
+        {
+            if (IsOk) {
+                op(value);
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        ///     Applies <paramref name="op" /> to a contained <see cref="Error{TResult,TError}" />, and returns the
+        ///     unmodified <see cref="Result{TResult,TError}" /> instance.
+        /// </summary>
+        /// <param name="op">The operation to apply to the error value.</param>
+        /// <returns>This instance.</returns>
+        public Result<TResult, TError> IfError(Action<TError> op)
+        {
+            if (IsError) {
+                op(error);
+            }
+
+            return this;
+        }
+
+        /// <summary>
         ///     Chains two results together, passing the value of the current result to the chaining
         ///     function <paramref name="op" />.
         /// </summary>

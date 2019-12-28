@@ -49,6 +49,16 @@ namespace Oxide.Tests
 
         [Theory]
         [MemberData(nameof(Options))]
+        public void Op_equality_is_correct_when_null_is_left(Option opt)
+            => Assert.False(null == opt);
+
+        [Theory]
+        [MemberData(nameof(Options))]
+        public void Op_inequality_is_correct_when_null_is_left(Option opt)
+            => Assert.True(null != opt);
+
+        [Theory]
+        [MemberData(nameof(Options))]
         public void Op_inequality_is_correct_for_null(Option opt)
             => Assert.True(opt != null);
 
@@ -321,6 +331,54 @@ namespace Oxide.Tests
         [Fact]
         public void Some_and_then_func_returns_transform()
             => Assert.Equal(50, Some(10).AndThen<int>(val => 5*val));
+
+        [Fact]
+        public void Some_and_finally_returns_some_and_calls_function()
+        {
+            var called = false;
+
+            var some = Some(5);
+            var res = some.Finally(val => called = true);
+
+            Assert.Same(some, res);
+            Assert.True(called);
+        }
+
+        [Fact]
+        public void None_and_finally_returns_some_and_does_not_call_function()
+        {
+            var called = false;
+
+            var none = None<int>();
+            var res = none.Finally(val => called = true);
+
+            Assert.Same(none, res);
+            Assert.False(called);
+        }
+
+        [Fact]
+        public void None_and_ifnone_returns_none_and_calls_function()
+        {
+            var called = false;
+
+            var none = None<int>();
+            var res = none.IfNone(() => called = true);
+
+            Assert.Same(none, res);
+            Assert.True(called);
+        }
+
+        [Fact]
+        public void Some_and_ifnone_returns_some_and_does_not_call_function()
+        {
+            var called = false;
+
+            var some = Some(5);
+            var res = some.IfNone(() => called = true);
+
+            Assert.Same(some, res);
+            Assert.False(called);
+        }
 
         [Fact]
         public void None_and_then_returns_none_of_correct_type()

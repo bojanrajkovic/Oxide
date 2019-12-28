@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -144,11 +145,11 @@ namespace Oxide.Tests
             => Assert.False(Ok<int, string>(5).IsError);
 
         [Fact]
-        public void Is_error_returns_true_on_error()
+        public void Is_error_returns_true_on_Error()
             => Assert.True(Err<int, string>("taco").IsError);
 
         [Fact]
-        public void Is_error_returns_false_on_ok()
+        public void Is_ok_returns_false_on_Error()
             => Assert.False(Err<int, string>("taco").IsOk);
 
         [Fact]
@@ -431,6 +432,68 @@ namespace Oxide.Tests
                     Assert.True(false, "Should not be reached.");
                     break;
             }
+        }
+
+        public static IEnumerable<object[]> Results => new [] {
+            new object[] { Ok<int, Exception>(5) },
+            new object[] { Err<int, Exception>(new DivideByZeroException()) }
+        };
+
+        [Theory, MemberData(nameof(Results))]
+        public void If_ok_passes_through_original_result(Result<int, Exception> res)
+            => Assert.Same(res, res.IfOk(_ => { }));
+
+        [Theory, MemberData(nameof(Results))]
+        public void If_error_passes_through_original_result(Result<int, Exception> res)
+            => Assert.Same(res, res.IfError(_ => { }));
+
+        [Fact]
+        public void If_ok_calls_function_when_ok()
+        {
+            var newVal = -1;
+            var res = Ok<int, Exception>(5);
+
+            var ret = res.IfOk(val => newVal = val * 2);
+
+            Assert.Same(res, ret);
+            Assert.Equal(10, newVal);
+        }
+
+        [Fact]
+        public void If_ok_does_not_call_function_when_err()
+        {
+            var newVal = -1;
+            var res = Err<int, Exception>(new DivideByZeroException());
+
+            var ret = res.IfOk(val => newVal = val * 2);
+
+            Assert.Same(res, ret);
+            Assert.Equal(-1, newVal);
+        }
+
+        [Fact]
+        public void If_err_calls_function_when_err()
+        {
+            Exception e = null;
+            var res = Err<int, Exception>(new DivideByZeroException());
+
+            var ret = res.IfError(err => e = err);
+
+            Assert.Same(res, ret);
+            Assert.NotNull(e);
+            Assert.IsType<DivideByZeroException>(e);
+        }
+
+        [Fact]
+        public void If_err_does_not_call_function_when_ok()
+        {
+            Exception e = null;
+            var res = Ok<int, Exception>(5);
+
+            var ret = res.IfError(err => e = err);
+
+            Assert.Same(res, ret);
+            Assert.Null(e);
         }
 
         [Fact]

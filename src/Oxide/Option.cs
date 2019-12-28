@@ -377,6 +377,34 @@ namespace Oxide
             => IsNone ? None<TResult>() : optionProvider(value);
 
         /// <summary>
+        /// Chains a continuation without modifying the option, if the option is a <see cref="Some{T}"/>.
+        /// </summary>
+        /// <param name="action">The action to call.</param>
+        /// <returns>The option itself.</returns>
+        public Option<TOption> Finally(Action<TOption> action)
+        {
+            if (IsSome) {
+                action(value);
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Chains a continuation without modifying the option if the option is a <see cref="None{T}"/>.
+        /// </summary>
+        /// <param name="action">The action to call.</param>
+        /// <returns>The option itself.</returns>
+        public Option<TOption> IfNone(Action action)
+        {
+            if (IsNone) {
+                action();
+            }
+
+            return this;
+        }
+
+        /// <summary>
         ///     Chains two options together if the option is <see cref="Some{T}" />, passing the value of the option to
         ///     the chained option provider <paramref name="optionProvider" />.
         /// </summary>
