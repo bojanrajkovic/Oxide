@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Oxide.Tests
 {
     public class HttpTests : IDisposable
     {
-        HttpClient client;
+        readonly HttpClient client;
 
         public HttpTests()
         {
@@ -166,7 +167,7 @@ namespace Oxide.Tests
 
             var error = result.UnwrapError();
             Assert.NotNull(error);
-            var ex = Assert.IsType<HttpRequestException>(error);
+            Assert.IsType<HttpRequestException>(error);
         }
 
         [Fact]
@@ -178,7 +179,7 @@ namespace Oxide.Tests
 
             var error = result.UnwrapError();
             Assert.NotNull(error);
-            var ex = Assert.IsType<HttpRequestException>(error);
+            Assert.IsType<HttpRequestException>(error);
         }
 
         [Fact]
@@ -190,11 +191,12 @@ namespace Oxide.Tests
 
             var error = result.UnwrapError();
             Assert.NotNull(error);
-            var ex = Assert.IsType<HttpRequestException>(error);
+            Assert.IsType<HttpRequestException>(error);
         }
         #endregion
     }
 
+    [SuppressMessage("ReSharper", "UnassignedField.Global")]
     public class StatusResponse
     {
         public int code;
