@@ -290,3 +290,6 @@ __pycache__/
 # Coverage files
 coverage
 coverage.xml
+
+# DocFx Pieces
+docs

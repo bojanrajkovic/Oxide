@@ -10,7 +10,7 @@ namespace Oxide
     {
         /// <summary>
         ///     Returns the head of a collection. Equivalent to
-        ///     <see cref="Enumerable.First{TSource}(System.Collections.Generic.IEnumerable{TSource})" />.
+        ///     <see cref="Enumerable.First{TSource}(System.Collections.Generic.IEnumerable{TSource})"/>.
         /// </summary>
         /// <param name="self">The collection.</param>
         /// <typeparam name="T">The type of the collection elements.</typeparam>
