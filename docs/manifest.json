@@ -1,0 +1,305 @@
+{
+  "homepages": [],
+  "source_base_path": "/Users/brajkovic/Code/Oxide/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../CODE_OF_CONDUCT.md",
+      "output": {
+        ".html": {
+          "relative_path": "CODE_OF_CONDUCT.html",
+          "hash": "yhixJOBj+lE8nRjczFMrog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "kd2f5Vc3vIWFAb5TSiMjFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.EnumerableExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.EnumerableExtension.html",
+          "hash": "Mgi8xX4GxkFABz9KaOFNNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Environment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Environment.html",
+          "hash": "wVmQIUZMUrYltYTM3gogmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Error-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Error-2.html",
+          "hash": "d3ZyulMrIQW+/khrzW7BcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Http.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Http.html",
+          "hash": "ZP0lhLR/t/PftNdeYyqTog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.None-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.None-1.html",
+          "hash": "DeW8GeefUbJ6u8y38IzV3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.ObjectExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.ObjectExtensions.html",
+          "hash": "Vwwpq+8VzaVaCOW4Ec1Grw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Ok-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Ok-2.html",
+          "hash": "ObIhCaO+4zZJxaYP3JUjeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Option-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Option-1.html",
+          "hash": "mI6q04g0iQQZxXQtBFjYJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Option.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Option.html",
+          "hash": "wNP+fcCKvZh41kNKHUAnHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Options.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Options.html",
+          "hash": "kDLKH1uX4HyRt56VwQTOGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.ParseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.ParseExtensions.html",
+          "hash": "S0YiC5nGQXSRSsqHmMKw4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Result-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Result-2.html",
+          "hash": "c8IAX+3Al+Op4jzDRrnttg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Result.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Result.html",
+          "hash": "Smly+WpR9a9UjiMB5gat9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Results.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Results.html",
+          "hash": "qV1YVmNTMK9gUFicTO9rzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.Some-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.Some-1.html",
+          "hash": "X+jehmj3Wxi0wNt28iuPRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Oxide.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Oxide.html",
+          "hash": "wbPHAkzT+xqpAjrOH7VN4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Fx/VL09ZgY4Yjd2V/RWbqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "8VZjHfsaF3nRDYLx0sDO2w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 16,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

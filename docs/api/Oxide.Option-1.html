@@ -1,0 +1,1522 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Option&lt;TOption&gt;
+   | Oxide Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Option&lt;TOption&gt;
+   | Oxide Documentation ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Oxide.Option`1">
+  
+  
+  <h1 id="Oxide_Option_1" data-uid="Oxide.Option`1" class="text-break">Class Option&lt;TOption&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>The <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> type represents an optional value. Every option is either
+a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, and has a value, or is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> that has no value.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="Oxide.Option.html">Option</a></div>
+    <div class="level2"><span class="xref">Option&lt;TOption&gt;</span></div>
+      <div class="level3"><a class="xref" href="Oxide.None-1.html">None</a>&lt;T&gt;</div>
+      <div class="level3"><a class="xref" href="Oxide.Some-1.html">Some</a>&lt;T&gt;</div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Oxide.Option.html#Oxide_Option_IsNone">Option.IsNone</a>
+    </div>
+    <div>
+      <a class="xref" href="Oxide.Option.html#Oxide_Option_IsSome">Option.IsSome</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Oxide.html">Oxide</a></h6>
+  <h6><strong>Assembly</strong>: Oxide.dll</h6>
+  <h5 id="Oxide_Option_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Option&lt;TOption&gt; : Option, IEquatable&lt;Option&lt;TOption&gt;&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TOption</span></td>
+        <td><p>The type of the wrapped value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Option types can be useful in a number of places:
+<ul><li>Replace <code>null</code> or other &quot;no value&quot; markers (initial values, optional parameters, etc.)</li><li>Return values for partially defined (in the mathematical sense) functions</li><li>Return values for simple error reporting, where a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> can be returned</li></ul></p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_And__1_Oxide_Option___0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.And%60%601(Oxide.Option%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L359">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_And_" data-uid="Oxide.Option`1.And*"></a>
+  <h4 id="Oxide_Option_1_And__1_Oxide_Option___0__" data-uid="Oxide.Option`1.And``1(Oxide.Option{``0})">And&lt;TResult&gt;(Option&lt;TResult&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together, discarding the result of the current option.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TResult&gt; And&lt;TResult&gt;(Option&lt;TResult&gt; option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;</td>
+        <td><span class="parametername">option</span></td>
+        <td><p>The other option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;</td>
+        <td><p><a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> if the option is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>, otherwise <code data-dev-comment-type="paramref" class="paramref">option</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the other option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_And__1_Oxide_Option___0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">option</code> is eagerly evaluated. If lazy evaluation is desired, use
+<a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_AndThen__1_System_Func__0_Oxide_Option___0___">AndThen&lt;TResult&gt;(Func&lt;TOption, Option&lt;TResult&gt;&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_AndThen__1_System_Func__0_Oxide_Option___0___.md&amp;value=---%0Auid%3A%20Oxide.Option%601.AndThen%60%601(System.Func%7B%600%2COxide.Option%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L376">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_AndThen_" data-uid="Oxide.Option`1.AndThen*"></a>
+  <h4 id="Oxide_Option_1_AndThen__1_System_Func__0_Oxide_Option___0___" data-uid="Oxide.Option`1.AndThen``1(System.Func{`0,Oxide.Option{``0}})">AndThen&lt;TResult&gt;(Func&lt;TOption, Option&lt;TResult&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together if the option is <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, passing the value of the option to
+the chained option provider <code data-dev-comment-type="paramref" class="paramref">optionProvider</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TResult&gt; AndThen&lt;TResult&gt;(Func&lt;TOption, Option&lt;TResult&gt;&gt; optionProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, <a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">optionProvider</span></td>
+        <td><p>The function to call to get the resulting <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;</td>
+        <td><p>The result of calling <code data-dev-comment-type="paramref" class="paramref">optionProvider</code> with the value of the option, if it is a
+<a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, or <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_AndThen__1_System_Func__0_Oxide_Option___0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">optionProvider</code> is lazily evaluated, and is passed the value of the option, unlike
+<a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_And__1_Oxide_Option___0__">And&lt;TResult&gt;(Option&lt;TResult&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_AndThenAsync__1_System_Func__0_System_Threading_Tasks_Task_Oxide_Option___0____.md&amp;value=---%0Auid%3A%20Oxide.Option%601.AndThenAsync%60%601(System.Func%7B%600%2CSystem.Threading.Tasks.Task%7BOxide.Option%7B%60%600%7D%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L422">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_AndThenAsync_" data-uid="Oxide.Option`1.AndThenAsync*"></a>
+  <h4 id="Oxide_Option_1_AndThenAsync__1_System_Func__0_System_Threading_Tasks_Task_Oxide_Option___0____" data-uid="Oxide.Option`1.AndThenAsync``1(System.Func{`0,System.Threading.Tasks.Task{Oxide.Option{``0}}})">AndThenAsync&lt;TResult&gt;(Func&lt;TOption, Task&lt;Option&lt;TResult&gt;&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together if the option is <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, passing the value of the option to
+the chained option provider <code data-dev-comment-type="paramref" class="paramref">optionProvider</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Option&lt;TResult&gt;&gt; AndThenAsync&lt;TResult&gt;(Func&lt;TOption, Task&lt;Option&lt;TResult&gt;&gt;&gt; optionProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;&gt;&gt;</td>
+        <td><span class="parametername">optionProvider</span></td>
+        <td><p>The function to call to get the resulting <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;&gt;</td>
+        <td><p>A task that represents the asynchronous conversion of the value to an <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>, which wraps
+the result of calling the conversion function, if the option is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>. Otherwise, a
+<a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> is returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_AndThenAsync__1_System_Func__0_System_Threading_Tasks_Task_Oxide_Option___0_____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">optionProvider</code> is lazily evaluated, and is passed the value of the option, unlike
+<a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_And__1_Oxide_Option___0__">And&lt;TResult&gt;(Option&lt;TResult&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Equals_Oxide_Option__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Equals(Oxide.Option%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L192">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Equals_" data-uid="Oxide.Option`1.Equals*"></a>
+  <h4 id="Oxide_Option_1_Equals_Oxide_Option__0__" data-uid="Oxide.Option`1.Equals(Oxide.Option{`0})">Equals(Option&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Option&lt;TOption&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_Equals_Oxide_Option__0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Equality for <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> is determined as follows:</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L207">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Equals_" data-uid="Oxide.Option`1.Equals*"></a>
+  <h4 id="Oxide_Option_1_Equals_System_Object_" data-uid="Oxide.Option`1.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Expect_System_String_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Expect(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L244">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Expect_" data-uid="Oxide.Option`1.Expect*"></a>
+  <h4 id="Oxide_Option_1_Expect_System_String_" data-uid="Oxide.Option`1.Expect(System.String)">Expect(String)</h4>
+  <div class="markdown level1 summary"><p>Unwraps the option, yielding the content of a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, throwing an exception with a
+custom message provided by <code data-dev-comment-type="paramref" class="paramref">msg</code> if it is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TOption Expect(string msg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">msg</span></td>
+        <td><p>The custom exception message to throw.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><p>The value in the option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Finally_System_Action__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Finally(System.Action%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L384">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Finally_" data-uid="Oxide.Option`1.Finally*"></a>
+  <h4 id="Oxide_Option_1_Finally_System_Action__0__" data-uid="Oxide.Option`1.Finally(System.Action{`0})">Finally(Action&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains a continuation without modifying the option, if the option is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TOption&gt; Finally(Action&lt;TOption&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><p>The option itself.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_GetHashCode.md&amp;value=---%0Auid%3A%20Oxide.Option%601.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L461">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_GetHashCode_" data-uid="Oxide.Option`1.GetHashCode*"></a>
+  <h4 id="Oxide_Option_1_GetHashCode" data-uid="Oxide.Option`1.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_IfNone_System_Action_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.IfNone(System.Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L398">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_IfNone_" data-uid="Oxide.Option`1.IfNone*"></a>
+  <h4 id="Oxide_Option_1_IfNone_System_Action_" data-uid="Oxide.Option`1.IfNone(System.Action)">IfNone(Action)</h4>
+  <div class="markdown level1 summary"><p>Chains a continuation without modifying the option if the option is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TOption&gt; IfNone(Action action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action to call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><p>The option itself.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Map__1_System_Func__0___0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Map%60%601(System.Func%7B%600%2C%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L296">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Map_" data-uid="Oxide.Option`1.Map*"></a>
+  <h4 id="Oxide_Option_1_Map__1_System_Func__0___0__" data-uid="Oxide.Option`1.Map``1(System.Func{`0,``0})">Map&lt;TResult&gt;(Func&lt;TOption, TResult&gt;)</h4>
+  <div class="markdown level1 summary"><p>Maps the value of the option to an <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> by applying the <code data-dev-comment-type="paramref" class="paramref">converter</code>
+function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TResult&gt; Map&lt;TResult&gt;(Func&lt;TOption, TResult&gt; converter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, TResult&gt;</td>
+        <td><span class="parametername">converter</span></td>
+        <td><p>The converter function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;</td>
+        <td><p>A <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a> if the option has a value, and a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value after conversion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_MapAsync__1_System_Func__0_System_Threading_Tasks_Task___0___.md&amp;value=---%0Auid%3A%20Oxide.Option%601.MapAsync%60%601(System.Func%7B%600%2CSystem.Threading.Tasks.Task%7B%60%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L310">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_MapAsync_" data-uid="Oxide.Option`1.MapAsync*"></a>
+  <h4 id="Oxide_Option_1_MapAsync__1_System_Func__0_System_Threading_Tasks_Task___0___" data-uid="Oxide.Option`1.MapAsync``1(System.Func{`0,System.Threading.Tasks.Task{``0}})">MapAsync&lt;TResult&gt;(Func&lt;TOption, Task&lt;TResult&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Maps the value of the option to an <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> by applying the
+<code data-dev-comment-type="paramref" class="paramref">converter</code> function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Option&lt;TResult&gt;&gt; MapAsync&lt;TResult&gt;(Func&lt;TOption, Task&lt;TResult&gt;&gt; converter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;TResult&gt;&gt;</td>
+        <td><span class="parametername">converter</span></td>
+        <td><p>The conversion function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TResult&gt;&gt;</td>
+        <td><p>A task that represents the asynchronous conversion of the value to an <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>, which
+wraps the result of the conversion function, if the option is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>. Otherwise, a
+<a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> is returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value after conversion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_MapOr__1_System_Func__0___0____0_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.MapOr%60%601(System.Func%7B%600%2C%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L330">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_MapOr_" data-uid="Oxide.Option`1.MapOr*"></a>
+  <h4 id="Oxide_Option_1_MapOr__1_System_Func__0___0____0_" data-uid="Oxide.Option`1.MapOr``1(System.Func{`0,``0},``0)">MapOr&lt;TResult&gt;(Func&lt;TOption, TResult&gt;, TResult)</h4>
+  <div class="markdown level1 summary"><p>Maps a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a> to a <code data-dev-comment-type="typeparamref" class="typeparamref">TResult</code> by applying the <code data-dev-comment-type="paramref" class="paramref">converter</code>
+function,
+or returns <code data-dev-comment-type="paramref" class="paramref">def</code> otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TResult MapOr&lt;TResult&gt;(Func&lt;TOption, TResult&gt; converter, TResult def)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, TResult&gt;</td>
+        <td><span class="parametername">converter</span></td>
+        <td><p>The conversion function.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TResult</span></td>
+        <td><span class="parametername">def</span></td>
+        <td><p>The value to return if the option is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TResult</span></td>
+        <td><p>The <see cref="!:TResult"></see> output of the conversion function if the option has a value, or
+<code data-dev-comment-type="paramref" class="paramref">def</code> if it is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value after conversion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_MapOr__1_System_Func__0___0____0__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">def</code> is eagerly evaluated—if you want lazy evaluation, use
+<a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_MapOr__1_System_Func__0___0__System_Func___0__">MapOr&lt;TResult&gt;(Func&lt;TOption, TResult&gt;, Func&lt;TResult&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_MapOr__1_System_Func__0___0__System_Func___0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.MapOr%60%601(System.Func%7B%600%2C%60%600%7D%2CSystem.Func%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L346">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_MapOr_" data-uid="Oxide.Option`1.MapOr*"></a>
+  <h4 id="Oxide_Option_1_MapOr__1_System_Func__0___0__System_Func___0__" data-uid="Oxide.Option`1.MapOr``1(System.Func{`0,``0},System.Func{``0})">MapOr&lt;TResult&gt;(Func&lt;TOption, TResult&gt;, Func&lt;TResult&gt;)</h4>
+  <div class="markdown level1 summary"><p>Maps a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a> to a <code data-dev-comment-type="typeparamref" class="typeparamref">TResult</code> by
+applying the <code data-dev-comment-type="paramref" class="paramref">converter</code> function or returns the result of calling
+<code data-dev-comment-type="paramref" class="paramref">provider</code> otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TResult MapOr&lt;TResult&gt;(Func&lt;TOption, TResult&gt; converter, Func&lt;TResult&gt; provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TOption, TResult&gt;</td>
+        <td><span class="parametername">converter</span></td>
+        <td><p>The conversion function.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TResult&gt;</td>
+        <td><span class="parametername">provider</span></td>
+        <td><p>The function to call to provide a default value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TResult</span></td>
+        <td><p>The <code data-dev-comment-type="typeparamref" class="typeparamref">TResult</code> output of the conversion function if the option has a value, or the
+result of calling <code data-dev-comment-type="paramref" class="paramref">provider</code> if it is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the resulting value after conversion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Or_Oxide_Option__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Or(Oxide.Option%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L431">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Or_" data-uid="Oxide.Option`1.Or*"></a>
+  <h4 id="Oxide_Option_1_Or_Oxide_Option__0__" data-uid="Oxide.Option`1.Or(Oxide.Option{`0})">Or(Option&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TOption&gt; Or(Option&lt;TOption&gt; other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">other</span></td>
+        <td><p>The other option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><p>The option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, <code data-dev-comment-type="paramref" class="paramref">other</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_Or_Oxide_Option__0___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">other</code> is eagerly evaluated. If lazy evaluation is desired, use <a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_OrElse_System_Func_Oxide_Option__0___">OrElse(Func&lt;Option&lt;TOption&gt;&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_OrElse_System_Func_Oxide_Option__0___.md&amp;value=---%0Auid%3A%20Oxide.Option%601.OrElse(System.Func%7BOxide.Option%7B%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L444">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_OrElse_" data-uid="Oxide.Option`1.OrElse*"></a>
+  <h4 id="Oxide_Option_1_OrElse_System_Func_Oxide_Option__0___" data-uid="Oxide.Option`1.OrElse(System.Func{Oxide.Option{`0}})">OrElse(Func&lt;Option&lt;TOption&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together, calling <code data-dev-comment-type="paramref" class="paramref">optionProvider</code> to provide a result if the option is a
+<a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option&lt;TOption&gt; OrElse(Func&lt;Option&lt;TOption&gt;&gt; optionProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;&gt;</td>
+        <td><span class="parametername">optionProvider</span></td>
+        <td><p>The function to call to get the resulting <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><p>The option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, or the result of calling <code data-dev-comment-type="paramref" class="paramref">optionProvider</code>
+otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_OrElse_System_Func_Oxide_Option__0____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">optionProvider</code> is lazily evaluated.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_OrElseAsync_System_Func_System_Threading_Tasks_Task_Oxide_Option__0____.md&amp;value=---%0Auid%3A%20Oxide.Option%601.OrElseAsync(System.Func%7BSystem.Threading.Tasks.Task%7BOxide.Option%7B%600%7D%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L457">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_OrElseAsync_" data-uid="Oxide.Option`1.OrElseAsync*"></a>
+  <h4 id="Oxide_Option_1_OrElseAsync_System_Func_System_Threading_Tasks_Task_Oxide_Option__0____" data-uid="Oxide.Option`1.OrElseAsync(System.Func{System.Threading.Tasks.Task{Oxide.Option{`0}}})">OrElseAsync(Func&lt;Task&lt;Option&lt;TOption&gt;&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Chains two options together, calling <code data-dev-comment-type="paramref" class="paramref">optionProvider</code> to provide a result if the option is a
+<a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Option&lt;TOption&gt;&gt; OrElseAsync(Func&lt;Task&lt;Option&lt;TOption&gt;&gt;&gt; optionProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;&gt;&gt;</td>
+        <td><span class="parametername">optionProvider</span></td>
+        <td><p>The function to call to get the resulting <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task&lt;TResult&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;&gt;</td>
+        <td><p>A task that represents the asynchronous chaining of two options, which wraps the option if it is
+a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, or the result of calling <code data-dev-comment-type="paramref" class="paramref">optionProvider</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_TryUnwrap__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.TryUnwrap(%600%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L261">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_TryUnwrap_" data-uid="Oxide.Option`1.TryUnwrap*"></a>
+  <h4 id="Oxide_Option_1_TryUnwrap__0__" data-uid="Oxide.Option`1.TryUnwrap(`0@)">TryUnwrap(out TOption)</h4>
+  <div class="markdown level1 summary"><p>Tries to unwrap the value out of the option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, returning <code>true</code>
+if a value was unwrapped, and <code>false</code> otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryUnwrap(out TOption val)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><span class="parametername">val</span></td>
+        <td><p>A location to store the value into.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><code>true</code> if a value was unwrapped, <code>false</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_Unwrap.md&amp;value=---%0Auid%3A%20Oxide.Option%601.Unwrap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L252">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_Unwrap_" data-uid="Oxide.Option`1.Unwrap*"></a>
+  <h4 id="Oxide_Option_1_Unwrap" data-uid="Oxide.Option`1.Unwrap">Unwrap()</h4>
+  <div class="markdown level1 summary"><p>Unwraps the value out of the option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, and throws
+an exception otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TOption Unwrap()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><p>The value in the option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_UnwrapOr__0_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.UnwrapOr(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L277">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_UnwrapOr_" data-uid="Oxide.Option`1.UnwrapOr*"></a>
+  <h4 id="Oxide_Option_1_UnwrapOr__0_" data-uid="Oxide.Option`1.UnwrapOr(`0)">UnwrapOr(TOption)</h4>
+  <div class="markdown level1 summary"><p>Unwraps the value out of the option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, or returns <code data-dev-comment-type="paramref" class="paramref">def</code>
+otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TOption UnwrapOr(TOption def = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><span class="parametername">def</span></td>
+        <td><p>The value to return if the option is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><p>The value in the option, or <code data-dev-comment-type="paramref" class="paramref">def</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Oxide_Option_1_UnwrapOr__0__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">def</code> is eagerly evaluated—if you want lazy evaluation, use
+<a class="xref" href="Oxide.Option-1.html#Oxide_Option_1_UnwrapOr_System_Func__0__">UnwrapOr(Func&lt;TOption&gt;)</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_UnwrapOr_System_Func__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.UnwrapOr(System.Func%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L286">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_UnwrapOr_" data-uid="Oxide.Option`1.UnwrapOr*"></a>
+  <h4 id="Oxide_Option_1_UnwrapOr_System_Func__0__" data-uid="Oxide.Option`1.UnwrapOr(System.Func{`0})">UnwrapOr(Func&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Unwraps the value out of the option if it is a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, or returns the result of calling
+<code data-dev-comment-type="paramref" class="paramref">provider</code> otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TOption UnwrapOr(Func&lt;TOption&gt; provider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">provider</span></td>
+        <td><p>The function to call to provide a default value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><p>The value in the option, or the result of calling <code data-dev-comment-type="paramref" class="paramref">provider</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_op_Equality_Oxide_Option__0__Oxide_Option__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.op_Equality(Oxide.Option%7B%600%7D%2COxide.Option%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L216">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_op_Equality_" data-uid="Oxide.Option`1.op_Equality*"></a>
+  <h4 id="Oxide_Option_1_op_Equality_Oxide_Option__0__Oxide_Option__0__" data-uid="Oxide.Option`1.op_Equality(Oxide.Option{`0},Oxide.Option{`0})">Equality(Option&lt;TOption&gt;, Option&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the two objects are equal to each other.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(Option&lt;TOption&gt; left, Option&lt;TOption&gt; right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><code>true</code> if the objects are equal, <code>false</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_op_Implicit__0__Oxide_Option__0_.md&amp;value=---%0Auid%3A%20Oxide.Option%601.op_Implicit(%600)~Oxide.Option%7B%600%7D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L235">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_op_Implicit_" data-uid="Oxide.Option`1.op_Implicit*"></a>
+  <h4 id="Oxide_Option_1_op_Implicit__0__Oxide_Option__0_" data-uid="Oxide.Option`1.op_Implicit(`0)~Oxide.Option{`0}">Implicit(TOption to Option&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Implicitly converts a <code data-dev-comment-type="typeparamref" class="typeparamref">TOption</code> value to an <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator Option&lt;TOption&gt;(TOption value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOption</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to wrap in an option.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><p>A <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a> wrapping the given value, or a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> if the value is <code>null</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1_op_Inequality_Oxide_Option__0__Oxide_Option__0__.md&amp;value=---%0Auid%3A%20Oxide.Option%601.op_Inequality(Oxide.Option%7B%600%7D%2COxide.Option%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L225">View Source</a>
+  </span>
+  <a id="Oxide_Option_1_op_Inequality_" data-uid="Oxide.Option`1.op_Inequality*"></a>
+  <h4 id="Oxide_Option_1_op_Inequality_Oxide_Option__0__Oxide_Option__0__" data-uid="Oxide.Option`1.op_Inequality(Oxide.Option{`0},Oxide.Option{`0})">Inequality(Option&lt;TOption&gt;, Option&lt;TOption&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the two objects are not equal to each other.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(Option&lt;TOption&gt; left, Option&lt;TOption&gt; right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The first object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Oxide.Option-1.html">Option</a>&lt;TOption&gt;</td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The second object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><code>true</code> if the objects are not equal, <code>false</code> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.iequatable-1">System.IEquatable&lt;T&gt;</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Yield__1___0_">ObjectExtensions.Yield&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Identity__1___0_">ObjectExtensions.Identity&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Let__2___0_System_Func___0___1__">ObjectExtensions.Let&lt;TReceiver, TResult&gt;(TReceiver, Func&lt;TReceiver, TResult&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Also__1___0_System_Action___0__">ObjectExtensions.Also&lt;TReceiver&gt;(TReceiver, Action&lt;TReceiver&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_To__2___0___1_">ObjectExtensions.To&lt;TA, TB&gt;(TA, TB)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeUnless__1___0_System_Func___0_System_Boolean__">ObjectExtensions.TakeUnless&lt;T&gt;(T, Func&lt;T, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeIf__1___0_System_Func___0_System_Boolean__">ObjectExtensions.TakeIf&lt;T&gt;(T, Func&lt;T, Boolean&gt;)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/new/release/1.0/apiSpec/new?filename=Oxide_Option_1.md&amp;value=---%0Auid%3A%20Oxide.Option%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/src/Oxide/Option.cs/#L163" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

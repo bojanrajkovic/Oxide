@@ -1,0 +1,1559 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Oxide
+  name: Oxide
+  href: api/Oxide.html
+  commentId: N:Oxide
+  fullName: Oxide
+  nameWithType: Oxide
+- uid: Oxide.EnumerableExtension
+  name: EnumerableExtension
+  href: api/Oxide.EnumerableExtension.html
+  commentId: T:Oxide.EnumerableExtension
+  fullName: Oxide.EnumerableExtension
+  nameWithType: EnumerableExtension
+- uid: Oxide.EnumerableExtension.Head*
+  name: Head
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Head_
+  commentId: Overload:Oxide.EnumerableExtension.Head
+  isSpec: "True"
+  fullName: Oxide.EnumerableExtension.Head
+  nameWithType: EnumerableExtension.Head
+- uid: Oxide.EnumerableExtension.Head``1(System.Collections.Generic.IEnumerable{``0})
+  name: Head<T>(IEnumerable<T>)
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Head__1_System_Collections_Generic_IEnumerable___0__
+  commentId: M:Oxide.EnumerableExtension.Head``1(System.Collections.Generic.IEnumerable{``0})
+  name.vb: Head(Of T)(IEnumerable(Of T))
+  fullName: Oxide.EnumerableExtension.Head<T>(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: Oxide.EnumerableExtension.Head(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: EnumerableExtension.Head<T>(IEnumerable<T>)
+  nameWithType.vb: EnumerableExtension.Head(Of T)(IEnumerable(Of T))
+- uid: Oxide.EnumerableExtension.Rest*
+  name: Rest
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Rest_
+  commentId: Overload:Oxide.EnumerableExtension.Rest
+  isSpec: "True"
+  fullName: Oxide.EnumerableExtension.Rest
+  nameWithType: EnumerableExtension.Rest
+- uid: Oxide.EnumerableExtension.Rest``1(System.Collections.Generic.IEnumerable{``0})
+  name: Rest<T>(IEnumerable<T>)
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Rest__1_System_Collections_Generic_IEnumerable___0__
+  commentId: M:Oxide.EnumerableExtension.Rest``1(System.Collections.Generic.IEnumerable{``0})
+  name.vb: Rest(Of T)(IEnumerable(Of T))
+  fullName: Oxide.EnumerableExtension.Rest<T>(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: Oxide.EnumerableExtension.Rest(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: EnumerableExtension.Rest<T>(IEnumerable<T>)
+  nameWithType.vb: EnumerableExtension.Rest(Of T)(IEnumerable(Of T))
+- uid: Oxide.EnumerableExtension.Tail*
+  name: Tail
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Tail_
+  commentId: Overload:Oxide.EnumerableExtension.Tail
+  isSpec: "True"
+  fullName: Oxide.EnumerableExtension.Tail
+  nameWithType: EnumerableExtension.Tail
+- uid: Oxide.EnumerableExtension.Tail``1(System.Collections.Generic.IEnumerable{``0})
+  name: Tail<T>(IEnumerable<T>)
+  href: api/Oxide.EnumerableExtension.html#Oxide_EnumerableExtension_Tail__1_System_Collections_Generic_IEnumerable___0__
+  commentId: M:Oxide.EnumerableExtension.Tail``1(System.Collections.Generic.IEnumerable{``0})
+  name.vb: Tail(Of T)(IEnumerable(Of T))
+  fullName: Oxide.EnumerableExtension.Tail<T>(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: Oxide.EnumerableExtension.Tail(Of T)(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: EnumerableExtension.Tail<T>(IEnumerable<T>)
+  nameWithType.vb: EnumerableExtension.Tail(Of T)(IEnumerable(Of T))
+- uid: Oxide.Environment
+  name: Environment
+  href: api/Oxide.Environment.html
+  commentId: T:Oxide.Environment
+  fullName: Oxide.Environment
+  nameWithType: Environment
+- uid: Oxide.Environment.GetEnvironmentVariable(System.String)
+  name: GetEnvironmentVariable(String)
+  href: api/Oxide.Environment.html#Oxide_Environment_GetEnvironmentVariable_System_String_
+  commentId: M:Oxide.Environment.GetEnvironmentVariable(System.String)
+  fullName: Oxide.Environment.GetEnvironmentVariable(System.String)
+  nameWithType: Environment.GetEnvironmentVariable(String)
+- uid: Oxide.Environment.GetEnvironmentVariable*
+  name: GetEnvironmentVariable
+  href: api/Oxide.Environment.html#Oxide_Environment_GetEnvironmentVariable_
+  commentId: Overload:Oxide.Environment.GetEnvironmentVariable
+  isSpec: "True"
+  fullName: Oxide.Environment.GetEnvironmentVariable
+  nameWithType: Environment.GetEnvironmentVariable
+- uid: Oxide.Error`2
+  name: Error<TResult, TError>
+  href: api/Oxide.Error-2.html
+  commentId: T:Oxide.Error`2
+  name.vb: Error(Of TResult, TError)
+  fullName: Oxide.Error<TResult, TError>
+  fullName.vb: Oxide.Error(Of TResult, TError)
+  nameWithType: Error<TResult, TError>
+  nameWithType.vb: Error(Of TResult, TError)
+- uid: Oxide.Http
+  name: Http
+  href: api/Oxide.Http.html
+  commentId: T:Oxide.Http
+  fullName: Oxide.Http
+  nameWithType: Http
+- uid: Oxide.Http.SafelyDeleteAsync(System.Net.Http.HttpClient,System.String)
+  name: SafelyDeleteAsync(HttpClient, String)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyDeleteAsync_System_Net_Http_HttpClient_System_String_
+  commentId: M:Oxide.Http.SafelyDeleteAsync(System.Net.Http.HttpClient,System.String)
+  fullName: Oxide.Http.SafelyDeleteAsync(System.Net.Http.HttpClient, System.String)
+  nameWithType: Http.SafelyDeleteAsync(HttpClient, String)
+- uid: Oxide.Http.SafelyDeleteAsync*
+  name: SafelyDeleteAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyDeleteAsync_
+  commentId: Overload:Oxide.Http.SafelyDeleteAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyDeleteAsync
+  nameWithType: Http.SafelyDeleteAsync
+- uid: Oxide.Http.SafelyGetAsync(System.Net.Http.HttpClient,System.String)
+  name: SafelyGetAsync(HttpClient, String)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetAsync_System_Net_Http_HttpClient_System_String_
+  commentId: M:Oxide.Http.SafelyGetAsync(System.Net.Http.HttpClient,System.String)
+  fullName: Oxide.Http.SafelyGetAsync(System.Net.Http.HttpClient, System.String)
+  nameWithType: Http.SafelyGetAsync(HttpClient, String)
+- uid: Oxide.Http.SafelyGetAsync*
+  name: SafelyGetAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetAsync_
+  commentId: Overload:Oxide.Http.SafelyGetAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyGetAsync
+  nameWithType: Http.SafelyGetAsync
+- uid: Oxide.Http.SafelyGetByteArrayAsync(System.Net.Http.HttpClient,System.String)
+  name: SafelyGetByteArrayAsync(HttpClient, String)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetByteArrayAsync_System_Net_Http_HttpClient_System_String_
+  commentId: M:Oxide.Http.SafelyGetByteArrayAsync(System.Net.Http.HttpClient,System.String)
+  fullName: Oxide.Http.SafelyGetByteArrayAsync(System.Net.Http.HttpClient, System.String)
+  nameWithType: Http.SafelyGetByteArrayAsync(HttpClient, String)
+- uid: Oxide.Http.SafelyGetByteArrayAsync*
+  name: SafelyGetByteArrayAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetByteArrayAsync_
+  commentId: Overload:Oxide.Http.SafelyGetByteArrayAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyGetByteArrayAsync
+  nameWithType: Http.SafelyGetByteArrayAsync
+- uid: Oxide.Http.SafelyGetStreamAsync(System.Net.Http.HttpClient,System.String)
+  name: SafelyGetStreamAsync(HttpClient, String)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetStreamAsync_System_Net_Http_HttpClient_System_String_
+  commentId: M:Oxide.Http.SafelyGetStreamAsync(System.Net.Http.HttpClient,System.String)
+  fullName: Oxide.Http.SafelyGetStreamAsync(System.Net.Http.HttpClient, System.String)
+  nameWithType: Http.SafelyGetStreamAsync(HttpClient, String)
+- uid: Oxide.Http.SafelyGetStreamAsync*
+  name: SafelyGetStreamAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetStreamAsync_
+  commentId: Overload:Oxide.Http.SafelyGetStreamAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyGetStreamAsync
+  nameWithType: Http.SafelyGetStreamAsync
+- uid: Oxide.Http.SafelyGetStringAsync(System.Net.Http.HttpClient,System.String)
+  name: SafelyGetStringAsync(HttpClient, String)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetStringAsync_System_Net_Http_HttpClient_System_String_
+  commentId: M:Oxide.Http.SafelyGetStringAsync(System.Net.Http.HttpClient,System.String)
+  fullName: Oxide.Http.SafelyGetStringAsync(System.Net.Http.HttpClient, System.String)
+  nameWithType: Http.SafelyGetStringAsync(HttpClient, String)
+- uid: Oxide.Http.SafelyGetStringAsync*
+  name: SafelyGetStringAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyGetStringAsync_
+  commentId: Overload:Oxide.Http.SafelyGetStringAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyGetStringAsync
+  nameWithType: Http.SafelyGetStringAsync
+- uid: Oxide.Http.SafelyPostAsync(System.Net.Http.HttpClient,System.String,System.Net.Http.HttpContent)
+  name: SafelyPostAsync(HttpClient, String, HttpContent)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyPostAsync_System_Net_Http_HttpClient_System_String_System_Net_Http_HttpContent_
+  commentId: M:Oxide.Http.SafelyPostAsync(System.Net.Http.HttpClient,System.String,System.Net.Http.HttpContent)
+  fullName: Oxide.Http.SafelyPostAsync(System.Net.Http.HttpClient, System.String, System.Net.Http.HttpContent)
+  nameWithType: Http.SafelyPostAsync(HttpClient, String, HttpContent)
+- uid: Oxide.Http.SafelyPostAsync*
+  name: SafelyPostAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyPostAsync_
+  commentId: Overload:Oxide.Http.SafelyPostAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyPostAsync
+  nameWithType: Http.SafelyPostAsync
+- uid: Oxide.Http.SafelyPutAsync(System.Net.Http.HttpClient,System.String,System.Net.Http.HttpContent)
+  name: SafelyPutAsync(HttpClient, String, HttpContent)
+  href: api/Oxide.Http.html#Oxide_Http_SafelyPutAsync_System_Net_Http_HttpClient_System_String_System_Net_Http_HttpContent_
+  commentId: M:Oxide.Http.SafelyPutAsync(System.Net.Http.HttpClient,System.String,System.Net.Http.HttpContent)
+  fullName: Oxide.Http.SafelyPutAsync(System.Net.Http.HttpClient, System.String, System.Net.Http.HttpContent)
+  nameWithType: Http.SafelyPutAsync(HttpClient, String, HttpContent)
+- uid: Oxide.Http.SafelyPutAsync*
+  name: SafelyPutAsync
+  href: api/Oxide.Http.html#Oxide_Http_SafelyPutAsync_
+  commentId: Overload:Oxide.Http.SafelyPutAsync
+  isSpec: "True"
+  fullName: Oxide.Http.SafelyPutAsync
+  nameWithType: Http.SafelyPutAsync
+- uid: Oxide.None`1
+  name: None<T>
+  href: api/Oxide.None-1.html
+  commentId: T:Oxide.None`1
+  name.vb: None(Of T)
+  fullName: Oxide.None<T>
+  fullName.vb: Oxide.None(Of T)
+  nameWithType: None<T>
+  nameWithType.vb: None(Of T)
+- uid: Oxide.ObjectExtensions
+  name: ObjectExtensions
+  href: api/Oxide.ObjectExtensions.html
+  commentId: T:Oxide.ObjectExtensions
+  fullName: Oxide.ObjectExtensions
+  nameWithType: ObjectExtensions
+- uid: Oxide.ObjectExtensions.Also*
+  name: Also
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Also_
+  commentId: Overload:Oxide.ObjectExtensions.Also
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.Also
+  nameWithType: ObjectExtensions.Also
+- uid: Oxide.ObjectExtensions.Also``1(``0,System.Action{``0})
+  name: Also<TReceiver>(TReceiver, Action<TReceiver>)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Also__1___0_System_Action___0__
+  commentId: M:Oxide.ObjectExtensions.Also``1(``0,System.Action{``0})
+  name.vb: Also(Of TReceiver)(TReceiver, Action(Of TReceiver))
+  fullName: Oxide.ObjectExtensions.Also<TReceiver>(TReceiver, System.Action<TReceiver>)
+  fullName.vb: Oxide.ObjectExtensions.Also(Of TReceiver)(TReceiver, System.Action(Of TReceiver))
+  nameWithType: ObjectExtensions.Also<TReceiver>(TReceiver, Action<TReceiver>)
+  nameWithType.vb: ObjectExtensions.Also(Of TReceiver)(TReceiver, Action(Of TReceiver))
+- uid: Oxide.ObjectExtensions.Identity*
+  name: Identity
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Identity_
+  commentId: Overload:Oxide.ObjectExtensions.Identity
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.Identity
+  nameWithType: ObjectExtensions.Identity
+- uid: Oxide.ObjectExtensions.Identity``1(``0)
+  name: Identity<T>(T)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Identity__1___0_
+  commentId: M:Oxide.ObjectExtensions.Identity``1(``0)
+  name.vb: Identity(Of T)(T)
+  fullName: Oxide.ObjectExtensions.Identity<T>(T)
+  fullName.vb: Oxide.ObjectExtensions.Identity(Of T)(T)
+  nameWithType: ObjectExtensions.Identity<T>(T)
+  nameWithType.vb: ObjectExtensions.Identity(Of T)(T)
+- uid: Oxide.ObjectExtensions.Let*
+  name: Let
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Let_
+  commentId: Overload:Oxide.ObjectExtensions.Let
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.Let
+  nameWithType: ObjectExtensions.Let
+- uid: Oxide.ObjectExtensions.Let``2(``0,System.Func{``0,``1})
+  name: Let<TReceiver, TResult>(TReceiver, Func<TReceiver, TResult>)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Let__2___0_System_Func___0___1__
+  commentId: M:Oxide.ObjectExtensions.Let``2(``0,System.Func{``0,``1})
+  name.vb: Let(Of TReceiver, TResult)(TReceiver, Func(Of TReceiver, TResult))
+  fullName: Oxide.ObjectExtensions.Let<TReceiver, TResult>(TReceiver, System.Func<TReceiver, TResult>)
+  fullName.vb: Oxide.ObjectExtensions.Let(Of TReceiver, TResult)(TReceiver, System.Func(Of TReceiver, TResult))
+  nameWithType: ObjectExtensions.Let<TReceiver, TResult>(TReceiver, Func<TReceiver, TResult>)
+  nameWithType.vb: ObjectExtensions.Let(Of TReceiver, TResult)(TReceiver, Func(Of TReceiver, TResult))
+- uid: Oxide.ObjectExtensions.TakeIf*
+  name: TakeIf
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeIf_
+  commentId: Overload:Oxide.ObjectExtensions.TakeIf
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.TakeIf
+  nameWithType: ObjectExtensions.TakeIf
+- uid: Oxide.ObjectExtensions.TakeIf``1(``0,System.Func{``0,System.Boolean})
+  name: TakeIf<T>(T, Func<T, Boolean>)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeIf__1___0_System_Func___0_System_Boolean__
+  commentId: M:Oxide.ObjectExtensions.TakeIf``1(``0,System.Func{``0,System.Boolean})
+  name.vb: TakeIf(Of T)(T, Func(Of T, Boolean))
+  fullName: Oxide.ObjectExtensions.TakeIf<T>(T, System.Func<T, System.Boolean>)
+  fullName.vb: Oxide.ObjectExtensions.TakeIf(Of T)(T, System.Func(Of T, System.Boolean))
+  nameWithType: ObjectExtensions.TakeIf<T>(T, Func<T, Boolean>)
+  nameWithType.vb: ObjectExtensions.TakeIf(Of T)(T, Func(Of T, Boolean))
+- uid: Oxide.ObjectExtensions.TakeUnless*
+  name: TakeUnless
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeUnless_
+  commentId: Overload:Oxide.ObjectExtensions.TakeUnless
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.TakeUnless
+  nameWithType: ObjectExtensions.TakeUnless
+- uid: Oxide.ObjectExtensions.TakeUnless``1(``0,System.Func{``0,System.Boolean})
+  name: TakeUnless<T>(T, Func<T, Boolean>)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_TakeUnless__1___0_System_Func___0_System_Boolean__
+  commentId: M:Oxide.ObjectExtensions.TakeUnless``1(``0,System.Func{``0,System.Boolean})
+  name.vb: TakeUnless(Of T)(T, Func(Of T, Boolean))
+  fullName: Oxide.ObjectExtensions.TakeUnless<T>(T, System.Func<T, System.Boolean>)
+  fullName.vb: Oxide.ObjectExtensions.TakeUnless(Of T)(T, System.Func(Of T, System.Boolean))
+  nameWithType: ObjectExtensions.TakeUnless<T>(T, Func<T, Boolean>)
+  nameWithType.vb: ObjectExtensions.TakeUnless(Of T)(T, Func(Of T, Boolean))
+- uid: Oxide.ObjectExtensions.To*
+  name: To
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_To_
+  commentId: Overload:Oxide.ObjectExtensions.To
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.To
+  nameWithType: ObjectExtensions.To
+- uid: Oxide.ObjectExtensions.To``2(``0,``1)
+  name: To<TA, TB>(TA, TB)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_To__2___0___1_
+  commentId: M:Oxide.ObjectExtensions.To``2(``0,``1)
+  name.vb: To(Of TA, TB)(TA, TB)
+  fullName: Oxide.ObjectExtensions.To<TA, TB>(TA, TB)
+  fullName.vb: Oxide.ObjectExtensions.To(Of TA, TB)(TA, TB)
+  nameWithType: ObjectExtensions.To<TA, TB>(TA, TB)
+  nameWithType.vb: ObjectExtensions.To(Of TA, TB)(TA, TB)
+- uid: Oxide.ObjectExtensions.Use*
+  name: Use
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Use_
+  commentId: Overload:Oxide.ObjectExtensions.Use
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.Use
+  nameWithType: ObjectExtensions.Use
+- uid: Oxide.ObjectExtensions.Use``2(``0,System.Func{``0,``1})
+  name: Use<TReceiver, TResult>(TReceiver, Func<TReceiver, TResult>)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Use__2___0_System_Func___0___1__
+  commentId: M:Oxide.ObjectExtensions.Use``2(``0,System.Func{``0,``1})
+  name.vb: Use(Of TReceiver, TResult)(TReceiver, Func(Of TReceiver, TResult))
+  fullName: Oxide.ObjectExtensions.Use<TReceiver, TResult>(TReceiver, System.Func<TReceiver, TResult>)
+  fullName.vb: Oxide.ObjectExtensions.Use(Of TReceiver, TResult)(TReceiver, System.Func(Of TReceiver, TResult))
+  nameWithType: ObjectExtensions.Use<TReceiver, TResult>(TReceiver, Func<TReceiver, TResult>)
+  nameWithType.vb: ObjectExtensions.Use(Of TReceiver, TResult)(TReceiver, Func(Of TReceiver, TResult))
+- uid: Oxide.ObjectExtensions.Yield*
+  name: Yield
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Yield_
+  commentId: Overload:Oxide.ObjectExtensions.Yield
+  isSpec: "True"
+  fullName: Oxide.ObjectExtensions.Yield
+  nameWithType: ObjectExtensions.Yield
+- uid: Oxide.ObjectExtensions.Yield``1(``0)
+  name: Yield<T>(T)
+  href: api/Oxide.ObjectExtensions.html#Oxide_ObjectExtensions_Yield__1___0_
+  commentId: M:Oxide.ObjectExtensions.Yield``1(``0)
+  name.vb: Yield(Of T)(T)
+  fullName: Oxide.ObjectExtensions.Yield<T>(T)
+  fullName.vb: Oxide.ObjectExtensions.Yield(Of T)(T)
+  nameWithType: ObjectExtensions.Yield<T>(T)
+  nameWithType.vb: ObjectExtensions.Yield(Of T)(T)
+- uid: Oxide.Ok`2
+  name: Ok<TResult, TError>
+  href: api/Oxide.Ok-2.html
+  commentId: T:Oxide.Ok`2
+  name.vb: Ok(Of TResult, TError)
+  fullName: Oxide.Ok<TResult, TError>
+  fullName.vb: Oxide.Ok(Of TResult, TError)
+  nameWithType: Ok<TResult, TError>
+  nameWithType.vb: Ok(Of TResult, TError)
+- uid: Oxide.Option
+  name: Option
+  href: api/Oxide.Option.html
+  commentId: T:Oxide.Option
+  fullName: Oxide.Option
+  nameWithType: Option
+- uid: Oxide.Option.IsNone
+  name: IsNone
+  href: api/Oxide.Option.html#Oxide_Option_IsNone
+  commentId: P:Oxide.Option.IsNone
+  fullName: Oxide.Option.IsNone
+  nameWithType: Option.IsNone
+- uid: Oxide.Option.IsNone*
+  name: IsNone
+  href: api/Oxide.Option.html#Oxide_Option_IsNone_
+  commentId: Overload:Oxide.Option.IsNone
+  isSpec: "True"
+  fullName: Oxide.Option.IsNone
+  nameWithType: Option.IsNone
+- uid: Oxide.Option.IsSome
+  name: IsSome
+  href: api/Oxide.Option.html#Oxide_Option_IsSome
+  commentId: P:Oxide.Option.IsSome
+  fullName: Oxide.Option.IsSome
+  nameWithType: Option.IsSome
+- uid: Oxide.Option.IsSome*
+  name: IsSome
+  href: api/Oxide.Option.html#Oxide_Option_IsSome_
+  commentId: Overload:Oxide.Option.IsSome
+  isSpec: "True"
+  fullName: Oxide.Option.IsSome
+  nameWithType: Option.IsSome
+- uid: Oxide.Option`1
+  name: Option<TOption>
+  href: api/Oxide.Option-1.html
+  commentId: T:Oxide.Option`1
+  name.vb: Option(Of TOption)
+  fullName: Oxide.Option<TOption>
+  fullName.vb: Oxide.Option(Of TOption)
+  nameWithType: Option<TOption>
+  nameWithType.vb: Option(Of TOption)
+- uid: Oxide.Option`1.And*
+  name: And
+  href: api/Oxide.Option-1.html#Oxide_Option_1_And_
+  commentId: Overload:Oxide.Option`1.And
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.And
+  fullName.vb: Oxide.Option(Of TOption).And
+  nameWithType: Option<TOption>.And
+  nameWithType.vb: Option(Of TOption).And
+- uid: Oxide.Option`1.And``1(Oxide.Option{``0})
+  name: And<TResult>(Option<TResult>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_And__1_Oxide_Option___0__
+  commentId: M:Oxide.Option`1.And``1(Oxide.Option{``0})
+  name.vb: And(Of TResult)(Option(Of TResult))
+  fullName: Oxide.Option<TOption>.And<TResult>(Oxide.Option<TResult>)
+  fullName.vb: Oxide.Option(Of TOption).And(Of TResult)(Oxide.Option(Of TResult))
+  nameWithType: Option<TOption>.And<TResult>(Option<TResult>)
+  nameWithType.vb: Option(Of TOption).And(Of TResult)(Option(Of TResult))
+- uid: Oxide.Option`1.AndThen*
+  name: AndThen
+  href: api/Oxide.Option-1.html#Oxide_Option_1_AndThen_
+  commentId: Overload:Oxide.Option`1.AndThen
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.AndThen
+  fullName.vb: Oxide.Option(Of TOption).AndThen
+  nameWithType: Option<TOption>.AndThen
+  nameWithType.vb: Option(Of TOption).AndThen
+- uid: Oxide.Option`1.AndThen``1(System.Func{`0,Oxide.Option{``0}})
+  name: AndThen<TResult>(Func<TOption, Option<TResult>>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_AndThen__1_System_Func__0_Oxide_Option___0___
+  commentId: M:Oxide.Option`1.AndThen``1(System.Func{`0,Oxide.Option{``0}})
+  name.vb: AndThen(Of TResult)(Func(Of TOption, Option(Of TResult)))
+  fullName: Oxide.Option<TOption>.AndThen<TResult>(System.Func<TOption, Oxide.Option<TResult>>)
+  fullName.vb: Oxide.Option(Of TOption).AndThen(Of TResult)(System.Func(Of TOption, Oxide.Option(Of TResult)))
+  nameWithType: Option<TOption>.AndThen<TResult>(Func<TOption, Option<TResult>>)
+  nameWithType.vb: Option(Of TOption).AndThen(Of TResult)(Func(Of TOption, Option(Of TResult)))
+- uid: Oxide.Option`1.AndThenAsync*
+  name: AndThenAsync
+  href: api/Oxide.Option-1.html#Oxide_Option_1_AndThenAsync_
+  commentId: Overload:Oxide.Option`1.AndThenAsync
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.AndThenAsync
+  fullName.vb: Oxide.Option(Of TOption).AndThenAsync
+  nameWithType: Option<TOption>.AndThenAsync
+  nameWithType.vb: Option(Of TOption).AndThenAsync
+- uid: Oxide.Option`1.AndThenAsync``1(System.Func{`0,System.Threading.Tasks.Task{Oxide.Option{``0}}})
+  name: AndThenAsync<TResult>(Func<TOption, Task<Option<TResult>>>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_AndThenAsync__1_System_Func__0_System_Threading_Tasks_Task_Oxide_Option___0____
+  commentId: M:Oxide.Option`1.AndThenAsync``1(System.Func{`0,System.Threading.Tasks.Task{Oxide.Option{``0}}})
+  name.vb: AndThenAsync(Of TResult)(Func(Of TOption, Task(Of Option(Of TResult))))
+  fullName: Oxide.Option<TOption>.AndThenAsync<TResult>(System.Func<TOption, System.Threading.Tasks.Task<Oxide.Option<TResult>>>)
+  fullName.vb: Oxide.Option(Of TOption).AndThenAsync(Of TResult)(System.Func(Of TOption, System.Threading.Tasks.Task(Of Oxide.Option(Of TResult))))
+  nameWithType: Option<TOption>.AndThenAsync<TResult>(Func<TOption, Task<Option<TResult>>>)
+  nameWithType.vb: Option(Of TOption).AndThenAsync(Of TResult)(Func(Of TOption, Task(Of Option(Of TResult))))
+- uid: Oxide.Option`1.Equals(Oxide.Option{`0})
+  name: Equals(Option<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Equals_Oxide_Option__0__
+  commentId: M:Oxide.Option`1.Equals(Oxide.Option{`0})
+  name.vb: Equals(Option(Of TOption))
+  fullName: Oxide.Option<TOption>.Equals(Oxide.Option<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Equals(Oxide.Option(Of TOption))
+  nameWithType: Option<TOption>.Equals(Option<TOption>)
+  nameWithType.vb: Option(Of TOption).Equals(Option(Of TOption))
+- uid: Oxide.Option`1.Equals(System.Object)
+  name: Equals(Object)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Equals_System_Object_
+  commentId: M:Oxide.Option`1.Equals(System.Object)
+  fullName: Oxide.Option<TOption>.Equals(System.Object)
+  fullName.vb: Oxide.Option(Of TOption).Equals(System.Object)
+  nameWithType: Option<TOption>.Equals(Object)
+  nameWithType.vb: Option(Of TOption).Equals(Object)
+- uid: Oxide.Option`1.Equals*
+  name: Equals
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Equals_
+  commentId: Overload:Oxide.Option`1.Equals
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Equals
+  fullName.vb: Oxide.Option(Of TOption).Equals
+  nameWithType: Option<TOption>.Equals
+  nameWithType.vb: Option(Of TOption).Equals
+- uid: Oxide.Option`1.Expect(System.String)
+  name: Expect(String)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Expect_System_String_
+  commentId: M:Oxide.Option`1.Expect(System.String)
+  fullName: Oxide.Option<TOption>.Expect(System.String)
+  fullName.vb: Oxide.Option(Of TOption).Expect(System.String)
+  nameWithType: Option<TOption>.Expect(String)
+  nameWithType.vb: Option(Of TOption).Expect(String)
+- uid: Oxide.Option`1.Expect*
+  name: Expect
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Expect_
+  commentId: Overload:Oxide.Option`1.Expect
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Expect
+  fullName.vb: Oxide.Option(Of TOption).Expect
+  nameWithType: Option<TOption>.Expect
+  nameWithType.vb: Option(Of TOption).Expect
+- uid: Oxide.Option`1.Finally(System.Action{`0})
+  name: Finally(Action<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Finally_System_Action__0__
+  commentId: M:Oxide.Option`1.Finally(System.Action{`0})
+  name.vb: Finally(Action(Of TOption))
+  fullName: Oxide.Option<TOption>.Finally(System.Action<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Finally(System.Action(Of TOption))
+  nameWithType: Option<TOption>.Finally(Action<TOption>)
+  nameWithType.vb: Option(Of TOption).Finally(Action(Of TOption))
+- uid: Oxide.Option`1.Finally*
+  name: Finally
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Finally_
+  commentId: Overload:Oxide.Option`1.Finally
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Finally
+  fullName.vb: Oxide.Option(Of TOption).Finally
+  nameWithType: Option<TOption>.Finally
+  nameWithType.vb: Option(Of TOption).Finally
+- uid: Oxide.Option`1.GetHashCode
+  name: GetHashCode()
+  href: api/Oxide.Option-1.html#Oxide_Option_1_GetHashCode
+  commentId: M:Oxide.Option`1.GetHashCode
+  fullName: Oxide.Option<TOption>.GetHashCode()
+  fullName.vb: Oxide.Option(Of TOption).GetHashCode()
+  nameWithType: Option<TOption>.GetHashCode()
+  nameWithType.vb: Option(Of TOption).GetHashCode()
+- uid: Oxide.Option`1.GetHashCode*
+  name: GetHashCode
+  href: api/Oxide.Option-1.html#Oxide_Option_1_GetHashCode_
+  commentId: Overload:Oxide.Option`1.GetHashCode
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.GetHashCode
+  fullName.vb: Oxide.Option(Of TOption).GetHashCode
+  nameWithType: Option<TOption>.GetHashCode
+  nameWithType.vb: Option(Of TOption).GetHashCode
+- uid: Oxide.Option`1.IfNone(System.Action)
+  name: IfNone(Action)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_IfNone_System_Action_
+  commentId: M:Oxide.Option`1.IfNone(System.Action)
+  fullName: Oxide.Option<TOption>.IfNone(System.Action)
+  fullName.vb: Oxide.Option(Of TOption).IfNone(System.Action)
+  nameWithType: Option<TOption>.IfNone(Action)
+  nameWithType.vb: Option(Of TOption).IfNone(Action)
+- uid: Oxide.Option`1.IfNone*
+  name: IfNone
+  href: api/Oxide.Option-1.html#Oxide_Option_1_IfNone_
+  commentId: Overload:Oxide.Option`1.IfNone
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.IfNone
+  fullName.vb: Oxide.Option(Of TOption).IfNone
+  nameWithType: Option<TOption>.IfNone
+  nameWithType.vb: Option(Of TOption).IfNone
+- uid: Oxide.Option`1.Map*
+  name: Map
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Map_
+  commentId: Overload:Oxide.Option`1.Map
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Map
+  fullName.vb: Oxide.Option(Of TOption).Map
+  nameWithType: Option<TOption>.Map
+  nameWithType.vb: Option(Of TOption).Map
+- uid: Oxide.Option`1.Map``1(System.Func{`0,``0})
+  name: Map<TResult>(Func<TOption, TResult>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Map__1_System_Func__0___0__
+  commentId: M:Oxide.Option`1.Map``1(System.Func{`0,``0})
+  name.vb: Map(Of TResult)(Func(Of TOption, TResult))
+  fullName: Oxide.Option<TOption>.Map<TResult>(System.Func<TOption, TResult>)
+  fullName.vb: Oxide.Option(Of TOption).Map(Of TResult)(System.Func(Of TOption, TResult))
+  nameWithType: Option<TOption>.Map<TResult>(Func<TOption, TResult>)
+  nameWithType.vb: Option(Of TOption).Map(Of TResult)(Func(Of TOption, TResult))
+- uid: Oxide.Option`1.MapAsync*
+  name: MapAsync
+  href: api/Oxide.Option-1.html#Oxide_Option_1_MapAsync_
+  commentId: Overload:Oxide.Option`1.MapAsync
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.MapAsync
+  fullName.vb: Oxide.Option(Of TOption).MapAsync
+  nameWithType: Option<TOption>.MapAsync
+  nameWithType.vb: Option(Of TOption).MapAsync
+- uid: Oxide.Option`1.MapAsync``1(System.Func{`0,System.Threading.Tasks.Task{``0}})
+  name: MapAsync<TResult>(Func<TOption, Task<TResult>>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_MapAsync__1_System_Func__0_System_Threading_Tasks_Task___0___
+  commentId: M:Oxide.Option`1.MapAsync``1(System.Func{`0,System.Threading.Tasks.Task{``0}})
+  name.vb: MapAsync(Of TResult)(Func(Of TOption, Task(Of TResult)))
+  fullName: Oxide.Option<TOption>.MapAsync<TResult>(System.Func<TOption, System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Oxide.Option(Of TOption).MapAsync(Of TResult)(System.Func(Of TOption, System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: Option<TOption>.MapAsync<TResult>(Func<TOption, Task<TResult>>)
+  nameWithType.vb: Option(Of TOption).MapAsync(Of TResult)(Func(Of TOption, Task(Of TResult)))
+- uid: Oxide.Option`1.MapOr*
+  name: MapOr
+  href: api/Oxide.Option-1.html#Oxide_Option_1_MapOr_
+  commentId: Overload:Oxide.Option`1.MapOr
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.MapOr
+  fullName.vb: Oxide.Option(Of TOption).MapOr
+  nameWithType: Option<TOption>.MapOr
+  nameWithType.vb: Option(Of TOption).MapOr
+- uid: Oxide.Option`1.MapOr``1(System.Func{`0,``0},``0)
+  name: MapOr<TResult>(Func<TOption, TResult>, TResult)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_MapOr__1_System_Func__0___0____0_
+  commentId: M:Oxide.Option`1.MapOr``1(System.Func{`0,``0},``0)
+  name.vb: MapOr(Of TResult)(Func(Of TOption, TResult), TResult)
+  fullName: Oxide.Option<TOption>.MapOr<TResult>(System.Func<TOption, TResult>, TResult)
+  fullName.vb: Oxide.Option(Of TOption).MapOr(Of TResult)(System.Func(Of TOption, TResult), TResult)
+  nameWithType: Option<TOption>.MapOr<TResult>(Func<TOption, TResult>, TResult)
+  nameWithType.vb: Option(Of TOption).MapOr(Of TResult)(Func(Of TOption, TResult), TResult)
+- uid: Oxide.Option`1.MapOr``1(System.Func{`0,``0},System.Func{``0})
+  name: MapOr<TResult>(Func<TOption, TResult>, Func<TResult>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_MapOr__1_System_Func__0___0__System_Func___0__
+  commentId: M:Oxide.Option`1.MapOr``1(System.Func{`0,``0},System.Func{``0})
+  name.vb: MapOr(Of TResult)(Func(Of TOption, TResult), Func(Of TResult))
+  fullName: Oxide.Option<TOption>.MapOr<TResult>(System.Func<TOption, TResult>, System.Func<TResult>)
+  fullName.vb: Oxide.Option(Of TOption).MapOr(Of TResult)(System.Func(Of TOption, TResult), System.Func(Of TResult))
+  nameWithType: Option<TOption>.MapOr<TResult>(Func<TOption, TResult>, Func<TResult>)
+  nameWithType.vb: Option(Of TOption).MapOr(Of TResult)(Func(Of TOption, TResult), Func(Of TResult))
+- uid: Oxide.Option`1.op_Equality(Oxide.Option{`0},Oxide.Option{`0})
+  name: Equality(Option<TOption>, Option<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Equality_Oxide_Option__0__Oxide_Option__0__
+  commentId: M:Oxide.Option`1.op_Equality(Oxide.Option{`0},Oxide.Option{`0})
+  name.vb: Equality(Option(Of TOption), Option(Of TOption))
+  fullName: Oxide.Option<TOption>.Equality(Oxide.Option<TOption>, Oxide.Option<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Equality(Oxide.Option(Of TOption), Oxide.Option(Of TOption))
+  nameWithType: Option<TOption>.Equality(Option<TOption>, Option<TOption>)
+  nameWithType.vb: Option(Of TOption).Equality(Option(Of TOption), Option(Of TOption))
+- uid: Oxide.Option`1.op_Equality*
+  name: Equality
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Equality_
+  commentId: Overload:Oxide.Option`1.op_Equality
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Equality
+  fullName.vb: Oxide.Option(Of TOption).Equality
+  nameWithType: Option<TOption>.Equality
+  nameWithType.vb: Option(Of TOption).Equality
+- uid: Oxide.Option`1.op_Implicit(`0)~Oxide.Option{`0}
+  name: Implicit(TOption to Option<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Implicit__0__Oxide_Option__0_
+  commentId: M:Oxide.Option`1.op_Implicit(`0)~Oxide.Option{`0}
+  name.vb: Widening(TOption to Option(Of TOption))
+  fullName: Oxide.Option<TOption>.Implicit(TOption to Oxide.Option<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Widening(TOption to Oxide.Option(Of TOption))
+  nameWithType: Option<TOption>.Implicit(TOption to Option<TOption>)
+  nameWithType.vb: Option(Of TOption).Widening(TOption to Option(Of TOption))
+- uid: Oxide.Option`1.op_Implicit*
+  name: Implicit
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Implicit_
+  commentId: Overload:Oxide.Option`1.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: Oxide.Option<TOption>.Implicit
+  fullName.vb: Oxide.Option(Of TOption).Widening
+  nameWithType: Option<TOption>.Implicit
+  nameWithType.vb: Option(Of TOption).Widening
+- uid: Oxide.Option`1.op_Inequality(Oxide.Option{`0},Oxide.Option{`0})
+  name: Inequality(Option<TOption>, Option<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Inequality_Oxide_Option__0__Oxide_Option__0__
+  commentId: M:Oxide.Option`1.op_Inequality(Oxide.Option{`0},Oxide.Option{`0})
+  name.vb: Inequality(Option(Of TOption), Option(Of TOption))
+  fullName: Oxide.Option<TOption>.Inequality(Oxide.Option<TOption>, Oxide.Option<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Inequality(Oxide.Option(Of TOption), Oxide.Option(Of TOption))
+  nameWithType: Option<TOption>.Inequality(Option<TOption>, Option<TOption>)
+  nameWithType.vb: Option(Of TOption).Inequality(Option(Of TOption), Option(Of TOption))
+- uid: Oxide.Option`1.op_Inequality*
+  name: Inequality
+  href: api/Oxide.Option-1.html#Oxide_Option_1_op_Inequality_
+  commentId: Overload:Oxide.Option`1.op_Inequality
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Inequality
+  fullName.vb: Oxide.Option(Of TOption).Inequality
+  nameWithType: Option<TOption>.Inequality
+  nameWithType.vb: Option(Of TOption).Inequality
+- uid: Oxide.Option`1.Or(Oxide.Option{`0})
+  name: Or(Option<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Or_Oxide_Option__0__
+  commentId: M:Oxide.Option`1.Or(Oxide.Option{`0})
+  name.vb: Or(Option(Of TOption))
+  fullName: Oxide.Option<TOption>.Or(Oxide.Option<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).Or(Oxide.Option(Of TOption))
+  nameWithType: Option<TOption>.Or(Option<TOption>)
+  nameWithType.vb: Option(Of TOption).Or(Option(Of TOption))
+- uid: Oxide.Option`1.Or*
+  name: Or
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Or_
+  commentId: Overload:Oxide.Option`1.Or
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Or
+  fullName.vb: Oxide.Option(Of TOption).Or
+  nameWithType: Option<TOption>.Or
+  nameWithType.vb: Option(Of TOption).Or
+- uid: Oxide.Option`1.OrElse(System.Func{Oxide.Option{`0}})
+  name: OrElse(Func<Option<TOption>>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_OrElse_System_Func_Oxide_Option__0___
+  commentId: M:Oxide.Option`1.OrElse(System.Func{Oxide.Option{`0}})
+  name.vb: OrElse(Func(Of Option(Of TOption)))
+  fullName: Oxide.Option<TOption>.OrElse(System.Func<Oxide.Option<TOption>>)
+  fullName.vb: Oxide.Option(Of TOption).OrElse(System.Func(Of Oxide.Option(Of TOption)))
+  nameWithType: Option<TOption>.OrElse(Func<Option<TOption>>)
+  nameWithType.vb: Option(Of TOption).OrElse(Func(Of Option(Of TOption)))
+- uid: Oxide.Option`1.OrElse*
+  name: OrElse
+  href: api/Oxide.Option-1.html#Oxide_Option_1_OrElse_
+  commentId: Overload:Oxide.Option`1.OrElse
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.OrElse
+  fullName.vb: Oxide.Option(Of TOption).OrElse
+  nameWithType: Option<TOption>.OrElse
+  nameWithType.vb: Option(Of TOption).OrElse
+- uid: Oxide.Option`1.OrElseAsync(System.Func{System.Threading.Tasks.Task{Oxide.Option{`0}}})
+  name: OrElseAsync(Func<Task<Option<TOption>>>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_OrElseAsync_System_Func_System_Threading_Tasks_Task_Oxide_Option__0____
+  commentId: M:Oxide.Option`1.OrElseAsync(System.Func{System.Threading.Tasks.Task{Oxide.Option{`0}}})
+  name.vb: OrElseAsync(Func(Of Task(Of Option(Of TOption))))
+  fullName: Oxide.Option<TOption>.OrElseAsync(System.Func<System.Threading.Tasks.Task<Oxide.Option<TOption>>>)
+  fullName.vb: Oxide.Option(Of TOption).OrElseAsync(System.Func(Of System.Threading.Tasks.Task(Of Oxide.Option(Of TOption))))
+  nameWithType: Option<TOption>.OrElseAsync(Func<Task<Option<TOption>>>)
+  nameWithType.vb: Option(Of TOption).OrElseAsync(Func(Of Task(Of Option(Of TOption))))
+- uid: Oxide.Option`1.OrElseAsync*
+  name: OrElseAsync
+  href: api/Oxide.Option-1.html#Oxide_Option_1_OrElseAsync_
+  commentId: Overload:Oxide.Option`1.OrElseAsync
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.OrElseAsync
+  fullName.vb: Oxide.Option(Of TOption).OrElseAsync
+  nameWithType: Option<TOption>.OrElseAsync
+  nameWithType.vb: Option(Of TOption).OrElseAsync
+- uid: Oxide.Option`1.TryUnwrap(`0@)
+  name: TryUnwrap(out TOption)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_TryUnwrap__0__
+  commentId: M:Oxide.Option`1.TryUnwrap(`0@)
+  name.vb: TryUnwrap(ByRef TOption)
+  fullName: Oxide.Option<TOption>.TryUnwrap(out TOption)
+  fullName.vb: Oxide.Option(Of TOption).TryUnwrap(ByRef TOption)
+  nameWithType: Option<TOption>.TryUnwrap(out TOption)
+  nameWithType.vb: Option(Of TOption).TryUnwrap(ByRef TOption)
+- uid: Oxide.Option`1.TryUnwrap*
+  name: TryUnwrap
+  href: api/Oxide.Option-1.html#Oxide_Option_1_TryUnwrap_
+  commentId: Overload:Oxide.Option`1.TryUnwrap
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.TryUnwrap
+  fullName.vb: Oxide.Option(Of TOption).TryUnwrap
+  nameWithType: Option<TOption>.TryUnwrap
+  nameWithType.vb: Option(Of TOption).TryUnwrap
+- uid: Oxide.Option`1.Unwrap
+  name: Unwrap()
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Unwrap
+  commentId: M:Oxide.Option`1.Unwrap
+  fullName: Oxide.Option<TOption>.Unwrap()
+  fullName.vb: Oxide.Option(Of TOption).Unwrap()
+  nameWithType: Option<TOption>.Unwrap()
+  nameWithType.vb: Option(Of TOption).Unwrap()
+- uid: Oxide.Option`1.Unwrap*
+  name: Unwrap
+  href: api/Oxide.Option-1.html#Oxide_Option_1_Unwrap_
+  commentId: Overload:Oxide.Option`1.Unwrap
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.Unwrap
+  fullName.vb: Oxide.Option(Of TOption).Unwrap
+  nameWithType: Option<TOption>.Unwrap
+  nameWithType.vb: Option(Of TOption).Unwrap
+- uid: Oxide.Option`1.UnwrapOr(`0)
+  name: UnwrapOr(TOption)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_UnwrapOr__0_
+  commentId: M:Oxide.Option`1.UnwrapOr(`0)
+  fullName: Oxide.Option<TOption>.UnwrapOr(TOption)
+  fullName.vb: Oxide.Option(Of TOption).UnwrapOr(TOption)
+  nameWithType: Option<TOption>.UnwrapOr(TOption)
+  nameWithType.vb: Option(Of TOption).UnwrapOr(TOption)
+- uid: Oxide.Option`1.UnwrapOr(System.Func{`0})
+  name: UnwrapOr(Func<TOption>)
+  href: api/Oxide.Option-1.html#Oxide_Option_1_UnwrapOr_System_Func__0__
+  commentId: M:Oxide.Option`1.UnwrapOr(System.Func{`0})
+  name.vb: UnwrapOr(Func(Of TOption))
+  fullName: Oxide.Option<TOption>.UnwrapOr(System.Func<TOption>)
+  fullName.vb: Oxide.Option(Of TOption).UnwrapOr(System.Func(Of TOption))
+  nameWithType: Option<TOption>.UnwrapOr(Func<TOption>)
+  nameWithType.vb: Option(Of TOption).UnwrapOr(Func(Of TOption))
+- uid: Oxide.Option`1.UnwrapOr*
+  name: UnwrapOr
+  href: api/Oxide.Option-1.html#Oxide_Option_1_UnwrapOr_
+  commentId: Overload:Oxide.Option`1.UnwrapOr
+  isSpec: "True"
+  fullName: Oxide.Option<TOption>.UnwrapOr
+  fullName.vb: Oxide.Option(Of TOption).UnwrapOr
+  nameWithType: Option<TOption>.UnwrapOr
+  nameWithType.vb: Option(Of TOption).UnwrapOr
+- uid: Oxide.Options
+  name: Options
+  href: api/Oxide.Options.html
+  commentId: T:Oxide.Options
+  fullName: Oxide.Options
+  nameWithType: Options
+- uid: Oxide.Options.AndThenAsync*
+  name: AndThenAsync
+  href: api/Oxide.Options.html#Oxide_Options_AndThenAsync_
+  commentId: Overload:Oxide.Options.AndThenAsync
+  isSpec: "True"
+  fullName: Oxide.Options.AndThenAsync
+  nameWithType: Options.AndThenAsync
+- uid: Oxide.Options.AndThenAsync``2(System.Threading.Tasks.Task{Oxide.Option{``0}},System.Func{``0,Oxide.Option{``1}})
+  name: AndThenAsync<TIn, TOut>(Task<Option<TIn>>, Func<TIn, Option<TOut>>)
+  href: api/Oxide.Options.html#Oxide_Options_AndThenAsync__2_System_Threading_Tasks_Task_Oxide_Option___0___System_Func___0_Oxide_Option___1___
+  commentId: M:Oxide.Options.AndThenAsync``2(System.Threading.Tasks.Task{Oxide.Option{``0}},System.Func{``0,Oxide.Option{``1}})
+  name.vb: AndThenAsync(Of TIn, TOut)(Task(Of Option(Of TIn)), Func(Of TIn, Option(Of TOut)))
+  fullName: Oxide.Options.AndThenAsync<TIn, TOut>(System.Threading.Tasks.Task<Oxide.Option<TIn>>, System.Func<TIn, Oxide.Option<TOut>>)
+  fullName.vb: Oxide.Options.AndThenAsync(Of TIn, TOut)(System.Threading.Tasks.Task(Of Oxide.Option(Of TIn)), System.Func(Of TIn, Oxide.Option(Of TOut)))
+  nameWithType: Options.AndThenAsync<TIn, TOut>(Task<Option<TIn>>, Func<TIn, Option<TOut>>)
+  nameWithType.vb: Options.AndThenAsync(Of TIn, TOut)(Task(Of Option(Of TIn)), Func(Of TIn, Option(Of TOut)))
+- uid: Oxide.Options.AndThenAsync``2(System.Threading.Tasks.Task{Oxide.Option{``0}},System.Func{``0,System.Threading.Tasks.Task{Oxide.Option{``1}}})
+  name: AndThenAsync<TIn, TOut>(Task<Option<TIn>>, Func<TIn, Task<Option<TOut>>>)
+  href: api/Oxide.Options.html#Oxide_Options_AndThenAsync__2_System_Threading_Tasks_Task_Oxide_Option___0___System_Func___0_System_Threading_Tasks_Task_Oxide_Option___1____
+  commentId: M:Oxide.Options.AndThenAsync``2(System.Threading.Tasks.Task{Oxide.Option{``0}},System.Func{``0,System.Threading.Tasks.Task{Oxide.Option{``1}}})
+  name.vb: AndThenAsync(Of TIn, TOut)(Task(Of Option(Of TIn)), Func(Of TIn, Task(Of Option(Of TOut))))
+  fullName: Oxide.Options.AndThenAsync<TIn, TOut>(System.Threading.Tasks.Task<Oxide.Option<TIn>>, System.Func<TIn, System.Threading.Tasks.Task<Oxide.Option<TOut>>>)
+  fullName.vb: Oxide.Options.AndThenAsync(Of TIn, TOut)(System.Threading.Tasks.Task(Of Oxide.Option(Of TIn)), System.Func(Of TIn, System.Threading.Tasks.Task(Of Oxide.Option(Of TOut))))
+  nameWithType: Options.AndThenAsync<TIn, TOut>(Task<Option<TIn>>, Func<TIn, Task<Option<TOut>>>)
+  nameWithType.vb: Options.AndThenAsync(Of TIn, TOut)(Task(Of Option(Of TIn)), Func(Of TIn, Task(Of Option(Of TOut))))
+- uid: Oxide.Options.None*
+  name: None
+  href: api/Oxide.Options.html#Oxide_Options_None_
+  commentId: Overload:Oxide.Options.None
+  isSpec: "True"
+  fullName: Oxide.Options.None
+  nameWithType: Options.None
+- uid: Oxide.Options.None``1
+  name: None<T>()
+  href: api/Oxide.Options.html#Oxide_Options_None__1
+  commentId: M:Oxide.Options.None``1
+  name.vb: None(Of T)()
+  fullName: Oxide.Options.None<T>()
+  fullName.vb: Oxide.Options.None(Of T)()
+  nameWithType: Options.None<T>()
+  nameWithType.vb: Options.None(Of T)()
+- uid: Oxide.Options.Some*
+  name: Some
+  href: api/Oxide.Options.html#Oxide_Options_Some_
+  commentId: Overload:Oxide.Options.Some
+  isSpec: "True"
+  fullName: Oxide.Options.Some
+  nameWithType: Options.Some
+- uid: Oxide.Options.Some``1(``0)
+  name: Some<T>(T)
+  href: api/Oxide.Options.html#Oxide_Options_Some__1___0_
+  commentId: M:Oxide.Options.Some``1(``0)
+  name.vb: Some(Of T)(T)
+  fullName: Oxide.Options.Some<T>(T)
+  fullName.vb: Oxide.Options.Some(Of T)(T)
+  nameWithType: Options.Some<T>(T)
+  nameWithType.vb: Options.Some(Of T)(T)
+- uid: Oxide.Options.UnwrapAsync*
+  name: UnwrapAsync
+  href: api/Oxide.Options.html#Oxide_Options_UnwrapAsync_
+  commentId: Overload:Oxide.Options.UnwrapAsync
+  isSpec: "True"
+  fullName: Oxide.Options.UnwrapAsync
+  nameWithType: Options.UnwrapAsync
+- uid: Oxide.Options.UnwrapAsync``1(System.Threading.Tasks.Task{Oxide.Option{``0}})
+  name: UnwrapAsync<T>(Task<Option<T>>)
+  href: api/Oxide.Options.html#Oxide_Options_UnwrapAsync__1_System_Threading_Tasks_Task_Oxide_Option___0___
+  commentId: M:Oxide.Options.UnwrapAsync``1(System.Threading.Tasks.Task{Oxide.Option{``0}})
+  name.vb: UnwrapAsync(Of T)(Task(Of Option(Of T)))
+  fullName: Oxide.Options.UnwrapAsync<T>(System.Threading.Tasks.Task<Oxide.Option<T>>)
+  fullName.vb: Oxide.Options.UnwrapAsync(Of T)(System.Threading.Tasks.Task(Of Oxide.Option(Of T)))
+  nameWithType: Options.UnwrapAsync<T>(Task<Option<T>>)
+  nameWithType.vb: Options.UnwrapAsync(Of T)(Task(Of Option(Of T)))
+- uid: Oxide.ParseExtensions
+  name: ParseExtensions
+  href: api/Oxide.ParseExtensions.html
+  commentId: T:Oxide.ParseExtensions
+  fullName: Oxide.ParseExtensions
+  nameWithType: ParseExtensions
+- uid: Oxide.ParseExtensions.Parse*
+  name: Parse
+  href: api/Oxide.ParseExtensions.html#Oxide_ParseExtensions_Parse_
+  commentId: Overload:Oxide.ParseExtensions.Parse
+  isSpec: "True"
+  fullName: Oxide.ParseExtensions.Parse
+  nameWithType: ParseExtensions.Parse
+- uid: Oxide.ParseExtensions.Parse``1(System.String,System.Object[])
+  name: Parse<T>(String, Object[])
+  href: api/Oxide.ParseExtensions.html#Oxide_ParseExtensions_Parse__1_System_String_System_Object___
+  commentId: M:Oxide.ParseExtensions.Parse``1(System.String,System.Object[])
+  name.vb: Parse(Of T)(String, Object())
+  fullName: Oxide.ParseExtensions.Parse<T>(System.String, System.Object[])
+  fullName.vb: Oxide.ParseExtensions.Parse(Of T)(System.String, System.Object())
+  nameWithType: ParseExtensions.Parse<T>(String, Object[])
+  nameWithType.vb: ParseExtensions.Parse(Of T)(String, Object())
+- uid: Oxide.ParseExtensions.TryParse*
+  name: TryParse
+  href: api/Oxide.ParseExtensions.html#Oxide_ParseExtensions_TryParse_
+  commentId: Overload:Oxide.ParseExtensions.TryParse
+  isSpec: "True"
+  fullName: Oxide.ParseExtensions.TryParse
+  nameWithType: ParseExtensions.TryParse
+- uid: Oxide.ParseExtensions.TryParse``1(System.String,System.Object[])
+  name: TryParse<T>(String, Object[])
+  href: api/Oxide.ParseExtensions.html#Oxide_ParseExtensions_TryParse__1_System_String_System_Object___
+  commentId: M:Oxide.ParseExtensions.TryParse``1(System.String,System.Object[])
+  name.vb: TryParse(Of T)(String, Object())
+  fullName: Oxide.ParseExtensions.TryParse<T>(System.String, System.Object[])
+  fullName.vb: Oxide.ParseExtensions.TryParse(Of T)(System.String, System.Object())
+  nameWithType: ParseExtensions.TryParse<T>(String, Object[])
+  nameWithType.vb: ParseExtensions.TryParse(Of T)(String, Object())
+- uid: Oxide.Result
+  name: Result
+  href: api/Oxide.Result.html
+  commentId: T:Oxide.Result
+  fullName: Oxide.Result
+  nameWithType: Result
+- uid: Oxide.Result.IsError
+  name: IsError
+  href: api/Oxide.Result.html#Oxide_Result_IsError
+  commentId: P:Oxide.Result.IsError
+  fullName: Oxide.Result.IsError
+  nameWithType: Result.IsError
+- uid: Oxide.Result.IsError*
+  name: IsError
+  href: api/Oxide.Result.html#Oxide_Result_IsError_
+  commentId: Overload:Oxide.Result.IsError
+  isSpec: "True"
+  fullName: Oxide.Result.IsError
+  nameWithType: Result.IsError
+- uid: Oxide.Result.IsOk
+  name: IsOk
+  href: api/Oxide.Result.html#Oxide_Result_IsOk
+  commentId: P:Oxide.Result.IsOk
+  fullName: Oxide.Result.IsOk
+  nameWithType: Result.IsOk
+- uid: Oxide.Result.IsOk*
+  name: IsOk
+  href: api/Oxide.Result.html#Oxide_Result_IsOk_
+  commentId: Overload:Oxide.Result.IsOk
+  isSpec: "True"
+  fullName: Oxide.Result.IsOk
+  nameWithType: Result.IsOk
+- uid: Oxide.Result`2
+  name: Result<TResult, TError>
+  href: api/Oxide.Result-2.html
+  commentId: T:Oxide.Result`2
+  name.vb: Result(Of TResult, TError)
+  fullName: Oxide.Result<TResult, TError>
+  fullName.vb: Oxide.Result(Of TResult, TError)
+  nameWithType: Result<TResult, TError>
+  nameWithType.vb: Result(Of TResult, TError)
+- uid: Oxide.Result`2.And*
+  name: And
+  href: api/Oxide.Result-2.html#Oxide_Result_2_And_
+  commentId: Overload:Oxide.Result`2.And
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.And
+  fullName.vb: Oxide.Result(Of TResult, TError).And
+  nameWithType: Result<TResult, TError>.And
+  nameWithType.vb: Result(Of TResult, TError).And
+- uid: Oxide.Result`2.And``1(Oxide.Result{``0,`1})
+  name: And<TOutput>(Result<TOutput, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_And__1_Oxide_Result___0__1__
+  commentId: M:Oxide.Result`2.And``1(Oxide.Result{``0,`1})
+  name.vb: And(Of TOutput)(Result(Of TOutput, TError))
+  fullName: Oxide.Result<TResult, TError>.And<TOutput>(Oxide.Result<TOutput, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).And(Of TOutput)(Oxide.Result(Of TOutput, TError))
+  nameWithType: Result<TResult, TError>.And<TOutput>(Result<TOutput, TError>)
+  nameWithType.vb: Result(Of TResult, TError).And(Of TOutput)(Result(Of TOutput, TError))
+- uid: Oxide.Result`2.AndThen*
+  name: AndThen
+  href: api/Oxide.Result-2.html#Oxide_Result_2_AndThen_
+  commentId: Overload:Oxide.Result`2.AndThen
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.AndThen
+  fullName.vb: Oxide.Result(Of TResult, TError).AndThen
+  nameWithType: Result<TResult, TError>.AndThen
+  nameWithType.vb: Result(Of TResult, TError).AndThen
+- uid: Oxide.Result`2.AndThen``1(System.Func{`0,Oxide.Result{``0,`1}})
+  name: AndThen<TOutput>(Func<TResult, Result<TOutput, TError>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_AndThen__1_System_Func__0_Oxide_Result___0__1___
+  commentId: M:Oxide.Result`2.AndThen``1(System.Func{`0,Oxide.Result{``0,`1}})
+  name.vb: AndThen(Of TOutput)(Func(Of TResult, Result(Of TOutput, TError)))
+  fullName: Oxide.Result<TResult, TError>.AndThen<TOutput>(System.Func<TResult, Oxide.Result<TOutput, TError>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).AndThen(Of TOutput)(System.Func(Of TResult, Oxide.Result(Of TOutput, TError)))
+  nameWithType: Result<TResult, TError>.AndThen<TOutput>(Func<TResult, Result<TOutput, TError>>)
+  nameWithType.vb: Result(Of TResult, TError).AndThen(Of TOutput)(Func(Of TResult, Result(Of TOutput, TError)))
+- uid: Oxide.Result`2.AndThenAsync*
+  name: AndThenAsync
+  href: api/Oxide.Result-2.html#Oxide_Result_2_AndThenAsync_
+  commentId: Overload:Oxide.Result`2.AndThenAsync
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.AndThenAsync
+  fullName.vb: Oxide.Result(Of TResult, TError).AndThenAsync
+  nameWithType: Result<TResult, TError>.AndThenAsync
+  nameWithType.vb: Result(Of TResult, TError).AndThenAsync
+- uid: Oxide.Result`2.AndThenAsync``1(System.Func{`0,System.Threading.Tasks.Task{Oxide.Result{``0,`1}}})
+  name: AndThenAsync<TOutput>(Func<TResult, Task<Result<TOutput, TError>>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_AndThenAsync__1_System_Func__0_System_Threading_Tasks_Task_Oxide_Result___0__1____
+  commentId: M:Oxide.Result`2.AndThenAsync``1(System.Func{`0,System.Threading.Tasks.Task{Oxide.Result{``0,`1}}})
+  name.vb: AndThenAsync(Of TOutput)(Func(Of TResult, Task(Of Result(Of TOutput, TError))))
+  fullName: Oxide.Result<TResult, TError>.AndThenAsync<TOutput>(System.Func<TResult, System.Threading.Tasks.Task<Oxide.Result<TOutput, TError>>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).AndThenAsync(Of TOutput)(System.Func(Of TResult, System.Threading.Tasks.Task(Of Oxide.Result(Of TOutput, TError))))
+  nameWithType: Result<TResult, TError>.AndThenAsync<TOutput>(Func<TResult, Task<Result<TOutput, TError>>>)
+  nameWithType.vb: Result(Of TResult, TError).AndThenAsync(Of TOutput)(Func(Of TResult, Task(Of Result(Of TOutput, TError))))
+- uid: Oxide.Result`2.Deconstruct(`0@,`1@)
+  name: Deconstruct(out TResult, out TError)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Deconstruct__0___1__
+  commentId: M:Oxide.Result`2.Deconstruct(`0@,`1@)
+  name.vb: Deconstruct(ByRef TResult, ByRef TError)
+  fullName: Oxide.Result<TResult, TError>.Deconstruct(out TResult, out TError)
+  fullName.vb: Oxide.Result(Of TResult, TError).Deconstruct(ByRef TResult, ByRef TError)
+  nameWithType: Result<TResult, TError>.Deconstruct(out TResult, out TError)
+  nameWithType.vb: Result(Of TResult, TError).Deconstruct(ByRef TResult, ByRef TError)
+- uid: Oxide.Result`2.Deconstruct*
+  name: Deconstruct
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Deconstruct_
+  commentId: Overload:Oxide.Result`2.Deconstruct
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Deconstruct
+  fullName.vb: Oxide.Result(Of TResult, TError).Deconstruct
+  nameWithType: Result<TResult, TError>.Deconstruct
+  nameWithType.vb: Result(Of TResult, TError).Deconstruct
+- uid: Oxide.Result`2.Equals(Oxide.Result{`0,`1})
+  name: Equals(Result<TResult, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Equals_Oxide_Result__0__1__
+  commentId: M:Oxide.Result`2.Equals(Oxide.Result{`0,`1})
+  name.vb: Equals(Result(Of TResult, TError))
+  fullName: Oxide.Result<TResult, TError>.Equals(Oxide.Result<TResult, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Equals(Oxide.Result(Of TResult, TError))
+  nameWithType: Result<TResult, TError>.Equals(Result<TResult, TError>)
+  nameWithType.vb: Result(Of TResult, TError).Equals(Result(Of TResult, TError))
+- uid: Oxide.Result`2.Equals(System.Object)
+  name: Equals(Object)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Equals_System_Object_
+  commentId: M:Oxide.Result`2.Equals(System.Object)
+  fullName: Oxide.Result<TResult, TError>.Equals(System.Object)
+  fullName.vb: Oxide.Result(Of TResult, TError).Equals(System.Object)
+  nameWithType: Result<TResult, TError>.Equals(Object)
+  nameWithType.vb: Result(Of TResult, TError).Equals(Object)
+- uid: Oxide.Result`2.Equals*
+  name: Equals
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Equals_
+  commentId: Overload:Oxide.Result`2.Equals
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Equals
+  fullName.vb: Oxide.Result(Of TResult, TError).Equals
+  nameWithType: Result<TResult, TError>.Equals
+  nameWithType.vb: Result(Of TResult, TError).Equals
+- uid: Oxide.Result`2.Err
+  name: Err()
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Err
+  commentId: M:Oxide.Result`2.Err
+  fullName: Oxide.Result<TResult, TError>.Err()
+  fullName.vb: Oxide.Result(Of TResult, TError).Err()
+  nameWithType: Result<TResult, TError>.Err()
+  nameWithType.vb: Result(Of TResult, TError).Err()
+- uid: Oxide.Result`2.Err*
+  name: Err
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Err_
+  commentId: Overload:Oxide.Result`2.Err
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Err
+  fullName.vb: Oxide.Result(Of TResult, TError).Err
+  nameWithType: Result<TResult, TError>.Err
+  nameWithType.vb: Result(Of TResult, TError).Err
+- uid: Oxide.Result`2.Expect(System.String)
+  name: Expect(String)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Expect_System_String_
+  commentId: M:Oxide.Result`2.Expect(System.String)
+  fullName: Oxide.Result<TResult, TError>.Expect(System.String)
+  fullName.vb: Oxide.Result(Of TResult, TError).Expect(System.String)
+  nameWithType: Result<TResult, TError>.Expect(String)
+  nameWithType.vb: Result(Of TResult, TError).Expect(String)
+- uid: Oxide.Result`2.Expect*
+  name: Expect
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Expect_
+  commentId: Overload:Oxide.Result`2.Expect
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Expect
+  fullName.vb: Oxide.Result(Of TResult, TError).Expect
+  nameWithType: Result<TResult, TError>.Expect
+  nameWithType.vb: Result(Of TResult, TError).Expect
+- uid: Oxide.Result`2.ExpectError(System.String)
+  name: ExpectError(String)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_ExpectError_System_String_
+  commentId: M:Oxide.Result`2.ExpectError(System.String)
+  fullName: Oxide.Result<TResult, TError>.ExpectError(System.String)
+  fullName.vb: Oxide.Result(Of TResult, TError).ExpectError(System.String)
+  nameWithType: Result<TResult, TError>.ExpectError(String)
+  nameWithType.vb: Result(Of TResult, TError).ExpectError(String)
+- uid: Oxide.Result`2.ExpectError*
+  name: ExpectError
+  href: api/Oxide.Result-2.html#Oxide_Result_2_ExpectError_
+  commentId: Overload:Oxide.Result`2.ExpectError
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.ExpectError
+  fullName.vb: Oxide.Result(Of TResult, TError).ExpectError
+  nameWithType: Result<TResult, TError>.ExpectError
+  nameWithType.vb: Result(Of TResult, TError).ExpectError
+- uid: Oxide.Result`2.GetHashCode
+  name: GetHashCode()
+  href: api/Oxide.Result-2.html#Oxide_Result_2_GetHashCode
+  commentId: M:Oxide.Result`2.GetHashCode
+  fullName: Oxide.Result<TResult, TError>.GetHashCode()
+  fullName.vb: Oxide.Result(Of TResult, TError).GetHashCode()
+  nameWithType: Result<TResult, TError>.GetHashCode()
+  nameWithType.vb: Result(Of TResult, TError).GetHashCode()
+- uid: Oxide.Result`2.GetHashCode*
+  name: GetHashCode
+  href: api/Oxide.Result-2.html#Oxide_Result_2_GetHashCode_
+  commentId: Overload:Oxide.Result`2.GetHashCode
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.GetHashCode
+  fullName.vb: Oxide.Result(Of TResult, TError).GetHashCode
+  nameWithType: Result<TResult, TError>.GetHashCode
+  nameWithType.vb: Result(Of TResult, TError).GetHashCode
+- uid: Oxide.Result`2.IfError(System.Action{`1})
+  name: IfError(Action<TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_IfError_System_Action__1__
+  commentId: M:Oxide.Result`2.IfError(System.Action{`1})
+  name.vb: IfError(Action(Of TError))
+  fullName: Oxide.Result<TResult, TError>.IfError(System.Action<TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).IfError(System.Action(Of TError))
+  nameWithType: Result<TResult, TError>.IfError(Action<TError>)
+  nameWithType.vb: Result(Of TResult, TError).IfError(Action(Of TError))
+- uid: Oxide.Result`2.IfError*
+  name: IfError
+  href: api/Oxide.Result-2.html#Oxide_Result_2_IfError_
+  commentId: Overload:Oxide.Result`2.IfError
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.IfError
+  fullName.vb: Oxide.Result(Of TResult, TError).IfError
+  nameWithType: Result<TResult, TError>.IfError
+  nameWithType.vb: Result(Of TResult, TError).IfError
+- uid: Oxide.Result`2.IfOk(System.Action{`0})
+  name: IfOk(Action<TResult>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_IfOk_System_Action__0__
+  commentId: M:Oxide.Result`2.IfOk(System.Action{`0})
+  name.vb: IfOk(Action(Of TResult))
+  fullName: Oxide.Result<TResult, TError>.IfOk(System.Action<TResult>)
+  fullName.vb: Oxide.Result(Of TResult, TError).IfOk(System.Action(Of TResult))
+  nameWithType: Result<TResult, TError>.IfOk(Action<TResult>)
+  nameWithType.vb: Result(Of TResult, TError).IfOk(Action(Of TResult))
+- uid: Oxide.Result`2.IfOk*
+  name: IfOk
+  href: api/Oxide.Result-2.html#Oxide_Result_2_IfOk_
+  commentId: Overload:Oxide.Result`2.IfOk
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.IfOk
+  fullName.vb: Oxide.Result(Of TResult, TError).IfOk
+  nameWithType: Result<TResult, TError>.IfOk
+  nameWithType.vb: Result(Of TResult, TError).IfOk
+- uid: Oxide.Result`2.Map*
+  name: Map
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Map_
+  commentId: Overload:Oxide.Result`2.Map
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Map
+  fullName.vb: Oxide.Result(Of TResult, TError).Map
+  nameWithType: Result<TResult, TError>.Map
+  nameWithType.vb: Result(Of TResult, TError).Map
+- uid: Oxide.Result`2.Map``1(System.Func{`0,``0})
+  name: Map<TOutput>(Func<TResult, TOutput>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Map__1_System_Func__0___0__
+  commentId: M:Oxide.Result`2.Map``1(System.Func{`0,``0})
+  name.vb: Map(Of TOutput)(Func(Of TResult, TOutput))
+  fullName: Oxide.Result<TResult, TError>.Map<TOutput>(System.Func<TResult, TOutput>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Map(Of TOutput)(System.Func(Of TResult, TOutput))
+  nameWithType: Result<TResult, TError>.Map<TOutput>(Func<TResult, TOutput>)
+  nameWithType.vb: Result(Of TResult, TError).Map(Of TOutput)(Func(Of TResult, TOutput))
+- uid: Oxide.Result`2.MapAsync*
+  name: MapAsync
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapAsync_
+  commentId: Overload:Oxide.Result`2.MapAsync
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.MapAsync
+  fullName.vb: Oxide.Result(Of TResult, TError).MapAsync
+  nameWithType: Result<TResult, TError>.MapAsync
+  nameWithType.vb: Result(Of TResult, TError).MapAsync
+- uid: Oxide.Result`2.MapAsync``1(System.Func{`0,System.Threading.Tasks.Task{``0}})
+  name: MapAsync<TOutput>(Func<TResult, Task<TOutput>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapAsync__1_System_Func__0_System_Threading_Tasks_Task___0___
+  commentId: M:Oxide.Result`2.MapAsync``1(System.Func{`0,System.Threading.Tasks.Task{``0}})
+  name.vb: MapAsync(Of TOutput)(Func(Of TResult, Task(Of TOutput)))
+  fullName: Oxide.Result<TResult, TError>.MapAsync<TOutput>(System.Func<TResult, System.Threading.Tasks.Task<TOutput>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).MapAsync(Of TOutput)(System.Func(Of TResult, System.Threading.Tasks.Task(Of TOutput)))
+  nameWithType: Result<TResult, TError>.MapAsync<TOutput>(Func<TResult, Task<TOutput>>)
+  nameWithType.vb: Result(Of TResult, TError).MapAsync(Of TOutput)(Func(Of TResult, Task(Of TOutput)))
+- uid: Oxide.Result`2.MapErr*
+  name: MapErr
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapErr_
+  commentId: Overload:Oxide.Result`2.MapErr
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.MapErr
+  fullName.vb: Oxide.Result(Of TResult, TError).MapErr
+  nameWithType: Result<TResult, TError>.MapErr
+  nameWithType.vb: Result(Of TResult, TError).MapErr
+- uid: Oxide.Result`2.MapErr``1(System.Func{`1,``0})
+  name: MapErr<TErrorOutput>(Func<TError, TErrorOutput>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapErr__1_System_Func__1___0__
+  commentId: M:Oxide.Result`2.MapErr``1(System.Func{`1,``0})
+  name.vb: MapErr(Of TErrorOutput)(Func(Of TError, TErrorOutput))
+  fullName: Oxide.Result<TResult, TError>.MapErr<TErrorOutput>(System.Func<TError, TErrorOutput>)
+  fullName.vb: Oxide.Result(Of TResult, TError).MapErr(Of TErrorOutput)(System.Func(Of TError, TErrorOutput))
+  nameWithType: Result<TResult, TError>.MapErr<TErrorOutput>(Func<TError, TErrorOutput>)
+  nameWithType.vb: Result(Of TResult, TError).MapErr(Of TErrorOutput)(Func(Of TError, TErrorOutput))
+- uid: Oxide.Result`2.MapErrAsync*
+  name: MapErrAsync
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapErrAsync_
+  commentId: Overload:Oxide.Result`2.MapErrAsync
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.MapErrAsync
+  fullName.vb: Oxide.Result(Of TResult, TError).MapErrAsync
+  nameWithType: Result<TResult, TError>.MapErrAsync
+  nameWithType.vb: Result(Of TResult, TError).MapErrAsync
+- uid: Oxide.Result`2.MapErrAsync``1(System.Func{`1,System.Threading.Tasks.Task{``0}})
+  name: MapErrAsync<TErrorOutput>(Func<TError, Task<TErrorOutput>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_MapErrAsync__1_System_Func__1_System_Threading_Tasks_Task___0___
+  commentId: M:Oxide.Result`2.MapErrAsync``1(System.Func{`1,System.Threading.Tasks.Task{``0}})
+  name.vb: MapErrAsync(Of TErrorOutput)(Func(Of TError, Task(Of TErrorOutput)))
+  fullName: Oxide.Result<TResult, TError>.MapErrAsync<TErrorOutput>(System.Func<TError, System.Threading.Tasks.Task<TErrorOutput>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).MapErrAsync(Of TErrorOutput)(System.Func(Of TError, System.Threading.Tasks.Task(Of TErrorOutput)))
+  nameWithType: Result<TResult, TError>.MapErrAsync<TErrorOutput>(Func<TError, Task<TErrorOutput>>)
+  nameWithType.vb: Result(Of TResult, TError).MapErrAsync(Of TErrorOutput)(Func(Of TError, Task(Of TErrorOutput)))
+- uid: Oxide.Result`2.Ok
+  name: Ok()
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Ok
+  commentId: M:Oxide.Result`2.Ok
+  fullName: Oxide.Result<TResult, TError>.Ok()
+  fullName.vb: Oxide.Result(Of TResult, TError).Ok()
+  nameWithType: Result<TResult, TError>.Ok()
+  nameWithType.vb: Result(Of TResult, TError).Ok()
+- uid: Oxide.Result`2.Ok*
+  name: Ok
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Ok_
+  commentId: Overload:Oxide.Result`2.Ok
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Ok
+  fullName.vb: Oxide.Result(Of TResult, TError).Ok
+  nameWithType: Result<TResult, TError>.Ok
+  nameWithType.vb: Result(Of TResult, TError).Ok
+- uid: Oxide.Result`2.op_Equality(Oxide.Result{`0,`1},Oxide.Result{`0,`1})
+  name: Equality(Result<TResult, TError>, Result<TResult, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Equality_Oxide_Result__0__1__Oxide_Result__0__1__
+  commentId: M:Oxide.Result`2.op_Equality(Oxide.Result{`0,`1},Oxide.Result{`0,`1})
+  name.vb: Equality(Result(Of TResult, TError), Result(Of TResult, TError))
+  fullName: Oxide.Result<TResult, TError>.Equality(Oxide.Result<TResult, TError>, Oxide.Result<TResult, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Equality(Oxide.Result(Of TResult, TError), Oxide.Result(Of TResult, TError))
+  nameWithType: Result<TResult, TError>.Equality(Result<TResult, TError>, Result<TResult, TError>)
+  nameWithType.vb: Result(Of TResult, TError).Equality(Result(Of TResult, TError), Result(Of TResult, TError))
+- uid: Oxide.Result`2.op_Equality*
+  name: Equality
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Equality_
+  commentId: Overload:Oxide.Result`2.op_Equality
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Equality
+  fullName.vb: Oxide.Result(Of TResult, TError).Equality
+  nameWithType: Result<TResult, TError>.Equality
+  nameWithType.vb: Result(Of TResult, TError).Equality
+- uid: Oxide.Result`2.op_Implicit(`0)~Oxide.Result{`0,`1}
+  name: Implicit(TResult to Result<TResult, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Implicit__0__Oxide_Result__0__1_
+  commentId: M:Oxide.Result`2.op_Implicit(`0)~Oxide.Result{`0,`1}
+  name.vb: Widening(TResult to Result(Of TResult, TError))
+  fullName: Oxide.Result<TResult, TError>.Implicit(TResult to Oxide.Result<TResult, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Widening(TResult to Oxide.Result(Of TResult, TError))
+  nameWithType: Result<TResult, TError>.Implicit(TResult to Result<TResult, TError>)
+  nameWithType.vb: Result(Of TResult, TError).Widening(TResult to Result(Of TResult, TError))
+- uid: Oxide.Result`2.op_Implicit(`1)~Oxide.Result{`0,`1}
+  name: Implicit(TError to Result<TResult, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Implicit__1__Oxide_Result__0__1_
+  commentId: M:Oxide.Result`2.op_Implicit(`1)~Oxide.Result{`0,`1}
+  name.vb: Widening(TError to Result(Of TResult, TError))
+  fullName: Oxide.Result<TResult, TError>.Implicit(TError to Oxide.Result<TResult, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Widening(TError to Oxide.Result(Of TResult, TError))
+  nameWithType: Result<TResult, TError>.Implicit(TError to Result<TResult, TError>)
+  nameWithType.vb: Result(Of TResult, TError).Widening(TError to Result(Of TResult, TError))
+- uid: Oxide.Result`2.op_Implicit*
+  name: Implicit
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Implicit_
+  commentId: Overload:Oxide.Result`2.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: Oxide.Result<TResult, TError>.Implicit
+  fullName.vb: Oxide.Result(Of TResult, TError).Widening
+  nameWithType: Result<TResult, TError>.Implicit
+  nameWithType.vb: Result(Of TResult, TError).Widening
+- uid: Oxide.Result`2.op_Inequality(Oxide.Result{`0,`1},Oxide.Result{`0,`1})
+  name: Inequality(Result<TResult, TError>, Result<TResult, TError>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Inequality_Oxide_Result__0__1__Oxide_Result__0__1__
+  commentId: M:Oxide.Result`2.op_Inequality(Oxide.Result{`0,`1},Oxide.Result{`0,`1})
+  name.vb: Inequality(Result(Of TResult, TError), Result(Of TResult, TError))
+  fullName: Oxide.Result<TResult, TError>.Inequality(Oxide.Result<TResult, TError>, Oxide.Result<TResult, TError>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Inequality(Oxide.Result(Of TResult, TError), Oxide.Result(Of TResult, TError))
+  nameWithType: Result<TResult, TError>.Inequality(Result<TResult, TError>, Result<TResult, TError>)
+  nameWithType.vb: Result(Of TResult, TError).Inequality(Result(Of TResult, TError), Result(Of TResult, TError))
+- uid: Oxide.Result`2.op_Inequality*
+  name: Inequality
+  href: api/Oxide.Result-2.html#Oxide_Result_2_op_Inequality_
+  commentId: Overload:Oxide.Result`2.op_Inequality
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Inequality
+  fullName.vb: Oxide.Result(Of TResult, TError).Inequality
+  nameWithType: Result<TResult, TError>.Inequality
+  nameWithType.vb: Result(Of TResult, TError).Inequality
+- uid: Oxide.Result`2.Or*
+  name: Or
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Or_
+  commentId: Overload:Oxide.Result`2.Or
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Or
+  fullName.vb: Oxide.Result(Of TResult, TError).Or
+  nameWithType: Result<TResult, TError>.Or
+  nameWithType.vb: Result(Of TResult, TError).Or
+- uid: Oxide.Result`2.Or``1(Oxide.Result{`0,``0})
+  name: Or<TErrorOutput>(Result<TResult, TErrorOutput>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Or__1_Oxide_Result__0___0__
+  commentId: M:Oxide.Result`2.Or``1(Oxide.Result{`0,``0})
+  name.vb: Or(Of TErrorOutput)(Result(Of TResult, TErrorOutput))
+  fullName: Oxide.Result<TResult, TError>.Or<TErrorOutput>(Oxide.Result<TResult, TErrorOutput>)
+  fullName.vb: Oxide.Result(Of TResult, TError).Or(Of TErrorOutput)(Oxide.Result(Of TResult, TErrorOutput))
+  nameWithType: Result<TResult, TError>.Or<TErrorOutput>(Result<TResult, TErrorOutput>)
+  nameWithType.vb: Result(Of TResult, TError).Or(Of TErrorOutput)(Result(Of TResult, TErrorOutput))
+- uid: Oxide.Result`2.OrElse*
+  name: OrElse
+  href: api/Oxide.Result-2.html#Oxide_Result_2_OrElse_
+  commentId: Overload:Oxide.Result`2.OrElse
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.OrElse
+  fullName.vb: Oxide.Result(Of TResult, TError).OrElse
+  nameWithType: Result<TResult, TError>.OrElse
+  nameWithType.vb: Result(Of TResult, TError).OrElse
+- uid: Oxide.Result`2.OrElse``1(System.Func{`1,Oxide.Result{`0,``0}})
+  name: OrElse<TErrorOutput>(Func<TError, Result<TResult, TErrorOutput>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_OrElse__1_System_Func__1_Oxide_Result__0___0___
+  commentId: M:Oxide.Result`2.OrElse``1(System.Func{`1,Oxide.Result{`0,``0}})
+  name.vb: OrElse(Of TErrorOutput)(Func(Of TError, Result(Of TResult, TErrorOutput)))
+  fullName: Oxide.Result<TResult, TError>.OrElse<TErrorOutput>(System.Func<TError, Oxide.Result<TResult, TErrorOutput>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).OrElse(Of TErrorOutput)(System.Func(Of TError, Oxide.Result(Of TResult, TErrorOutput)))
+  nameWithType: Result<TResult, TError>.OrElse<TErrorOutput>(Func<TError, Result<TResult, TErrorOutput>>)
+  nameWithType.vb: Result(Of TResult, TError).OrElse(Of TErrorOutput)(Func(Of TError, Result(Of TResult, TErrorOutput)))
+- uid: Oxide.Result`2.OrElseAsync*
+  name: OrElseAsync
+  href: api/Oxide.Result-2.html#Oxide_Result_2_OrElseAsync_
+  commentId: Overload:Oxide.Result`2.OrElseAsync
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.OrElseAsync
+  fullName.vb: Oxide.Result(Of TResult, TError).OrElseAsync
+  nameWithType: Result<TResult, TError>.OrElseAsync
+  nameWithType.vb: Result(Of TResult, TError).OrElseAsync
+- uid: Oxide.Result`2.OrElseAsync``1(System.Func{`1,System.Threading.Tasks.Task{Oxide.Result{`0,``0}}})
+  name: OrElseAsync<TErrorOutput>(Func<TError, Task<Result<TResult, TErrorOutput>>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_OrElseAsync__1_System_Func__1_System_Threading_Tasks_Task_Oxide_Result__0___0____
+  commentId: M:Oxide.Result`2.OrElseAsync``1(System.Func{`1,System.Threading.Tasks.Task{Oxide.Result{`0,``0}}})
+  name.vb: OrElseAsync(Of TErrorOutput)(Func(Of TError, Task(Of Result(Of TResult, TErrorOutput))))
+  fullName: Oxide.Result<TResult, TError>.OrElseAsync<TErrorOutput>(System.Func<TError, System.Threading.Tasks.Task<Oxide.Result<TResult, TErrorOutput>>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).OrElseAsync(Of TErrorOutput)(System.Func(Of TError, System.Threading.Tasks.Task(Of Oxide.Result(Of TResult, TErrorOutput))))
+  nameWithType: Result<TResult, TError>.OrElseAsync<TErrorOutput>(Func<TError, Task<Result<TResult, TErrorOutput>>>)
+  nameWithType.vb: Result(Of TResult, TError).OrElseAsync(Of TErrorOutput)(Func(Of TError, Task(Of Result(Of TResult, TErrorOutput))))
+- uid: Oxide.Result`2.TryUnwrap(`0@)
+  name: TryUnwrap(out TResult)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_TryUnwrap__0__
+  commentId: M:Oxide.Result`2.TryUnwrap(`0@)
+  name.vb: TryUnwrap(ByRef TResult)
+  fullName: Oxide.Result<TResult, TError>.TryUnwrap(out TResult)
+  fullName.vb: Oxide.Result(Of TResult, TError).TryUnwrap(ByRef TResult)
+  nameWithType: Result<TResult, TError>.TryUnwrap(out TResult)
+  nameWithType.vb: Result(Of TResult, TError).TryUnwrap(ByRef TResult)
+- uid: Oxide.Result`2.TryUnwrap(`0@,`1@)
+  name: TryUnwrap(out TResult, out TError)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_TryUnwrap__0___1__
+  commentId: M:Oxide.Result`2.TryUnwrap(`0@,`1@)
+  name.vb: TryUnwrap(ByRef TResult, ByRef TError)
+  fullName: Oxide.Result<TResult, TError>.TryUnwrap(out TResult, out TError)
+  fullName.vb: Oxide.Result(Of TResult, TError).TryUnwrap(ByRef TResult, ByRef TError)
+  nameWithType: Result<TResult, TError>.TryUnwrap(out TResult, out TError)
+  nameWithType.vb: Result(Of TResult, TError).TryUnwrap(ByRef TResult, ByRef TError)
+- uid: Oxide.Result`2.TryUnwrap*
+  name: TryUnwrap
+  href: api/Oxide.Result-2.html#Oxide_Result_2_TryUnwrap_
+  commentId: Overload:Oxide.Result`2.TryUnwrap
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.TryUnwrap
+  fullName.vb: Oxide.Result(Of TResult, TError).TryUnwrap
+  nameWithType: Result<TResult, TError>.TryUnwrap
+  nameWithType.vb: Result(Of TResult, TError).TryUnwrap
+- uid: Oxide.Result`2.TryUnwrapError(`1@)
+  name: TryUnwrapError(out TError)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_TryUnwrapError__1__
+  commentId: M:Oxide.Result`2.TryUnwrapError(`1@)
+  name.vb: TryUnwrapError(ByRef TError)
+  fullName: Oxide.Result<TResult, TError>.TryUnwrapError(out TError)
+  fullName.vb: Oxide.Result(Of TResult, TError).TryUnwrapError(ByRef TError)
+  nameWithType: Result<TResult, TError>.TryUnwrapError(out TError)
+  nameWithType.vb: Result(Of TResult, TError).TryUnwrapError(ByRef TError)
+- uid: Oxide.Result`2.TryUnwrapError*
+  name: TryUnwrapError
+  href: api/Oxide.Result-2.html#Oxide_Result_2_TryUnwrapError_
+  commentId: Overload:Oxide.Result`2.TryUnwrapError
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.TryUnwrapError
+  fullName.vb: Oxide.Result(Of TResult, TError).TryUnwrapError
+  nameWithType: Result<TResult, TError>.TryUnwrapError
+  nameWithType.vb: Result(Of TResult, TError).TryUnwrapError
+- uid: Oxide.Result`2.Unwrap
+  name: Unwrap()
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Unwrap
+  commentId: M:Oxide.Result`2.Unwrap
+  fullName: Oxide.Result<TResult, TError>.Unwrap()
+  fullName.vb: Oxide.Result(Of TResult, TError).Unwrap()
+  nameWithType: Result<TResult, TError>.Unwrap()
+  nameWithType.vb: Result(Of TResult, TError).Unwrap()
+- uid: Oxide.Result`2.Unwrap*
+  name: Unwrap
+  href: api/Oxide.Result-2.html#Oxide_Result_2_Unwrap_
+  commentId: Overload:Oxide.Result`2.Unwrap
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.Unwrap
+  fullName.vb: Oxide.Result(Of TResult, TError).Unwrap
+  nameWithType: Result<TResult, TError>.Unwrap
+  nameWithType.vb: Result(Of TResult, TError).Unwrap
+- uid: Oxide.Result`2.UnwrapError
+  name: UnwrapError()
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapError
+  commentId: M:Oxide.Result`2.UnwrapError
+  fullName: Oxide.Result<TResult, TError>.UnwrapError()
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapError()
+  nameWithType: Result<TResult, TError>.UnwrapError()
+  nameWithType.vb: Result(Of TResult, TError).UnwrapError()
+- uid: Oxide.Result`2.UnwrapError*
+  name: UnwrapError
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapError_
+  commentId: Overload:Oxide.Result`2.UnwrapError
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.UnwrapError
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapError
+  nameWithType: Result<TResult, TError>.UnwrapError
+  nameWithType.vb: Result(Of TResult, TError).UnwrapError
+- uid: Oxide.Result`2.UnwrapOr(`0)
+  name: UnwrapOr(TResult)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOr__0_
+  commentId: M:Oxide.Result`2.UnwrapOr(`0)
+  fullName: Oxide.Result<TResult, TError>.UnwrapOr(TResult)
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOr(TResult)
+  nameWithType: Result<TResult, TError>.UnwrapOr(TResult)
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOr(TResult)
+- uid: Oxide.Result`2.UnwrapOr*
+  name: UnwrapOr
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOr_
+  commentId: Overload:Oxide.Result`2.UnwrapOr
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.UnwrapOr
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOr
+  nameWithType: Result<TResult, TError>.UnwrapOr
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOr
+- uid: Oxide.Result`2.UnwrapOrElse(System.Func{`1,`0})
+  name: UnwrapOrElse(Func<TError, TResult>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOrElse_System_Func__1__0__
+  commentId: M:Oxide.Result`2.UnwrapOrElse(System.Func{`1,`0})
+  name.vb: UnwrapOrElse(Func(Of TError, TResult))
+  fullName: Oxide.Result<TResult, TError>.UnwrapOrElse(System.Func<TError, TResult>)
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOrElse(System.Func(Of TError, TResult))
+  nameWithType: Result<TResult, TError>.UnwrapOrElse(Func<TError, TResult>)
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOrElse(Func(Of TError, TResult))
+- uid: Oxide.Result`2.UnwrapOrElse*
+  name: UnwrapOrElse
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOrElse_
+  commentId: Overload:Oxide.Result`2.UnwrapOrElse
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.UnwrapOrElse
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOrElse
+  nameWithType: Result<TResult, TError>.UnwrapOrElse
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOrElse
+- uid: Oxide.Result`2.UnwrapOrElseAsync(System.Func{`1,System.Threading.Tasks.Task{`0}})
+  name: UnwrapOrElseAsync(Func<TError, Task<TResult>>)
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOrElseAsync_System_Func__1_System_Threading_Tasks_Task__0___
+  commentId: M:Oxide.Result`2.UnwrapOrElseAsync(System.Func{`1,System.Threading.Tasks.Task{`0}})
+  name.vb: UnwrapOrElseAsync(Func(Of TError, Task(Of TResult)))
+  fullName: Oxide.Result<TResult, TError>.UnwrapOrElseAsync(System.Func<TError, System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOrElseAsync(System.Func(Of TError, System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: Result<TResult, TError>.UnwrapOrElseAsync(Func<TError, Task<TResult>>)
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOrElseAsync(Func(Of TError, Task(Of TResult)))
+- uid: Oxide.Result`2.UnwrapOrElseAsync*
+  name: UnwrapOrElseAsync
+  href: api/Oxide.Result-2.html#Oxide_Result_2_UnwrapOrElseAsync_
+  commentId: Overload:Oxide.Result`2.UnwrapOrElseAsync
+  isSpec: "True"
+  fullName: Oxide.Result<TResult, TError>.UnwrapOrElseAsync
+  fullName.vb: Oxide.Result(Of TResult, TError).UnwrapOrElseAsync
+  nameWithType: Result<TResult, TError>.UnwrapOrElseAsync
+  nameWithType.vb: Result(Of TResult, TError).UnwrapOrElseAsync
+- uid: Oxide.Results
+  name: Results
+  href: api/Oxide.Results.html
+  commentId: T:Oxide.Results
+  fullName: Oxide.Results
+  nameWithType: Results
+- uid: Oxide.Results.AndThenAsync*
+  name: AndThenAsync
+  href: api/Oxide.Results.html#Oxide_Results_AndThenAsync_
+  commentId: Overload:Oxide.Results.AndThenAsync
+  isSpec: "True"
+  fullName: Oxide.Results.AndThenAsync
+  nameWithType: Results.AndThenAsync
+- uid: Oxide.Results.AndThenAsync``3(System.Threading.Tasks.Task{Oxide.Result{``0,``2}},System.Func{``0,Oxide.Result{``1,``2}})
+  name: AndThenAsync<TIn, TOut, TError>(Task<Result<TIn, TError>>, Func<TIn, Result<TOut, TError>>)
+  href: api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_Oxide_Result___1___2___
+  commentId: M:Oxide.Results.AndThenAsync``3(System.Threading.Tasks.Task{Oxide.Result{``0,``2}},System.Func{``0,Oxide.Result{``1,``2}})
+  name.vb: AndThenAsync(Of TIn, TOut, TError)(Task(Of Result(Of TIn, TError)), Func(Of TIn, Result(Of TOut, TError)))
+  fullName: Oxide.Results.AndThenAsync<TIn, TOut, TError>(System.Threading.Tasks.Task<Oxide.Result<TIn, TError>>, System.Func<TIn, Oxide.Result<TOut, TError>>)
+  fullName.vb: Oxide.Results.AndThenAsync(Of TIn, TOut, TError)(System.Threading.Tasks.Task(Of Oxide.Result(Of TIn, TError)), System.Func(Of TIn, Oxide.Result(Of TOut, TError)))
+  nameWithType: Results.AndThenAsync<TIn, TOut, TError>(Task<Result<TIn, TError>>, Func<TIn, Result<TOut, TError>>)
+  nameWithType.vb: Results.AndThenAsync(Of TIn, TOut, TError)(Task(Of Result(Of TIn, TError)), Func(Of TIn, Result(Of TOut, TError)))
+- uid: Oxide.Results.AndThenAsync``3(System.Threading.Tasks.Task{Oxide.Result{``0,``2}},System.Func{``0,System.Threading.Tasks.Task{Oxide.Result{``1,``2}}})
+  name: AndThenAsync<TIn, TOut, TError>(Task<Result<TIn, TError>>, Func<TIn, Task<Result<TOut, TError>>>)
+  href: api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_System_Threading_Tasks_Task_Oxide_Result___1___2____
+  commentId: M:Oxide.Results.AndThenAsync``3(System.Threading.Tasks.Task{Oxide.Result{``0,``2}},System.Func{``0,System.Threading.Tasks.Task{Oxide.Result{``1,``2}}})
+  name.vb: AndThenAsync(Of TIn, TOut, TError)(Task(Of Result(Of TIn, TError)), Func(Of TIn, Task(Of Result(Of TOut, TError))))
+  fullName: Oxide.Results.AndThenAsync<TIn, TOut, TError>(System.Threading.Tasks.Task<Oxide.Result<TIn, TError>>, System.Func<TIn, System.Threading.Tasks.Task<Oxide.Result<TOut, TError>>>)
+  fullName.vb: Oxide.Results.AndThenAsync(Of TIn, TOut, TError)(System.Threading.Tasks.Task(Of Oxide.Result(Of TIn, TError)), System.Func(Of TIn, System.Threading.Tasks.Task(Of Oxide.Result(Of TOut, TError))))
+  nameWithType: Results.AndThenAsync<TIn, TOut, TError>(Task<Result<TIn, TError>>, Func<TIn, Task<Result<TOut, TError>>>)
+  nameWithType.vb: Results.AndThenAsync(Of TIn, TOut, TError)(Task(Of Result(Of TIn, TError)), Func(Of TIn, Task(Of Result(Of TOut, TError))))
+- uid: Oxide.Results.Combine*
+  name: Combine
+  href: api/Oxide.Results.html#Oxide_Results_Combine_
+  commentId: Overload:Oxide.Results.Combine
+  isSpec: "True"
+  fullName: Oxide.Results.Combine
+  nameWithType: Results.Combine
+- uid: Oxide.Results.Combine``2(Oxide.Result{``0,``1}[])
+  name: Combine<TResult, TError>(Result<TResult, TError>[])
+  href: api/Oxide.Results.html#Oxide_Results_Combine__2_Oxide_Result___0___1____
+  commentId: M:Oxide.Results.Combine``2(Oxide.Result{``0,``1}[])
+  name.vb: Combine(Of TResult, TError)(Result(Of TResult, TError)())
+  fullName: Oxide.Results.Combine<TResult, TError>(Oxide.Result<TResult, TError>[])
+  fullName.vb: Oxide.Results.Combine(Of TResult, TError)(Oxide.Result(Of TResult, TError)())
+  nameWithType: Results.Combine<TResult, TError>(Result<TResult, TError>[])
+  nameWithType.vb: Results.Combine(Of TResult, TError)(Result(Of TResult, TError)())
+- uid: Oxide.Results.Combine``2(System.Collections.Generic.IEnumerable{Oxide.Result{``0,``1}})
+  name: Combine<TResult, TError>(IEnumerable<Result<TResult, TError>>)
+  href: api/Oxide.Results.html#Oxide_Results_Combine__2_System_Collections_Generic_IEnumerable_Oxide_Result___0___1___
+  commentId: M:Oxide.Results.Combine``2(System.Collections.Generic.IEnumerable{Oxide.Result{``0,``1}})
+  name.vb: Combine(Of TResult, TError)(IEnumerable(Of Result(Of TResult, TError)))
+  fullName: Oxide.Results.Combine<TResult, TError>(System.Collections.Generic.IEnumerable<Oxide.Result<TResult, TError>>)
+  fullName.vb: Oxide.Results.Combine(Of TResult, TError)(System.Collections.Generic.IEnumerable(Of Oxide.Result(Of TResult, TError)))
+  nameWithType: Results.Combine<TResult, TError>(IEnumerable<Result<TResult, TError>>)
+  nameWithType.vb: Results.Combine(Of TResult, TError)(IEnumerable(Of Result(Of TResult, TError)))
+- uid: Oxide.Results.Err*
+  name: Err
+  href: api/Oxide.Results.html#Oxide_Results_Err_
+  commentId: Overload:Oxide.Results.Err
+  isSpec: "True"
+  fullName: Oxide.Results.Err
+  nameWithType: Results.Err
+- uid: Oxide.Results.Err``2(``1)
+  name: Err<TResult, TError>(TError)
+  href: api/Oxide.Results.html#Oxide_Results_Err__2___1_
+  commentId: M:Oxide.Results.Err``2(``1)
+  name.vb: Err(Of TResult, TError)(TError)
+  fullName: Oxide.Results.Err<TResult, TError>(TError)
+  fullName.vb: Oxide.Results.Err(Of TResult, TError)(TError)
+  nameWithType: Results.Err<TResult, TError>(TError)
+  nameWithType.vb: Results.Err(Of TResult, TError)(TError)
+- uid: Oxide.Results.Ok*
+  name: Ok
+  href: api/Oxide.Results.html#Oxide_Results_Ok_
+  commentId: Overload:Oxide.Results.Ok
+  isSpec: "True"
+  fullName: Oxide.Results.Ok
+  nameWithType: Results.Ok
+- uid: Oxide.Results.Ok``2(``0)
+  name: Ok<TResult, TError>(TResult)
+  href: api/Oxide.Results.html#Oxide_Results_Ok__2___0_
+  commentId: M:Oxide.Results.Ok``2(``0)
+  name.vb: Ok(Of TResult, TError)(TResult)
+  fullName: Oxide.Results.Ok<TResult, TError>(TResult)
+  fullName.vb: Oxide.Results.Ok(Of TResult, TError)(TResult)
+  nameWithType: Results.Ok<TResult, TError>(TResult)
+  nameWithType.vb: Results.Ok(Of TResult, TError)(TResult)
+- uid: Oxide.Some`1
+  name: Some<T>
+  href: api/Oxide.Some-1.html
+  commentId: T:Oxide.Some`1
+  name.vb: Some(Of T)
+  fullName: Oxide.Some<T>
+  fullName.vb: Oxide.Some(Of T)
+  nameWithType: Some<T>
+  nameWithType.vb: Some(Of T)
