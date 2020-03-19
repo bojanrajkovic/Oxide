@@ -14,6 +14,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
+        source-url: https://nuget.pkg.github.com/bojanrajkovic/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Install Tools
       run: |
         dotnet tool install -g --version 1.9.0 codecov.tool
@@ -57,7 +60,7 @@ jobs:
         dotnet
         nuget
         push
-        --source "github"
+        --no-symbols true
         ./artifacts/*.nupkg
     - name: Push Master Builds To NuGet
       run: >
