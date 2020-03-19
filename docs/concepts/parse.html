@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&quot;Smart&quot; Parsing | Oxide Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&quot;Smart&quot; Parsing | Oxide Documentation ">
+    <meta name="generator" content="docfx 2.48.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="smart-parsing">&quot;Smart&quot; Parsing</h1>
+
+<h2 id="inspiration">Inspiration</h2>
+<p>Smart parsing is, at its core, inspired by the idea of traits.</p>
+<p>Traits are, at their core, <em>extension interface</em>. That is, they consist of an
+interface definition (in Rust, they are defined against some unknown type
+<code>Self</code>), and some implementation of the trait for a type <code>T</code>. Consider the
+following Rust example, where <code>Foo</code> is actually defined in some other
+crate/package entirely:</p>
+<pre><code class="lang-rust">struct SomeErrorType { ... }
+
+trait Parseable {
+    fn parse(src: &amp;&#39;static str, ...) -&gt; Self;
+    fn try_parse(src: &amp;&#39;static str, ...) -&gt; Result&lt;Self, SomeErrorType&gt;;
+}
+
+impl Parseable for Foo {
+    fn parse(src: &amp;&#39;static str, ...) -&gt; Foo {
+        return Foo::parse(src);
+    }
+
+    fn try_parse(src: &amp;&#39;static str, ...) -&gt; Result&lt;Foo, SomeErrorType&gt; {
+        let fooParse = Foo::try_parse(src);
+        return match fooParse {
+            Ok(foo) =&gt; foo;
+            Err(error) =&gt; SomeErrorType::from_foo_error(error)
+        };   
+    }
+}
+</code></pre><p>This is entirely valid for a Rust trait. The crate providing the Parseable trait
+can provide implementations for types in other crates&mdash;for example, you
+want to provide parsing helpers for things in the <code>std</code> crate (Rust&#39;s standard
+library).</p>
+<p>The same thing might look like this in C#:</p>
+<pre><code class="lang-csharp">class SomeErrorType : Exception { ... }
+
+trait interface IParseable&lt;T&gt; {
+    static T Parse(string src, ...);
+    static Result&lt;T, SomeErrorType&gt; TryParse(string src, ...);
+}
+
+trait class IParseable&lt;Foo&gt; {
+    static Foo Parse(string src, ...) {
+        return Foo.Parse(src, ...);
+    }
+
+    static Result&lt;Foo, SomeErrorType&gt; TryParse(string src, ...) {
+        // Notice this example calls the exception-throwing Parse method
+        // in order to get useful error output. :( This is because TryParse
+        // with a useful error via the Result type is not a pattern in .NET.
+        try {
+            return Foo.Parse(src, ...);
+        } catch (Exception e) {
+            return new SomeErrorType(e);
+        }
+    }
+}
+
+// Elsewhere...
+
+public static class StringExtensions
+{
+    public static T Parse&lt;T&gt;(this string src, params object[] args) {
+        // Implementation elided, but can check if `T` implements `IParseable&lt;T&gt;`
+        // or if it is provided by a trait, and call `Parse` via the interface.
+        …
+    }
+}
+</code></pre><p>Note that this is syntax I made up on the fly&mdash;it should not be taken as an
+endorsement of any kind, only wishful thinking.</p>
+<p>With the trait in place, you can call <code>&quot;someString&quot;.TryParse&lt;Foo&gt;(…)</code> as if it
+were a regular method, even if <code>Foo</code> did not define <code>Parse</code> or <code>TryParse</code>. The
+restrictions follow the same pattern as extension methods, but the method
+appears on the type parameter <code>T</code>.</p>
+<p>The &quot;smart&quot; parsing implementation in Oxide allows a makeshift version of this.
+It adds <code>Parse&lt;T&gt;</code> and <code>TryParse&lt;T&gt;</code> methods as extension methods on <code>string</code>
+(as the above example does), and uses reflection to search for <code>Parse</code> and
+<code>TryParse</code> methods. First, the given type <code>T</code> is searched (in the case of
+standard library types that provide those methods), and then, all loaded
+assemblies are searched for extension methods.</p>
+<p>This is not very performant the first time any type <code>T</code> is used, as you might
+imagine. Subsequent invocations are fast due to caching of the resulting
+generated delegate.</p>
+<p>This is not intended to be a seriously used API, and is likely to be removed in
+Oxide 2.0. In the meantime, it was fun writing it!</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/concepts/parse.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

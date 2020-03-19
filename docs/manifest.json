@@ -18,7 +18,67 @@
       "output": {
         ".html": {
           "relative_path": "CODE_OF_CONDUCT.html",
-          "hash": "yhixJOBj+lE8nRjczFMrog=="
+          "hash": "IF7k/eZh82v6ydlbeEzBKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "concepts/options.md",
+      "output": {
+        ".html": {
+          "relative_path": "concepts/options.html",
+          "hash": "MvcGL6L5dMarxl76YC/cRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "concepts/oxide.md",
+      "output": {
+        ".html": {
+          "relative_path": "concepts/oxide.html",
+          "hash": "NhYHf037pT+5sYSQA7Q0sg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "concepts/parse.md",
+      "output": {
+        ".html": {
+          "relative_path": "concepts/parse.html",
+          "hash": "yMLvT7FPyokcPWIPT0RFxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "concepts/results.md",
+      "output": {
+        ".html": {
+          "relative_path": "concepts/results.html",
+          "hash": "KYnbb+C8DrmpVo9FuU+RKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "concepts/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "concepts/toc.html",
+          "hash": "jGpnoMg80k0Xl680LJ6fIw=="
         }
       },
       "is_incremental": false,
@@ -30,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "kd2f5Vc3vIWFAb5TSiMjFQ=="
+          "hash": "5ZwcyvnZ2ln6hdFzu8229g=="
         }
       },
       "is_incremental": false,
@@ -42,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.EnumerableExtension.html",
-          "hash": "Mgi8xX4GxkFABz9KaOFNNQ=="
+          "hash": "zaE2AjxwijnBB5rn0jY+8g=="
         }
       },
       "is_incremental": false,
@@ -54,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Environment.html",
-          "hash": "wVmQIUZMUrYltYTM3gogmg=="
+          "hash": "thKJGDiEg2wrGvgGw22mXQ=="
         }
       },
       "is_incremental": false,
@@ -66,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Error-2.html",
-          "hash": "d3ZyulMrIQW+/khrzW7BcA=="
+          "hash": "+As/38O/xnnlNlIYZU18WQ=="
         }
       },
       "is_incremental": false,
@@ -78,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Http.html",
-          "hash": "ZP0lhLR/t/PftNdeYyqTog=="
+          "hash": "xR3UF+G3CqCiH66FToUoNQ=="
         }
       },
       "is_incremental": false,
@@ -90,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.None-1.html",
-          "hash": "DeW8GeefUbJ6u8y38IzV3g=="
+          "hash": "IDs9qydWC7YdPaLg0Kf53w=="
         }
       },
       "is_incremental": false,
@@ -102,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.ObjectExtensions.html",
-          "hash": "Vwwpq+8VzaVaCOW4Ec1Grw=="
+          "hash": "d6llPYm2BiidAQDFlXi9YA=="
         }
       },
       "is_incremental": false,
@@ -114,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Ok-2.html",
-          "hash": "ObIhCaO+4zZJxaYP3JUjeg=="
+          "hash": "NbDKbcixf2EznJ/9FZ/BQA=="
         }
       },
       "is_incremental": false,
@@ -126,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Option-1.html",
-          "hash": "mI6q04g0iQQZxXQtBFjYJw=="
+          "hash": "8ZpUFIKOvT1s1p7FzzmkFw=="
         }
       },
       "is_incremental": false,
@@ -138,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Option.html",
-          "hash": "wNP+fcCKvZh41kNKHUAnHg=="
+          "hash": "277ENa5hmOdqpml5OEuf+Q=="
         }
       },
       "is_incremental": false,
@@ -150,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Options.html",
-          "hash": "kDLKH1uX4HyRt56VwQTOGw=="
+          "hash": "/O4Xb7siBghTCwPVSzvN8g=="
         }
       },
       "is_incremental": false,
@@ -162,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.ParseExtensions.html",
-          "hash": "S0YiC5nGQXSRSsqHmMKw4Q=="
+          "hash": "1DTT/oPnh6ttFuBy1jF4tg=="
         }
       },
       "is_incremental": false,
@@ -174,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Result-2.html",
-          "hash": "c8IAX+3Al+Op4jzDRrnttg=="
+          "hash": "/p7hyIZA3VBFNaxoMB8hDg=="
         }
       },
       "is_incremental": false,
@@ -186,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Result.html",
-          "hash": "Smly+WpR9a9UjiMB5gat9Q=="
+          "hash": "WrJTcoY96lVXWO5aANjhcg=="
         }
       },
       "is_incremental": false,
@@ -198,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Results.html",
-          "hash": "qV1YVmNTMK9gUFicTO9rzw=="
+          "hash": "rg9dm9WNZNv9zdX/QdX3TQ=="
         }
       },
       "is_incremental": false,
@@ -210,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.Some-1.html",
-          "hash": "X+jehmj3Wxi0wNt28iuPRQ=="
+          "hash": "eHZlfljmz/+5uS6Z7M152Q=="
         }
       },
       "is_incremental": false,
@@ -222,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Oxide.html",
-          "hash": "wbPHAkzT+xqpAjrOH7VN4Q=="
+          "hash": "pZ4xSJwSAg0bON61PtnuQA=="
         }
       },
       "is_incremental": false,
@@ -241,12 +301,36 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "samples/samples.md",
+      "output": {
+        ".html": {
+          "relative_path": "samples/samples.html",
+          "hash": "UtFNejoQvUDjIsstF7lo1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "samples/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "samples/toc.html",
+          "hash": "p+9ERVmYdAFVS20WPEolGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "8VZjHfsaF3nRDYLx0sDO2w=="
+          "hash": "V0B7/vdbDBrGhKPAxRlqkQ=="
         }
       },
       "is_incremental": false,
@@ -256,12 +340,10 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
         "TocDocumentProcessor": {
@@ -271,17 +353,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 2,
-          "skipped_file_count": 0
-        },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 16,
-          "skipped_file_count": 0
+          "skipped_file_count": 16
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 7,
+          "skipped_file_count": 6
         }
       }
     },

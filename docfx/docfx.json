@@ -19,7 +19,7 @@
         "dest": "api"
       },
       {
-        "files": [ "articles/**/*.md", "*.md", "toc.yml", "restapi/**" ]
+        "files": [ "concepts/**/*.md", "samples/**/*.md", "*.md", "toc.yml" ]
       },
       {
         "files": ["CODE_OF_CONDUCT.md"],

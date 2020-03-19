@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Oxide
-   | Oxide Documentation </title>
+    <title>Option Types | Oxide Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Oxide
-   | Oxide Documentation ">
+    <meta name="title" content="Option Types | Oxide Documentation ">
     <meta name="generator" content="docfx 2.48.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -78,63 +76,42 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Oxide">
-  
-  <h1 id="Oxide" data-uid="Oxide" class="text-break">Namespace Oxide
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="Oxide.EnumerableExtension.html">EnumerableExtension</a></h4>
-      <section><p>Extensions for <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Environment.html">Environment</a></h4>
-      <section><p>Environment helpers.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Error-2.html">Error&lt;TResult, TError&gt;</a></h4>
-      <section><p>A <a class="xref" href="Oxide.Result-2.html">Result&lt;TResult, TError&gt;</a> representing an error.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Http.html">Http</a></h4>
-      <section><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.net.http.httpclient">HttpClient</a> extensions.</p>
-</section>
-      <h4><a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a></h4>
-      <section><p>An <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> representing no value.</p>
-</section>
-      <h4><a class="xref" href="Oxide.ObjectExtensions.html">ObjectExtensions</a></h4>
-      <section><p>Generic object extensions.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Ok-2.html">Ok&lt;TResult, TError&gt;</a></h4>
-      <section><p>A <a class="xref" href="Oxide.Result-2.html">Result&lt;TResult, TError&gt;</a> representing a value.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Option.html">Option</a></h4>
-      <section><p>The abstract base class for all Option types.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a></h4>
-      <section><p>The <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> type represents an optional value. Every option is either
-a <a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a>, and has a value, or is a <a class="xref" href="Oxide.None-1.html">None&lt;T&gt;</a> that has no value.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Options.html">Options</a></h4>
-      <section><p>Contains helper methods and extension methods for working with <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a>.</p>
-</section>
-      <h4><a class="xref" href="Oxide.ParseExtensions.html">ParseExtensions</a></h4>
-      <section><p>A set of extensions for parsing strings into values.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Result.html">Result</a></h4>
-      <section><p>The abstract base class for all Result types.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Result-2.html">Result&lt;TResult, TError&gt;</a></h4>
-      <section><p>The <a class="xref" href="Oxide.Result-2.html">Result&lt;TResult, TError&gt;</a> represents an operation that could return either
-a result or an error. Every option is either an <a class="xref" href="Oxide.Ok-2.html">Ok&lt;TResult, TError&gt;</a>, and has
-a value and no error, or is a <a class="xref" href="Oxide.Error-2.html">Error&lt;TResult, TError&gt;</a> and has no value and an error.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Results.html">Results</a></h4>
-      <section><p>Helper methods and extension methods for working with <a class="xref" href="Oxide.Result-2.html">Result&lt;TResult, TError&gt;</a>.</p>
-</section>
-      <h4><a class="xref" href="Oxide.Some-1.html">Some&lt;T&gt;</a></h4>
-      <section><p>An <a class="xref" href="Oxide.Option-1.html">Option&lt;TOption&gt;</a> representing some value.</p>
-</section>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="option-types">Option Types</h1>
+
+<h2 id="inspiration">Inspiration</h2>
+<p>Option types like Oxide&#39;s are an implementation of what is usually called the
+Maybe monad.</p>
+<p>However, in Oxide&#39;s case, the implementations are inspired entirely by Rust&#39;s
+API, due to its ergonomics. Many other implementations exist, but they tend to
+hew too closely to the monadic terminology from the Haskell/ML language
+families. However, this terminology is heavy on mathematical symbols and jargon,
+and can lack accessibility. </p>
+<p>Meanwhile, Rust&#39;s implementation and API takes a more human approach to API
+naming—for example, what Oxide calls <code>AndThen</code> (<code>and_then</code> in Rust), is
+frequently called <code>flatMap</code>. The former is a relatively reasonable name—it&#39;s
+indicative of what the implementation behavior is. <code>flatMap</code> is a more
+theoretical term for the operation, but reveals relatively little about its
+behavior unless you&#39;re already well-versed in the material.</p>
+<h2 id="why-option-types">Why Option Types?</h2>
+<p>Option types are common in Rust code, because of their broad spectrum of uses
+(list borrowed from <a href="https://doc.rust-lang.org/stable/std/option/index.html">the Rust docs</a>):</p>
+<ul>
+<li>Initial values</li>
+<li>Return values for functions that are not defined over their entire input range
+(partial functions)</li>
+<li>Return value for otherwise reporting simple errors, where None is returned on
+error</li>
+<li>Optional struct fields</li>
+<li>Struct fields that can be loaned or &quot;taken&quot;</li>
+<li>Optional function arguments</li>
+<li>Nullable pointers</li>
+<li>Swapping things out of difficult situations</li>
+</ul>
+<p>Most of these are relevant to the .NET space as well, and we&#39;ll hopefully cover
+them in our <a href="../samples/samples.html">samples</a>. However, it is clear that option types can help us reduce
+or eliminate certain types of bugs in our code, as well as aid in the
+construction of more composable application logic. </p>
 </article>
           </div>
           
@@ -142,6 +119,9 @@ a value and no error, or is a <a class="xref" href="Oxide.Error-2.html">Error&lt
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/concepts/options.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

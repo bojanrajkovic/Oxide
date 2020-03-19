@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Oxide | Oxide Documentation </title>
+    <title>Result Types | Oxide Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Oxide | Oxide Documentation ">
+    <meta name="title" content="Result Types | Oxide Documentation ">
     <meta name="generator" content="docfx 2.48.1.0">
     
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles/docfx.vendor.css">
-    <link rel="stylesheet" href="styles/docfx.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <meta property="docfx:navrel" content="toc.html">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="">
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="index.html">
-                <img id="logo" class="svg" src="logo.svg" alt="">
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,15 +67,27 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="oxide">Oxide</h1>
+<h1 id="result-types">Result Types</h1>
 
-<p>Hello, world! This is Oxide. To learn about Oxide and the concepts it expresses,
-check out our <a href="concepts/oxide.html">conceptual documentation</a>.</p>
-<p>Oxide&#39;s <a href="/api/Oxide.html">API docs</a> have good coverage of all of the individual APIs, and
-the <a href="samples/samples.html">samples</a> have examples of using each API.</p>
+<h2 id="inspiration">Inspiration</h2>
+<p>Result types in Oxide are an implementation of what is usually called the Either monad.</p>
+<p>However, as in the case of <a href="options.html">option types</a>, <code>Result&lt;T, E&gt;</code> is inspired by <a href="https://doc.rust-lang.org/stable/std/result/index.html">Rust&#39;s <code>Result&lt;T, E&gt;</code></a> API, due to its ergonomics and humanistic terminology.</p>
+<p>APIs should return <code>Result&lt;T, E&gt;</code> whenever errors are recoverable, or error propagation is desired. Rust uses them primarily for I/O in the <code>std</code> crate, but they are richly integrated into the ecosystem.</p>
+<p>The primary approach to consuming them in Rust is via pattern matching. Unfortunately, C#&#39;s pattern matching is not quite as strong, but additional API provided by Oxide&#39;s Result types means that we can use it anyway, with some help from the <code>when</code> clause.</p>
+<p>As usual, see the <a href="../samples/samples.html">samples</a> for demo code.</p>
+<h2 id="why-result-types">Why Result Types</h2>
+<p>Result types provide for natural chaining of operations, where any operation in the chain can fail, while preserving the original error at the end. Scott Wlaschin of F# for Fun And Profit refers to this as <a href="https://fsharpforfunandprofit.com/rop/">railway oriented programming</a>.</p>
+<p>Result types allow this for both synchronous operations, as well as asynchronous ones, including handy helpers for sanely chaining <code>Task&lt;Result&lt;T, E&gt;&gt;</code> without the syntactic horror of nesting <code>await</code> calls.</p>
 </article>
           </div>
           
@@ -84,7 +96,7 @@ the <a href="samples/samples.html">samples</a> have examples of using each API.<
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/concepts/results.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -110,8 +122,8 @@ the <a href="samples/samples.html">samples</a> have examples of using each API.<
       </footer>
     </div>
     
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="styles/docfx.js"></script>
-    <script type="text/javascript" src="styles/main.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>
