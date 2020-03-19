@@ -14,9 +14,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-        source-url: https://nuget.pkg.github.com/bojanrajkovic/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Install Tools
       run: |
         dotnet tool install -g --version 1.9.0 codecov.tool
@@ -55,12 +52,15 @@ jobs:
       with:
         name: NuGet Packages
         path: artifacts
+    - name: Set Up GPR As NuGet Source
+      run: |
+        nuget source add -Name "GitHub" -Source "https://nuget.pkg.github.com/bojanrajkovic/index.json"
+        nuget setApiKey ${{ secrets.GITHUB_TOKEN }} -Source "https://nuget.pkg.github.com/bojanrajkovic/index.json"
     - name: Push All Builds To CI Feed
       run: >
-        dotnet
         nuget
         push
-        --no-symbols true
+        -Source GitHub
         ./artifacts/*.nupkg
     - name: Push Master Builds To NuGet
       run: >
