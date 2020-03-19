@@ -54,15 +54,17 @@ jobs:
         path: artifacts
     - name: Push All Builds To CI Feed
       run: >
-        ~/.dotnet/tools/sleet push
-        ./artifacts
-        --verbose
-        -p SLEET_ACCESS_KEY_ID=${{ secrets.SLEET_ACCESS_KEY_ID }}
-        -p SLEET_SECRET_ACCESS_KEY=${{ secrets.SLEET_SECRET_ACCESS_KEY }}
+        dotnet
+        nuget
+        push
+        --source "github"
+        ./artifacts/*.nupkg
     - name: Push Master Builds To NuGet
       run: >
-        nuget push
-        -ApiKey ${{ secrets.NUGET_API_KEY }}
-        -Source https://api.nuget.org/v3/index.json
+        dotnet
+        nuget
+        push
+        --api-key ${{ secrets.NUGET_API_KEY }}
+        --Source https://api.nuget.org/v3/index.json
         ./artifacts/*.nupkg
       if: endsWith(github.ref, 'master')
