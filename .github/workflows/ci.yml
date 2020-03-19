@@ -19,6 +19,7 @@ jobs:
         dotnet tool install -g --version 1.9.0 codecov.tool
         dotnet tool install -g --version 5.1.3 gitversion.tool
         dotnet tool install -g --version 3.0.20 sleet
+        dotnet tool install -g --version 0.1.122 gpr
     - name: Generate Version Number
       run: |
         ~/.dotnet/tools/dotnet-gitversion /updateAssemblyInfo /output json | tee -a version.json
@@ -52,16 +53,9 @@ jobs:
       with:
         name: NuGet Packages
         path: artifacts
-    - name: Set Up GPR As NuGet Source
-      run: |
-        nuget source add -Name "GitHub" -Source "https://nuget.pkg.github.com/bojanrajkovic/index.json"
-        nuget setApiKey ${{ secrets.GITHUB_TOKEN }} -Source "https://nuget.pkg.github.com/bojanrajkovic/index.json"
     - name: Push All Builds To CI Feed
-      run: >
-        nuget
-        push
-        -Source GitHub
-        ./artifacts/*.nupkg
+      run: |
+        find artifacts -name '*.nupkg' -exec gpr push -k ${{ secrets.GITHUB_TOKEN }} {} \;
     - name: Push Master Builds To NuGet
       run: >
         dotnet
