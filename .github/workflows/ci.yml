@@ -25,7 +25,7 @@ jobs:
         echo "::set-env name=PackageVersion::$(cat version.json | jq -r .NuGetVersionV2)"
     - name: Run Build
       run: |
-        dotnet build -c Release -p:Deterministic=true -p:ContinuousIntegrationBuild=true
+        dotnet build -c Release
     - name: Run Tests
       run: |
         dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=OpenCover -p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
@@ -35,14 +35,14 @@ jobs:
     - name: Pack NuGet (No Release Notes)
       run: |
         sed -i '/<PackageReleaseNotes>/d' src/**/*.csproj
-        dotnet pack --include-symbols --no-build -c Release -o ./artifacts -p:SymbolPackageFormat=snupkg -p:Version=$PackageVersion -v minimal
+        dotnet pack -c Release -o ./artifacts
       if: "!startsWith(github.ref, 'refs/tags/')"
     - name: Pack NuGet (Release Notes)
       run: |
         curl -o release.json -L https://api.github.com/repos/${{ github.repository }}/releases/tags/${GITHUB_REF##*/}
         dotnet msbuild /t:UpdateReleaseNotes src/Oxide/Oxide.csproj
         dotnet msbuild /t:UpdateReleaseNotes src/Oxide.Http/Oxide.Http.csproj
-        dotnet pack --include-symbols --no-build -c Release -o ./artifacts -p:SymbolPackageFormat=snupkg -p:Version=$PackageVersion -v minimal
+        dotnet pack -c Release -o ./artifacts
       if: startsWith(github.ref, 'refs/tags/')
     - name: Upload Artifacts
       uses: actions/upload-artifact@v1
