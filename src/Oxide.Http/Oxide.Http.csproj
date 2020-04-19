@@ -20,12 +20,15 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>!RELEASE_NOTES!</PackageReleaseNotes>
     <ReleaseNotesFile>$([MSBuild]::GetPathOfFileAbove(release.json))</ReleaseNotesFile>
-    <PublishRepositoryUrl Condition="'$(CI)' == 'true'">true</PublishRepositoryUrl>
-    <EmbedUntrackedSources Condition="'$(CI)' == 'true'">true</EmbedUntrackedSources>
-    <Deterministic Condition="'$(CI)' == 'true'">true</Deterministic>
-    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
