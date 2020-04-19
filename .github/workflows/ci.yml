@@ -86,7 +86,8 @@ jobs:
         dotnet-version: 3.1.201
     - name: Install Tools
       run: |
-        dotnet tool restore
+        dotnet new tool-manifest
+        dotnet tool install gpr
     - name: Push All Builds To CI Feed
       run: |
         find . -name '*.nupkg' -exec dotnet tool run gpr push -k ${{ secrets.GITHUB_TOKEN }} {} \;
