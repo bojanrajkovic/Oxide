@@ -89,4 +89,4 @@ jobs:
         dotnet tool restore
     - name: Push All Builds To CI Feed
       run: |
-        find . -name '*.nupkg' -exec gpr push -k ${{ secrets.GITHUB_TOKEN }} {} \;
+        find . -name '*.nupkg' -exec dotnet tool run gpr push -k ${{ secrets.GITHUB_TOKEN }} {} \;
