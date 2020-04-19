@@ -2,9 +2,6 @@
   <PropertyGroup>
     <DebugType>portable</DebugType>
     <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <PackageId>Oxide.Http</PackageId>
     <Authors>Bojan Rajkovic</Authors>
     <Title>Oxide.Http</Title>
@@ -21,9 +18,39 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryUrl>https://github.com/bojanrajkovic/Oxide</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageReleaseNotes>!RELEASE_NOTES!</PackageReleaseNotes>
+    <ReleaseNotesFile>$([MSBuild]::GetPathOfFileAbove(release.json))</ReleaseNotesFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Oxide\Oxide.csproj" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
+
+  <Target Name="UpdateReleaseNotes" Condition='Exists($(ReleaseNotesFile))'>
+    <Exec Command="cat $(ReleaseNotesFile) | jq -r .body" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="CapturedReleaseNotes" />
+    </Exec>
+    <WriteLinesToFile File="ReleaseNotes.txt" Lines="$(CapturedReleaseNotes)" />
+    <UpdateReleaseNotes File="$(MSBuildThisFileFullPath)" />
+    <Delete Files="ReleaseNotes.txt" />
+  </Target>
+
+  <UsingTask TaskName="UpdateReleaseNotes"
+             TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <File ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        var content = System.IO.File.ReadAllText(File);
+        var replacement = System.IO.File.ReadAllText("ReleaseNotes.txt");
+        content = content.Replace(string.Format("!{0}!", "RELEASE_NOTES"), string.Join(Environment.NewLine, replacement));
+        System.IO.File.WriteAllText(File, content);
+      ]]></Code>
+    </Task>
+  </UsingTask>
 </Project>
