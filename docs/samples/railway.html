@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Option Types | Oxide Documentation </title>
+    <title>Railway-Oriented Programming | Oxide Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Option Types | Oxide Documentation ">
+    <meta name="title" content="Railway-Oriented Programming | Oxide Documentation ">
     <meta name="generator" content="docfx 2.51.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -77,42 +77,67 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="option-types">Option Types</h1>
 
-<h2 id="inspiration">Inspiration</h2>
-<p>Option types like Oxide&#39;s are an implementation of what is usually called the
-Maybe monad.</p>
-<p>However, in Oxide&#39;s case, the implementations are inspired entirely by Rust&#39;s
-API, due to its ergonomics. Many other implementations exist, but they tend to
-hew too closely to the monadic terminology from the Haskell/ML language
-families. However, this terminology is heavy on mathematical symbols and jargon,
-and can lack accessibility. </p>
-<p>Meanwhile, Rust&#39;s implementation and API takes a more human approach to API
-naming—for example, what Oxide calls <code>AndThen</code> (<code>and_then</code> in Rust), is
-frequently called <code>flatMap</code>. The former is a relatively reasonable name—it&#39;s
-indicative of what the implementation behavior is. <code>flatMap</code> is a more
-theoretical term for the operation, but reveals relatively little about its
-behavior unless you&#39;re already well-versed in the material.</p>
-<h2 id="why-option-types">Why Option Types?</h2>
-<p>Option types are common in Rust code, because of their broad spectrum of uses
-(list borrowed from <a href="https://doc.rust-lang.org/stable/std/option/index.html">the Rust docs</a>):</p>
-<ul>
-<li>Initial values</li>
-<li>Return values for functions that are not defined over their entire input range
-(partial functions)</li>
-<li>Return value for otherwise reporting simple errors, where None is returned on
-error</li>
-<li>Optional struct fields</li>
-<li>Struct fields that can be loaned or &quot;taken&quot;</li>
-<li>Optional function arguments</li>
-<li>Nullable pointers</li>
-<li>Swapping things out of difficult situations</li>
-</ul>
-<p>Most of these are relevant to the .NET space as well, and we&#39;ll hopefully cover
-them in our <a href="../samples/samples.html">samples</a>. However, it is clear that option types can help us reduce
-or eliminate certain types of bugs in our code, as well as aid in the
-construction of more composable application logic. </p>
-</article>
+<p>A few years ago, Scott Wlaschin introduced a very handy explanation for the
+pattern, already common in functional languages, of chaining implementations of
+the <code>Either</code> <del>burrito</del> monad. He called it <a href="https://fsharpforfunandprofit.com/rop/">&quot;railway-oriented
+programming,&quot;</a> and I&#39;ve been a fan of both the concept and the name ever
+since. I&#39;m not going to cover here what a <del>burrito</del> monad is: the reading list
+in Scott&#39;s post/talk does a great job of that already.</p>
+<p>Oxide&#39;s <a href="/api/Oxide.Result-2.html"><code>Result&lt;T, E&gt;</code></a>, being an implementation of the <code>Either</code>
+<del>burrito</del> monad, enables straightforward railway programming for <strong>synchronous</strong>
+scenarios:</p>
+<pre><code class="lang-csharp">using Oxide;
+
+class Order { ... }
+class OrderResult { ... }
+class Error { ... }
+
+Result&lt;Order, Error&gt; ValidateOrder(Order o) { ... }
+Result&lt;Order, Error&gt; UpdateOrderDatabase(Order o) { ... }
+Result&lt;OrderResult, Error&gt; SendEmail(Order o) { ... }
+
+Order o = ...;
+var result = ValidateOrder(o).AndThen(UpdateOrderDatabase).AndThen(SendEmail);
+</code></pre><p>Trying to use this with asynchronous code, you quickly run into a soup of
+<code>await</code>, and parentheses, and general spaghetti code:</p>
+<pre><code class="lang-csharp">using Oxide;
+
+class Order { ... }
+class OrderResult { ... }
+class Error { ... }
+
+async Task&lt;Result&lt;Order, Error&gt;&gt; ValidateOrderAsync(Order o) { ... }
+async Task&lt;Result&lt;Order, Error&gt;&gt; UpdateOrderDatabaseAsync(Order o) { ... }
+async Task&lt;Result&lt;OrderResult, Error&gt;&gt; SendEmailAsync(Order o) { ... }
+
+await (
+    await (
+        await ValidateOrderAsync(...)
+    ).AndThenAsync(UpdateOrderDatabaseAsync)
+).AndThenAsync(SendEmailAsync);
+</code></pre><p>This is hard to read and hard to follow. You can clarify the chain itself by
+splitting it into separate statements:</p>
+<pre><code class="lang-csharp">var first  = await ValidateOrderAsync(...);
+var second = await first.AndThenAsync(UpdateOrderDatabaseAsync);
+var third = await second.AndThenAsync(SendEmailAsync);
+</code></pre><p>You still end up with repeated <code>await</code> and extra variables. With
+<a href="/api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_System_Threading_Tasks_Task_Oxide_Result___1___2____"><code>AndThenAsync&lt;TIn, TOut, TError&gt;</code></a>, you can chain async
+<code>Result&lt;T, E&gt;</code> calls without causing a lot of spaghetti:</p>
+<pre><code class="lang-csharp">var result = await ValidateOrderAsync(...)
+    .AndThenAsync(UpdateOrderDatabaseAsync)
+    .AndThenAsync(SendEmailAsync);
+</code></pre><p>You gain all the benefits of railway-oriented programming, as well as clean,
+readable code, even when dealing with asynchronous calls. With the other
+overload of <a href="/api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_Oxide_Result___1___2___"><code>AndThenAsync&lt;TIn, TOut, TError&gt;</code></a>, you can even
+chain synchronous steps in with asynchronous steps:</p>
+<pre><code class="lang-csharp">Result&lt;Order, Error&gt; ComputeDiscounts(Order o) { ... }
+
+var result = await ValidateOrderAsync(...)
+    .AndThenAsync(ComputeDiscounts)
+    .AndThenAsync(UpdateOrderDatabaseAsync)
+    .AndThenAsync(SendEmailAsync);
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -120,7 +145,7 @@ construction of more composable application logic. </p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/concepts/options.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/samples/railway.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
