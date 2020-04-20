@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 using Xunit;
@@ -18,16 +19,16 @@ namespace Oxide.Tests
 
 #region IsNone/IsSome Tests
         [Fact]
-        public void SomeIsNotNone() => Assert.False(Some(1).IsNone);
+        public void Some_is_not_none() => Assert.False(Some(1).IsNone);
 
         [Fact]
-        public void SomeIsSome() => Assert.True(Some(1).IsSome);
+        public void Some_is_some() => Assert.True(Some(1).IsSome);
 
         [Fact]
-        public void NoneIsNone() => Assert.True(None<int>().IsNone);
+        public void None_is_none() => Assert.True(None<int>().IsNone);
 
         [Fact]
-        public void NoneIsNotSome() => Assert.False(None<int>().IsSome);
+        public void None_is_not_some() => Assert.False(None<int>().IsSome);
 #endregion
 
 
@@ -37,10 +38,24 @@ namespace Oxide.Tests
         public void Is_never_equal_to_null(Option opt)
             => Assert.False(opt.Equals(null));
 
+        [Fact]
+        public void Equals_with_null_rhs_returns_false()
+            => Assert.False(Some(5).Equals(null));
+
         [Theory]
         [MemberData(nameof(Options))]
         public void Op_equality_is_correct_for_null(Option opt)
             => Assert.False(opt == null);
+
+        [Theory]
+        [MemberData(nameof(Options))]
+        public void Op_equality_is_correct_when_null_is_left(Option opt)
+            => Assert.False(null == opt);
+
+        [Theory]
+        [MemberData(nameof(Options))]
+        public void Op_inequality_is_correct_when_null_is_left(Option opt)
+            => Assert.True(null != opt);
 
         [Theory]
         [MemberData(nameof(Options))]
@@ -64,10 +79,12 @@ namespace Oxide.Tests
             => Assert.True(None<int>().Equals(None<int>()));
 
         [Fact]
+        [SuppressMessage("ReSharper", "EqualExpressionComparison")]
         public void Op_equality_is_correct_for_none()
             => Assert.True(None<int>() == None<int>());
 
         [Fact]
+        [SuppressMessage("ReSharper", "EqualExpressionComparison")]
         public void Op_inequality_is_correct_for_none()
             => Assert.False(None<int>() != None<int>());
 
@@ -88,10 +105,12 @@ namespace Oxide.Tests
             => Assert.True(Some(5).Equals(Some(5)));
 
         [Fact]
+        [SuppressMessage("ReSharper", "EqualExpressionComparison")]
         public void Op_equality_is_correct_for_somes_with_same_value()
             => Assert.True(Some(5) == Some(5));
 
         [Fact]
+        [SuppressMessage("ReSharper", "EqualExpressionComparison")]
         public void Op_inequality_is_correct_for_somes_with_same_value()
             => Assert.False(Some(5) != Some(5));
 
@@ -108,6 +127,7 @@ namespace Oxide.Tests
             => Assert.False(Some(5).Equals((object)Some(10)));
 
         [Fact]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public void Object_equals_is_correct_for_mismatched_types()
             => Assert.False(Some(5).Equals(Some(10L)));
 
@@ -129,25 +149,24 @@ namespace Oxide.Tests
         public void Try_unwrap_returns_true_for_some()
         {
             int value;
-            Assert.True(Some<int>(int.MaxValue).TryUnwrap(out value));
+            Assert.True(Some(int.MaxValue).TryUnwrap(out value));
             Assert.Equal(int.MaxValue, value);
         }
 
         [Fact]
         public void Try_unwrap_returns_false_for_none()
         {
-            int value = -1;
-            Assert.False(None<int>().TryUnwrap(out value));
+            Assert.False(None<int>().TryUnwrap(out var value));
             // `out` requires us to set a value, and the value for a None<T>
             // is default(T).
-            Assert.Equal(default(int), value);
+            Assert.Equal(default, value);
         }
 
         [Fact]
         public void Expecting_none_throws_exception_matching_string()
         {
             string message = "Expected 5, got None.";
-            var ex = Assert.Throws<Exception>(() => None<int>().Expect(message));
+            var ex = Assert.Throws<InvalidOperationException>(() => None<int>().Expect(message));
             Assert.Equal(message, ex.Message);
         }
 
@@ -157,7 +176,7 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrapping_none_throws_exception() {
-            var ex = Assert.Throws<Exception>(() => None<int>().Unwrap());
+            var ex = Assert.Throws<InvalidOperationException>(() => None<int>().Unwrap());
             Assert.Equal("Tried to unwrap a None<System.Int32>!", ex.Message);
         }
 
@@ -171,7 +190,7 @@ namespace Oxide.Tests
 
         [Fact]
         public void Unwrap_or_none_with_unspecified_value_returns_default()
-            => Assert.Equal(default(long), None<long>().UnwrapOr());
+            => Assert.Equal(default, None<long>().UnwrapOr());
 
         [Fact]
         public void Unwrap_or_function_does_not_call_function_with_some()
@@ -253,7 +272,7 @@ namespace Oxide.Tests
             Task<double> Mapper(long value) => Task.Run(() => Math.Pow(2, value));
             var some = Some(16L);
 
-            var result = await some.MapAsync(Mapper).Unwrap();
+            var result = await some.MapAsync(Mapper).UnwrapAsync();
             Assert.Equal(65536.0, result);
         }
 
@@ -263,8 +282,8 @@ namespace Oxide.Tests
             Task<double> Mapper(long value) => Task.Run(() => Math.Pow(2, value));
             var none = None<long>();
 
-            var ex = await Assert.ThrowsAsync<Exception>(
-                () => none.MapAsync(Mapper).Unwrap()
+            var ex = await Assert.ThrowsAsync<InvalidOperationException>(
+                () => none.MapAsync(Mapper).UnwrapAsync()
             );
             Assert.Equal("Tried to unwrap a None<System.Double>!", ex.Message);
         }
@@ -273,40 +292,28 @@ namespace Oxide.Tests
         public void Map_or_converts_value_if_some()
             => Assert.Equal(
                 65536,
-                Some(16L).MapOr(
-                    10.0,
-                    val => Math.Pow(2, val)
-                )
+                Some(16L).MapOr(val => Math.Pow(2, val), 10.0)
             );
 
         [Fact]
         public void Map_or_returns_default_value_if_none()
             => Assert.Equal(
                 10.0,
-                None<long>().MapOr(
-                    10.0,
-                    val => Math.Pow(2, val)
-                )
+                None<long>().MapOr(val => Math.Pow(2, val), 10.0)
             );
 
         [Fact]
         public void Map_or_with_function_converts_value_if_some()
             => Assert.Equal(
                 65536,
-                Some(16L).MapOr(
-                    () => 10.0,
-                    val => Math.Pow(2, val)
-                )
+                Some(16L).MapOr(val => Math.Pow(2, val), () => 10.0)
             );
 
         [Fact]
         public void Map_or_with_function_provides_value_if_none()
             => Assert.Equal(
                 10.0,
-                None<long>().MapOr(
-                    () => 10.0,
-                    val => Math.Pow(2, val)
-                )
+                None<long>().MapOr(val => Math.Pow(2, val), () => 10.0)
             );
 #endregion
 
@@ -326,6 +333,54 @@ namespace Oxide.Tests
             => Assert.Equal(50, Some(10).AndThen<int>(val => 5*val));
 
         [Fact]
+        public void Some_and_finally_returns_some_and_calls_function()
+        {
+            var called = false;
+
+            var some = Some(5);
+            var res = some.Finally(val => called = true);
+
+            Assert.Same(some, res);
+            Assert.True(called);
+        }
+
+        [Fact]
+        public void None_and_finally_returns_some_and_does_not_call_function()
+        {
+            var called = false;
+
+            var none = None<int>();
+            var res = none.Finally(val => called = true);
+
+            Assert.Same(none, res);
+            Assert.False(called);
+        }
+
+        [Fact]
+        public void None_and_ifnone_returns_none_and_calls_function()
+        {
+            var called = false;
+
+            var none = None<int>();
+            var res = none.IfNone(() => called = true);
+
+            Assert.Same(none, res);
+            Assert.True(called);
+        }
+
+        [Fact]
+        public void Some_and_ifnone_returns_some_and_does_not_call_function()
+        {
+            var called = false;
+
+            var some = Some(5);
+            var res = some.IfNone(() => called = true);
+
+            Assert.Same(some, res);
+            Assert.False(called);
+        }
+
+        [Fact]
         public void None_and_then_returns_none_of_correct_type()
         {
             var result = None<int>().AndThen<string>(val => val.ToString());
@@ -342,33 +397,33 @@ namespace Oxide.Tests
             var res = await some.AndThenAsync<double>(async ts => {
                 await Task.Delay(ts);
                 return ts.TotalDays;
-            }).Unwrap();
+            }).UnwrapAsync();
 
             Assert.Equal(timespan.TotalDays, res);
         }
-        
+
         [Fact]
         public async Task Continue_task_of_option_without_await()
         {
             var timespan = TimeSpan.FromSeconds(1);
             var task = Task.FromResult(Some(timespan));
-            
-            var res = await task.AndThen(ts => Some(ts.TotalDays));
-            
+
+            var res = await task.AndThenAsync(ts => Some(ts.TotalDays));
+
             Assert.Equal(timespan.TotalDays, res);
         }
-        
-        [SkipOnAzureFact]
+
+        [Fact]
         public async Task Continue_task_of_option_with_async_continuation()
         {
             var timespan = TimeSpan.FromSeconds(1);
             var task = Task.FromResult(Some(timespan));
-            
-            var res = await task.AndThen(async ts => {
+
+            var res = await task.AndThenAsync(async ts => {
                 await Task.Delay(ts);
-                return ts.TotalDays;
+                return Some(ts.TotalDays);
             });
-            
+
             Assert.Equal(timespan.TotalDays, res);
         }
 
@@ -376,9 +431,7 @@ namespace Oxide.Tests
         public async Task Async_none_and_then_returns_none()
         {
             var none = None<TimeSpan>();
-            var res = await none.AndThenAsync<double>(async ts => {
-                return await Task.FromResult(ts.TotalDays);
-            });
+            var res = await none.AndThenAsync<double>(async ts => await Task.FromResult(ts.TotalDays));
 
             Assert.IsType<None<double>>(res);
             Assert.True(res.IsNone);
@@ -435,22 +488,6 @@ namespace Oxide.Tests
             Assert.NotSame(none, res);
             Assert.True(called);
             Assert.Equal(TimeSpan.FromSeconds(10), res.Unwrap());
-        }
-#endregion
-
-#region Take Tests
-        [Fact]
-        public void Option_is_none_after_take()
-        {
-            var some = Some(100);
-
-            Assert.True(some.IsSome);
-            Assert.False(some.IsNone);
-
-            some.Take();
-
-            Assert.False(some.IsSome);
-            Assert.True(some.IsNone);
         }
 #endregion
 

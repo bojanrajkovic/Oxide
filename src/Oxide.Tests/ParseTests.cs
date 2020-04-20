@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 
@@ -6,90 +7,39 @@ using Xunit;
 
 namespace Oxide.Tests
 {
+    [SuppressMessage("ReSharper", "UnusedMember.Local")]
+    [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Local")]
     public class ParseTests
     {
-        class NonStaticTryParse
+        class NonStaticMethods
         {
-            public bool TryParse(string foo, out NonStaticTryParse result)
+            public bool TryParse(string foo, out NonStaticMethods result)
             {
-                result = new NonStaticTryParse();
+                result = new NonStaticMethods();
                 return true;
             }
+
+            public NonStaticMethods Parse(string foo)
+                => new NonStaticMethods();
         }
 
-        [Fact]
-        public void Parse_type_with_non_static_try_parse_returns_method_not_found()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.Parse<NonStaticTryParse>();
-
-            Assert.True(parseResult.IsError);
-            var exception = parseResult.UnwrapError();
-            var parseException = Assert.IsType<ParseException>(exception);
-            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
-        }
-
-        [Fact]
-        public void Try_parse_type_with_non_static_try_parse_returns_none()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.TryParse<NonStaticTryParse>();
-
-            Assert.True(parseResult.IsNone);
-        }
-
-        class TryParseNotReturningBool
+        class MethodsNotReturningBool
         {
             public static int TryParse(string foo)
                 => 5;
+
+            public static int Parse(string foo)
+                => 5;
         }
 
-        [Fact]
-        public void Parse_type_with_non_bool_try_parse_returns_method_not_found()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.Parse<TryParseNotReturningBool>();
-
-            Assert.True(parseResult.IsError);
-            var exception = parseResult.UnwrapError();
-            var parseException = Assert.IsType<ParseException>(exception);
-            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
-        }
-
-        [Fact]
-        public void Try_parse_type_with_non_bool_try_parse_returns_none()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.TryParse<TryParseNotReturningBool>();
-
-            Assert.True(parseResult.IsNone);
-        }
-
-        class TryParseNotTakingString
+        class MethodsNotTakingString
         {
             public static bool TryParse(int foo)
                 => true;
-        }
 
-        [Fact]
-        public void Parse_type_with_non_string_try_parse_returns_method_not_found()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.Parse<TryParseNotTakingString>();
-
-            Assert.True(parseResult.IsError);
-            var exception = parseResult.UnwrapError();
-            var parseException = Assert.IsType<ParseException>(exception);
-            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
-        }
-
-        [Fact]
-        public void Try_parse_type_with_non_string_try_parse_returns_none()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.TryParse<TryParseNotTakingString>();
-
-            Assert.True(parseResult.IsNone);
+            public static bool Parse(int foo)
+                => true;
         }
 
         class TryParseWithoutOutParameter
@@ -99,24 +49,27 @@ namespace Oxide.Tests
         }
 
         [Fact]
-        public void Parse_type_with_non_out_try_parse_returns_method_not_found()
+        public void Additional_parameters_in_wrong_order_returns_exception()
         {
             const string shortString = "cafe";
-            var parseResult = shortString.Parse<TryParseWithoutOutParameter>();
+            var parseResult = shortString.Parse<short>(null, NumberStyles.HexNumber);
 
             Assert.True(parseResult.IsError);
             var exception = parseResult.UnwrapError();
             var parseException = Assert.IsType<ParseException>(exception);
-            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+            Assert.Equal("Could not find matching Parse method.", parseException.Message);
         }
 
         [Fact]
-        public void Try_parse_type_with_non_out_try_parse_returns_none()
+        public void Additional_parameters_in_wrong_order_returns_none()
         {
             const string shortString = "cafe";
-            var parseResult = shortString.TryParse<TryParseWithoutOutParameter>();
+            var maybeShort = shortString.TryParse<short>(null, NumberStyles.HexNumber);
 
-            Assert.True(parseResult.IsNone);
+            Assert.True(maybeShort.IsError);
+            var exception = maybeShort.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
         }
 
         [Fact]
@@ -125,8 +78,8 @@ namespace Oxide.Tests
             const string addrString = "192.168.1.1";
             var maybeIp = addrString.TryParse<IPAddress>();
 
-            Assert.True(maybeIp.IsSome);
-            var addr = maybeIp.Unwrap();
+            Assert.True(maybeIp.IsOk);
+            var addr = maybeIp.Unwrap().Unwrap();
             Assert.Equal(addrString, addr.ToString());
         }
 
@@ -147,36 +100,9 @@ namespace Oxide.Tests
             const string shortString = "cafe";
             var maybeShort = shortString.TryParse<short>(NumberStyles.HexNumber, null);
 
-            Assert.True(maybeShort.IsSome);
-            var @short = maybeShort.Unwrap();
-            Assert.Equal(shortString, $"{@short.ToString("x2")}");
-        }
-
-        [Fact]
-        public void Additional_parameters_in_wrong_order_returns_none()
-        {
-            const string shortString = "cafe";
-            var maybeShort = shortString.TryParse<short>(null, NumberStyles.HexNumber);
-
-            Assert.True(maybeShort.IsNone);
-        }
-
-        [Fact]
-        public void Try_parse_with_incorrect_format_returns_none()
-        {
-            const string shortString = "ssss";
-            var maybeShort = shortString.TryParse<short>();
-
-            Assert.True(maybeShort.IsNone);
-        }
-
-        [Fact]
-        public void Parse_with_incorrect_format_returns_error()
-        {
-            const string shortString = "ssss";
-            var maybeShort = shortString.Parse<short>();
-
-            Assert.True(maybeShort.IsError);
+            Assert.True(maybeShort.IsOk);
+            var @short = maybeShort.Unwrap().Unwrap();
+            Assert.Equal(shortString, $"{@short:x2}");
         }
 
         [Fact]
@@ -188,19 +114,10 @@ namespace Oxide.Tests
             // the target method.
             var maybeShort = shortString.TryParse<short>((NumberStyles)(-1), null);
 
-            Assert.True(maybeShort.IsNone);
-        }
-
-        [Fact]
-        public void Additional_parameters_in_wrong_order_returns_exception()
-        {
-            const string shortString = "cafe";
-            var parseResult = shortString.Parse<short>(null, NumberStyles.HexNumber);
-
-            Assert.True(parseResult.IsError);
-            var exception = parseResult.UnwrapError();
-            var parseException = Assert.IsType<ParseException>(exception);
-            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+            Assert.True(maybeShort.IsError);
+            var exception = maybeShort.UnwrapError();
+            var argumentException = Assert.IsType<ArgumentException>(exception);
+            Assert.Equal("style", argumentException.ParamName);
         }
 
         [Fact]
@@ -216,5 +133,205 @@ namespace Oxide.Tests
 
             Assert.Equal("style", argumentException.ParamName);
         }
+
+        [Fact]
+        public void Parse_from_declared_method_returns_error_with_invalid_source_string()
+        {
+            const string shortString = "ssss";
+            var maybeShort = shortString.Parse<short>();
+
+            Assert.True(maybeShort.IsError);
+            var ex = Assert.IsType<FormatException>(maybeShort.UnwrapError());
+            Assert.Equal(-2146233033, ex.HResult);
+        }
+
+        [Fact]
+        public void Parse_from_declared_method_returns_result_with_valid_source_string()
+        {
+            const string shortString = "32000";
+            var maybeShort = shortString.Parse<short>();
+
+            Assert.True(maybeShort.IsOk);
+            Assert.Equal(32000, maybeShort.Unwrap());
+        }
+
+        [Fact]
+        public void Parse_from_extension_method_returns_exception_with_invalid_source_string()
+        {
+            const string uriString = "./foo/5/bar";
+
+            var uri = uriString.Parse<Uri>(UriKind.Absolute);
+            Assert.True(uri.IsError);
+            var urifex = Assert.IsType<UriFormatException>(uri.UnwrapError());
+            Assert.Equal(-2146233033, urifex.HResult);
+        }
+
+        [Fact]
+        public void Parse_from_extension_method_returns_result_with_valid_source_string()
+        {
+            const string uriString = "https://google.com/";
+
+            var uri = uriString.Parse<Uri>(UriKind.Absolute);
+            Assert.True(uri.IsOk);
+            Assert.Equal(uriString, uri.Unwrap().ToString());
+        }
+
+        [Fact]
+        public void Parse_type_with_non_bool_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.Parse<MethodsNotReturningBool>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching Parse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Parse_type_with_non_static_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.Parse<NonStaticMethods>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching Parse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Parse_type_with_non_string_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.Parse<MethodsNotTakingString>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching Parse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Parse_with_incorrect_format_returns_error()
+        {
+            const string shortString = "ssss";
+            var maybeShort = shortString.Parse<short>();
+
+            Assert.True(maybeShort.IsError);
+        }
+
+        [Fact]
+        public void Try_parse_from_declared_method_returns_none_with_invalid_source_string()
+        {
+            const string shortString = "ssss";
+            var maybeShort = shortString.TryParse<short>();
+
+            Assert.True(maybeShort.IsOk);
+            Assert.True(maybeShort.Unwrap().IsNone);
+        }
+
+        [Fact]
+        public void Try_parse_from_declared_method_returns_result_with_valid_source_string()
+        {
+            const string shortString = "32000";
+            var maybeShort = shortString.TryParse<short>();
+
+            Assert.True(maybeShort.IsOk);
+            Assert.Equal(32000, maybeShort.Unwrap().Unwrap());
+        }
+
+        [Fact]
+        public void Try_parse_from_extension_method_returns_none_with_invalid_source_string()
+        {
+            const string uriString = "./foo/5/bar";
+
+            var res = uriString.TryParse<Uri>(UriKind.Absolute);
+
+            Assert.True(res.IsOk);
+            var uriOption = res.Unwrap();
+            Assert.True(uriOption.IsNone);
+        }
+
+        [Fact]
+        public void Try_parse_from_extension_method_returns_result_with_valid_source_string()
+        {
+            const string uriString = "https://google.com/";
+
+            var res = uriString.TryParse<Uri>(UriKind.Absolute);
+
+            Assert.True(res.IsOk);
+            var uriOption = res.Unwrap();
+            Assert.True(uriOption.IsSome);
+            Assert.Equal(uriString, uriOption.Unwrap().ToString());
+        }
+
+        [Fact]
+        public void Try_parse_type_with_non_bool_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.TryParse<MethodsNotReturningBool>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Try_parse_type_with_non_out_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.TryParse<TryParseWithoutOutParameter>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Try_parse_type_with_non_static_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.TryParse<NonStaticMethods>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+        }
+
+        [Fact]
+        public void Try_parse_type_with_non_string_try_parse_returns_method_not_found()
+        {
+            const string shortString = "cafe";
+            var parseResult = shortString.TryParse<MethodsNotTakingString>();
+
+            Assert.True(parseResult.IsError);
+            var exception = parseResult.UnwrapError();
+            var parseException = Assert.IsType<ParseException>(exception);
+            Assert.Equal("Could not find matching TryParse method.", parseException.Message);
+        }
+    }
+
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    public static class ExtensionTryParse
+    {
+        public static bool TryParse(this string uriString, UriKind kind, out Uri uri)
+            => Uri.TryCreate(uriString, kind, out uri);
+
+        public static Uri Parse(this string uriString, UriKind kind)
+            => new Uri(uriString, kind);
+    }
+
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedParameter.Global")]
+    public static class ExtensionTryParseWithWrongReturnType
+    {
+        public static string Parse(this string uriString, UriKind kind)
+            => uriString;
     }
 }

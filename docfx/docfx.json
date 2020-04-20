@@ -1,0 +1,42 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "**/*.sln", "**/*.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "**/*.Tests/**" ],
+          "src": "../src"
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "**/*.yml" ],
+        "src": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [ "concepts/**/*.md", "samples/**/*.md", "*.md", "toc.yml" ]
+      },
+      {
+        "files": ["CODE_OF_CONDUCT.md"],
+        "src": ".."
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "articles/images/**"]
+      }
+    ],
+    "overwrite": "specs/*.md",
+    "globalMetadata": {
+      "_appTitle": "Oxide Documentation",
+      "_enableSearch": true
+    },
+    "dest": "../docs",
+    "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ]
+  }
+}

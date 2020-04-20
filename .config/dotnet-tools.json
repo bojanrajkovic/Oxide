@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "codecov.tool": {
+      "version": "1.10.0",
+      "commands": [
+        "codecov"
+      ]
+    },
+    "gitversion.tool": {
+      "version": "5.2.4",
+      "commands": [
+        "dotnet-gitversion"
+      ]
+    },
+    "gpr": {
+      "version": "0.1.122",
+      "commands": [
+        "gpr"
+      ]
+    }
+  }
+}

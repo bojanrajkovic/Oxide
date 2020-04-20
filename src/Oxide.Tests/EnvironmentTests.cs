@@ -16,6 +16,10 @@ namespace Oxide.Tests
             => Assert.True(Environment.GetEnvironmentVariable(environmentVariable).IsNone);
 
         [Fact]
+        public void Get_null_returns_none()
+            => Assert.True(Environment.GetEnvironmentVariable(null).IsNone);
+
+        [Fact]
         public void Set_environment_variable_returns_value()
         {
             const string environmentVariable = "OXIDE_TEST_ENVIRONMENT_VARIABLE";

@@ -1,13 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <DebugType>portable</DebugType>
-    <DebugType Condition="'$(RunCoverage)' == 'true'">full</DebugType>
-    <TargetFramework>netstandard1.4</TargetFramework>
-    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
-  </PropertyGroup>
-
-  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Oxide.Http</PackageId>
     <Authors>Bojan Rajkovic</Authors>
     <Title>Oxide.Http</Title>
@@ -15,19 +9,55 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bojanrajkovic/Oxide</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.github.com/bojanrajkovic/Oxide/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>MIT</PackageLicense>
     <PackageTags>rust kotlin functional http</PackageTags>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/bojanrajkovic/Oxide</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageReleaseNotes>!RELEASE_NOTES!</PackageReleaseNotes>
+    <ReleaseNotesFile>$([MSBuild]::GetPathOfFileAbove(release.json))</ReleaseNotesFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+    <ProjectReference Include="..\Oxide\Oxide.csproj" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Oxide\Oxide.csproj" />
-  </ItemGroup>
+  <Target Name="UpdateReleaseNotes" Condition='Exists($(ReleaseNotesFile))'>
+    <Exec Command="cat $(ReleaseNotesFile) | jq -r .body" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="CapturedReleaseNotes" />
+    </Exec>
+    <WriteLinesToFile File="ReleaseNotes.txt" Lines="$(CapturedReleaseNotes)" />
+    <UpdateReleaseNotes File="$(MSBuildThisFileFullPath)" />
+    <Delete Files="ReleaseNotes.txt" />
+  </Target>
+
+  <UsingTask TaskName="UpdateReleaseNotes"
+             TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <File ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        var content = System.IO.File.ReadAllText(File);
+        var replacement = System.IO.File.ReadAllText("ReleaseNotes.txt");
+        content = content.Replace(string.Format("!{0}!", "RELEASE_NOTES"), string.Join(Environment.NewLine, replacement));
+        System.IO.File.WriteAllText(File, content);
+      ]]></Code>
+    </Task>
+  </UsingTask>
 </Project>

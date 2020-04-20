@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Option Types | Oxide Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Option Types | Oxide Documentation ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="option-types">Option Types</h1>
+
+<h2 id="inspiration">Inspiration</h2>
+<p>Option types like Oxide&#39;s are an implementation of what is usually called the
+Maybe monad.</p>
+<p>However, in Oxide&#39;s case, the implementations are inspired entirely by Rust&#39;s
+API, due to its ergonomics. Many other implementations exist, but they tend to
+hew too closely to the monadic terminology from the Haskell/ML language
+families. However, this terminology is heavy on mathematical symbols and jargon,
+and can lack accessibility. </p>
+<p>Meanwhile, Rust&#39;s implementation and API takes a more human approach to API
+naming—for example, what Oxide calls <code>AndThen</code> (<code>and_then</code> in Rust), is
+frequently called <code>flatMap</code>. The former is a relatively reasonable name—it&#39;s
+indicative of what the implementation behavior is. <code>flatMap</code> is a more
+theoretical term for the operation, but reveals relatively little about its
+behavior unless you&#39;re already well-versed in the material.</p>
+<h2 id="why-option-types">Why Option Types?</h2>
+<p>Option types are common in Rust code, because of their broad spectrum of uses
+(list borrowed from <a href="https://doc.rust-lang.org/stable/std/option/index.html">the Rust docs</a>):</p>
+<ul>
+<li>Initial values</li>
+<li>Return values for functions that are not defined over their entire input range
+(partial functions)</li>
+<li>Return value for otherwise reporting simple errors, where None is returned on
+error</li>
+<li>Optional struct fields</li>
+<li>Struct fields that can be loaned or &quot;taken&quot;</li>
+<li>Optional function arguments</li>
+<li>Nullable pointers</li>
+<li>Swapping things out of difficult situations</li>
+</ul>
+<p>Most of these are relevant to the .NET space as well, and we&#39;ll hopefully cover
+them in our <a href="../samples/samples.html">samples</a>. However, it is clear that option types can help us reduce
+or eliminate certain types of bugs in our code, as well as aid in the
+construction of more composable application logic. </p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/concepts/options.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

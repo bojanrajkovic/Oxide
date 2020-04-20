@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Railway-Oriented Programming | Oxide Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Railway-Oriented Programming | Oxide Documentation ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>A few years ago, Scott Wlaschin introduced a very handy explanation for the
+pattern, already common in functional languages, of chaining implementations of
+the <code>Either</code> <del>burrito</del> monad. He called it <a href="https://fsharpforfunandprofit.com/rop/">&quot;railway-oriented
+programming,&quot;</a> and I&#39;ve been a fan of both the concept and the name ever
+since. I&#39;m not going to cover here what a <del>burrito</del> monad is: the reading list
+in Scott&#39;s post/talk does a great job of that already.</p>
+<p>Oxide&#39;s <a href="/api/Oxide.Result-2.html"><code>Result&lt;T, E&gt;</code></a>, being an implementation of the <code>Either</code>
+<del>burrito</del> monad, enables straightforward railway programming for <strong>synchronous</strong>
+scenarios:</p>
+<pre><code class="lang-csharp">using Oxide;
+
+class Order { ... }
+class OrderResult { ... }
+class Error { ... }
+
+Result&lt;Order, Error&gt; ValidateOrder(Order o) { ... }
+Result&lt;Order, Error&gt; UpdateOrderDatabase(Order o) { ... }
+Result&lt;OrderResult, Error&gt; SendEmail(Order o) { ... }
+
+Order o = ...;
+var result = ValidateOrder(o).AndThen(UpdateOrderDatabase).AndThen(SendEmail);
+</code></pre><p>Trying to use this with asynchronous code, you quickly run into a soup of
+<code>await</code>, and parentheses, and general spaghetti code:</p>
+<pre><code class="lang-csharp">using Oxide;
+
+class Order { ... }
+class OrderResult { ... }
+class Error { ... }
+
+async Task&lt;Result&lt;Order, Error&gt;&gt; ValidateOrderAsync(Order o) { ... }
+async Task&lt;Result&lt;Order, Error&gt;&gt; UpdateOrderDatabaseAsync(Order o) { ... }
+async Task&lt;Result&lt;OrderResult, Error&gt;&gt; SendEmailAsync(Order o) { ... }
+
+await (
+    await (
+        await ValidateOrderAsync(...)
+    ).AndThenAsync(UpdateOrderDatabaseAsync)
+).AndThenAsync(SendEmailAsync);
+</code></pre><p>This is hard to read and hard to follow. You can clarify the chain itself by
+splitting it into separate statements:</p>
+<pre><code class="lang-csharp">var first  = await ValidateOrderAsync(...);
+var second = await first.AndThenAsync(UpdateOrderDatabaseAsync);
+var third = await second.AndThenAsync(SendEmailAsync);
+</code></pre><p>You still end up with repeated <code>await</code> and extra variables. With
+<a href="/api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_System_Threading_Tasks_Task_Oxide_Result___1___2____"><code>AndThenAsync&lt;TIn, TOut, TError&gt;</code></a>, you can chain async
+<code>Result&lt;T, E&gt;</code> calls without causing a lot of spaghetti:</p>
+<pre><code class="lang-csharp">var result = await ValidateOrderAsync(...)
+    .AndThenAsync(UpdateOrderDatabaseAsync)
+    .AndThenAsync(SendEmailAsync);
+</code></pre><p>You gain all the benefits of railway-oriented programming, as well as clean,
+readable code, even when dealing with asynchronous calls. With the other
+overload of <a href="/api/Oxide.Results.html#Oxide_Results_AndThenAsync__3_System_Threading_Tasks_Task_Oxide_Result___0___2___System_Func___0_Oxide_Result___1___2___"><code>AndThenAsync&lt;TIn, TOut, TError&gt;</code></a>, you can even
+chain synchronous steps in with asynchronous steps:</p>
+<pre><code class="lang-csharp">Result&lt;Order, Error&gt; ComputeDiscounts(Order o) { ... }
+
+var result = await ValidateOrderAsync(...)
+    .AndThenAsync(ComputeDiscounts)
+    .AndThenAsync(UpdateOrderDatabaseAsync)
+    .AndThenAsync(SendEmailAsync);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/bojanrajkovic/Oxide/blob/release/1.0/docfx/samples/railway.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
