@@ -28,7 +28,7 @@ jobs:
         dotnet build -c Release
     - name: Run Tests
       run: |
-        dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=OpenCover -p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
+        dotnet test -p:DeterministicSourcePaths=false -p:CollectCoverage=true -p:CoverletOutputFormat=OpenCover -p:Exclude="+[Oxide*]*%2c-[Oxide.Tests]*"
     - name: Upload Coverage
       run: |
         dotnet tool run codecov -f "src/Oxide.Tests/coverage.opencover.xml" -t ${{ secrets.CODECOV_TOKEN }}
