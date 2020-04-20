@@ -10,18 +10,12 @@ namespace Oxide.Tests
 {
     public class HttpTests : IDisposable
     {
-        const string ClientBase = "https://weathers.co/";
         HttpClient client;
 
         public HttpTests()
         {
-            var handler = new HttpClientHandler {
-                AutomaticDecompression = DecompressionMethods.None,
-            };
-            client = new HttpClient (handler) {
-                BaseAddress = new Uri(ClientBase),
-            };
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("Oxide.Tests");
+            client = new HttpClient { BaseAddress = new Uri("https://httpstat.us") };
+            client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
         }
 
         public void Dispose()
@@ -33,50 +27,46 @@ namespace Oxide.Tests
         [Fact]
         public async Task Errors_on_get_are_propagated()
         {
-            const string badPath = "api2.php?city=Boston&f=1";
-            var result = await client.SafelyGetAsync(badPath);
+            var result = await client.SafelyGetAsync("/404");
 
             Assert.True(result.IsError);
-            var wex = Assert.IsType<HttpRequestException>(result.UnwrapError());
+            Assert.IsType<HttpRequestException>(result.UnwrapError());
         }
 
         [Fact]
         public async Task Errors_on_get_string_are_propagated()
         {
-            const string badPath = "api2.php?city=Boston&f=1";
-            var result = await client.SafelyGetStringAsync(badPath);
+            var result = await client.SafelyGetStringAsync("/404");
 
             Assert.True(result.IsError);
-            var wex = Assert.IsType<HttpRequestException>(result.UnwrapError());
+            Assert.IsType<HttpRequestException>(result.UnwrapError());
         }
 
         [Fact]
         public async Task Errors_on_get_stream_are_propagated()
         {
-            const string badPath = "api2.php?city=Boston&f=1";
-            var result = await client.SafelyGetStreamAsync(badPath);
+            var result = await client.SafelyGetStreamAsync("/404");
 
             Assert.True(result.IsError);
-            var wex = Assert.IsType<HttpRequestException>(result.UnwrapError());
+            Assert.IsType<HttpRequestException>(result.UnwrapError());
         }
 
         [Fact]
         public async Task Errors_on_get_byte_array_are_propagated()
         {
-            const string badPath = "api2.php?city=Boston&f=1";
-            var result = await client.SafelyGetByteArrayAsync(badPath);
+            var result = await client.SafelyGetByteArrayAsync("/404");
 
             Assert.True(result.IsError);
-            var wex = Assert.IsType<HttpRequestException>(result.UnwrapError());
+            Assert.IsType<HttpRequestException>(result.UnwrapError());
         }
         #endregion
 
         #region Success Testing
-        [Fact(Skip = "Need to fix data source here.")]
+
+        [Fact]
         public async Task Response_message_is_returned_on_success()
         {
-            const string goodPath = "api.php?city=02131&f=1";
-            var result = await client.SafelyGetAsync(goodPath);
+            var result = await client.SafelyGetAsync("/200");
 
             Assert.True(result.IsOk);
 
@@ -85,22 +75,20 @@ namespace Oxide.Tests
             Assert.True(response.IsSuccessStatusCode);
         }
 
-        [Fact(Skip = "Need to fix data source here.")]
+        [Fact]
         public async Task String_data_is_returned_on_success()
         {
-            const string goodPath = "api.php?city=02131&f=1";
-            var result = await client.SafelyGetStringAsync(goodPath);
+            var result = await client.SafelyGetStringAsync("/200");
 
             Assert.True(result.IsOk);
 
             var response = result.Unwrap();
             Assert.NotNull(response);
-            var data = JsonConvert.DeserializeObject<WeatherResponse>(response);
+            var data = JsonConvert.DeserializeObject<StatusResponse>(response);
 
-            // The actual content is weather data, no need to test its contents,
-            // merely that we actually read it.
             Assert.NotNull(data);
-            Assert.NotNull(data.Data);
+            Assert.Equal(200, data.code);
+            Assert.Equal("OK", data.description);
         }
 
         [Fact]
@@ -133,37 +121,34 @@ namespace Oxide.Tests
         #endregion
 
         #region Post/Put/Delete Tests
-        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
+        [Fact]
         public async Task Post_returns_http_response_on_success()
         {
-            const string goodPath = "https://hpqec98e0j4e.runscope.net/";
-            var result = await client.SafelyPostAsync(goodPath, new StringContent("Hello, world!"));
+            var result = await client.SafelyPostAsync("/202", new StringContent("Hello, world!"));
 
             Assert.True(result.IsOk);
 
             var response = result.Unwrap();
             Assert.NotNull(response);
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(HttpStatusCode.Accepted, response.StatusCode);
         }
 
-        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
+        [Fact]
         public async Task Put_returns_http_response_on_success()
         {
-            const string goodPath = "https://hpqec98e0j4e.runscope.net/";
-            var result = await client.SafelyPutAsync(goodPath, new StringContent("Hello, world!"));
+            var result = await client.SafelyPutAsync("/202", new StringContent("Hello, world!"));
 
             Assert.True(result.IsOk);
 
             var response = result.Unwrap();
             Assert.NotNull(response);
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(HttpStatusCode.Accepted, response.StatusCode);
         }
 
-        [Fact(Skip = "Need to find a better thing to simulate endpoints.")]
+        [Fact]
         public async Task Delete_returns_http_response_on_success()
         {
-            const string goodPath = "https://hpqec98e0j4e.runscope.net/";
-            var result = await client.SafelyDeleteAsync(goodPath);
+            var result = await client.SafelyDeleteAsync("/200");
 
             Assert.True(result.IsOk);
 
@@ -175,8 +160,7 @@ namespace Oxide.Tests
         [Fact]
         public async Task Post_returns_error_when_failed()
         {
-            const string badPath = "http://httpstat.us/404";
-            var result = await client.SafelyPostAsync(badPath, new StringContent("Hello, world!"));
+            var result = await client.SafelyPostAsync("/404", new StringContent("Hello, world!"));
 
             Assert.True(result.IsError);
 
@@ -188,8 +172,7 @@ namespace Oxide.Tests
         [Fact]
         public async Task Put_returns_error_when_failed()
         {
-            const string badPath = "https://httpstat.us/404";
-            var result = await client.SafelyPutAsync(badPath, new StringContent("Hello, world!"));
+            var result = await client.SafelyPutAsync("/404", new StringContent("Hello, world!"));
 
             Assert.True(result.IsError);
 
@@ -201,8 +184,7 @@ namespace Oxide.Tests
         [Fact]
         public async Task Delete_returns_error_when_failed()
         {
-            const string badPath = "https://httpstat.us/404";
-            var result = await client.SafelyDeleteAsync(badPath);
+            var result = await client.SafelyDeleteAsync("/404");
 
             Assert.True(result.IsError);
 
@@ -213,36 +195,9 @@ namespace Oxide.Tests
         #endregion
     }
 
-    class WeatherResponse
+    public class StatusResponse
     {
-        [JsonProperty("apiVersion")]
-        public string ApiVersion { get; set; }
-
-        [JsonProperty("data")]
-        public WeatherData Data { get; set; }
-    }
-
-    class WeatherData
-    {
-        [JsonProperty("location")]
-        public string Location { get; set; }
-
-        [JsonProperty("temperature")]
-        public int Temperature { get; set; }
-
-        [JsonProperty("skytext")]
-        public string Conditions { get; set; }
-
-        [JsonProperty("humidity")]
-        public int Humidity { get; set; }
-
-        [JsonProperty("wind")]
-        public string WindSpeed { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("day")]
-        public string Day { get; set; }
+        public int code;
+        public string description;
     }
 }
