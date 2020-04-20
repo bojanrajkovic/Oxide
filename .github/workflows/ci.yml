@@ -44,11 +44,16 @@ jobs:
         dotnet msbuild /t:UpdateReleaseNotes src/Oxide.Http/Oxide.Http.csproj
         dotnet pack -c Release -o ./artifacts
       if: startsWith(github.ref, 'refs/tags/')
-    - name: Upload Artifacts
+    - name: Upload Artifacts (NuGet Packages)
       uses: actions/upload-artifact@v1
       with:
         name: NuGet Packages
         path: artifacts
+    - name: Upload Artifacts (Coverage Report)
+      uses: actions/upload-artifact@v1
+      with:
+          name: Coverage Report
+          path: src/Oxide.Tests/coverage.opencover.xml
   push_to_nuget:
     name: Push to NuGet
     runs-on: ubuntu-latest
