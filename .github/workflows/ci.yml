@@ -11,7 +11,7 @@ jobs:
     - name: Prepare Repository
       run: |
         git checkout master
-        git checkout "${GITHUB_REF:11}"
+        git checkout $(echo "${GITHUB_REF}" | cut -d'/' -f3-)
     - name: Set Up .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
