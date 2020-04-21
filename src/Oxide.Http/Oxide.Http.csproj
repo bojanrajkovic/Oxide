@@ -59,7 +59,7 @@
         var releaseNotes = System.IO.File.ReadAllText("ReleaseNotes.txt");
         var csprojReleaseNotes = csprojDocument.Root.Descendants().Single(n => n.Name == "PackageReleaseNotes");
         csprojReleaseNotes.SetValue(releaseNotes);
-        File.WriteAllText(File, csprojDocument.ToString());
+        System.IO.File.WriteAllText(File, csprojDocument.ToString());
       ]]></Code>
     </Task>
   </UsingTask>
