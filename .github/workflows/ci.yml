@@ -69,13 +69,8 @@ jobs:
       with:
         dotnet-version: 3.1.201
     - name: Push To NuGet
-      run: >
-        dotnet
-        nuget
-        push
-        --api-key ${{ secrets.NUGET_API_KEY }}
-        --source https://api.nuget.org/v3/index.json
-        ./NuGet\ Packages/*.nupkg
+      run: |
+        find . -name '*.nupkg' -exec dotnet nuget push --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json {} \;
   push_to_gh:
     name: Push To GitHub Packages
     runs-on: ubuntu-latest
