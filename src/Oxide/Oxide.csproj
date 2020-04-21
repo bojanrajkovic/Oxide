@@ -7,7 +7,6 @@
     <Title>Oxide</Title>
     <Description>A library of Rust-like types and helpers for .NET.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bojanrajkovic/Oxide</PackageProjectUrl>
     <PackageLicense>MIT</PackageLicense>
     <PackageTags>rust kotlin functional</PackageTags>
@@ -18,7 +17,7 @@
     <RepositoryUrl>https://github.com/bojanrajkovic/Oxide</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>!RELEASE_NOTES!</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <ReleaseNotesFile>$([MSBuild]::GetPathOfFileAbove(release.json))</ReleaseNotesFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -51,11 +50,15 @@
       <File ParameterType="System.String" Required="true" />
     </ParameterGroup>
     <Task>
+      <Using Namespace="System.Xml.Linq" />
+      <Using Namespace="System.Xml" />
+      <Using Namespace="System.IO" />
       <Code Type="Fragment" Language="cs"><![CDATA[
-        var content = System.IO.File.ReadAllText(File);
-        var replacement = System.IO.File.ReadAllText("ReleaseNotes.txt");
-        content = content.Replace(string.Format("!{0}!", "RELEASE_NOTES"), string.Join(Environment.NewLine, replacement));
-        System.IO.File.WriteAllText(File, content);
+        var csprojDocument = XDocument.Load(File);
+        var releaseNotes = System.IO.File.ReadAllText("ReleaseNotes.txt");
+        var csprojReleaseNotes = csprojDocument.Root.Descendants().Single(n => n.Name == "PackageReleaseNotes");
+        csprojReleaseNotes.SetValue(releaseNotes);
+        System.IO.File.WriteAllText(File, csprojDocument.ToString());
       ]]></Code>
     </Task>
   </UsingTask>
